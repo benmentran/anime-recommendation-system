@@ -5,6 +5,7 @@ import { Detail } from './pages/Detail';
 import { Search } from './pages/Search';
 import { UserList } from './pages/UserList';
 import { Auth } from './pages/Auth';
+import { Chat } from './pages/Chat';
 
 const qc = new QueryClient();
 
@@ -13,12 +14,13 @@ export function App() {
     <QueryClientProvider client={qc}>
       <BrowserRouter>
         <header className="flex gap-4 p-3 border-b border-anilist-border">
-          <Link to="/">Home</Link><Link to="/search">Search</Link><Link to="/list">My List</Link><Link to="/auth/signin">Sign in</Link>
+          <Link to="/">Home</Link><Link to="/search">Search</Link><Link to="/chat">Ask AI</Link><Link to="/list">My List</Link><Link to="/auth/signin">Sign in</Link>
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/anime/:id" element={<Detail />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="/list" element={<UserList />} />
           <Route path="/auth/signin" element={<Auth />} />
         </Routes>

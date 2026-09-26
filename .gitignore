@@ -38,3 +38,8 @@ pipelines/__pycache__
 node_modules/
 anime-frontend/dist/
 __pycache__/
+
+anime-frontend/test-results/
+anime-frontend/playwright-report/
+anime-frontend/blob-report/
+
