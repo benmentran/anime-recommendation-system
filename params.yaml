@@ -1,0 +1,19 @@
+pipelines:
+  ingest:
+    base_path: "data/raw/ml-100k"
+    processed_dir: "data/processed"
+
+  transform:
+    fetch_batch: 1000
+    upsert_batch: 500
+
+  simulation:
+    num_users: 100
+    num_docs: 1000
+    num_episodes: 50
+    slate_size: 5
+    seed: 42
+    out_csv: "data/simulation/synthetic_interactions.csv"
+
+  train:
+    ratings_csv: "data/processed/ratings.csv"

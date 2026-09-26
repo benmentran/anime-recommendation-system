@@ -1,0 +1,30 @@
+.section-title {
+    padding: 20px;
+    font-size: 1.6rem;
+}
+
+.media-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.media-card {
+    width: 160px;
+    text-align: center;
+}
+
+.media-card img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    height: 240px;
+}
+
+.media-card p {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}

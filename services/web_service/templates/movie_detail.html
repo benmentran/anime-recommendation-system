@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ movie.title }} | Netflix Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/movie_detail.css') }}" />
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="movie-header">
+            <img class="poster" src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                alt="{{ movie.title }} Poster">
+            <div class="info">
+                <h1>{{ movie.title }}</h1>
+                <p><strong>Rating:</strong> {{ movie.vote_average }} ⭐️ ({{ movie.vote_count }} votes)</p>
+                <p class="overview">{{ movie.overview }}</p>
+                <a class="tmdb-link" href="https://www.themoviedb.org/movie/{{ movie.id }}" target="_blank">
+                    View on TMDB <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+
+        {% if movie.video_key %}
+        <div class="video-section">
+            <h2>Trailer</h2>
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ movie.video_key }}"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if review %}
+        <div class="review-section">
+            <h2>User Review</h2>
+            <blockquote class="review">
+                {{ review.content }}
+                <footer>— {{ review.author if review.author else "Anonymous" }}</footer>
+            </blockquote>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>

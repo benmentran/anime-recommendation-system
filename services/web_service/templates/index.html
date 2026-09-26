@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', path='css/hero.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', path='css/auth.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', path='css/footer.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .hero {
+      background-image: url('{{ url_for("static", path="images/netflix-brand-hero-image.jpg") }}?v={{ ts }}');
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="overlay"></div>
+
+    <nav class="nav">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+      <div class="nav-actions">
+        <a href="#" class="sign-in-btn">Sign In</a>
+        <span class="user-display" style="display: none; color: white; margin-right: 12px;"></span>
+        <button class="logout-btn btn-secondary" style="display: none;">Logout</button>
+
+        <div class="settings-dropdown">
+          <button class="settings-toggle" aria-label="Settings">
+            <i class="fas fa-cog" aria-hidden="true"></i>
+          </button>
+          <div class="settings-menu">
+            <button id="themeSwitcher" aria-label="Toggle Dark or Light Mode">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Unlimited movies, TV shows, and more</h1>
+      <h2>Watch anywhere. Cancel anytime.</h2>
+      <form class="email-form">
+        <input type="email" placeholder="Email address" required />
+        <button type="submit">Get Started <span aria-hidden="true">&gt;</span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Sign In Modal -->
+  <div class="modal" id="signinModal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn" id="closeSignin">&times;</span>
+      <h1>Sign In</h1>
+      <form id="signinForm" class="signin-form">
+        <input id="signin-email" type="text" placeholder="Email address or mobile number" required />
+        <input id="signin-password" type="password" placeholder="Password" required autocomplete="current-password" />
+        <button type="submit" class="btn-primary">Sign in</button>
+      </form>
+
+      <div class="divider"><span>OR</span></div>
+      <button class="btn-secondary">Use a sign-in code</button>
+      <a href="#" class="forgot-password">Forgot password?</a>
+
+      <div class="remember-and-signup">
+        <label><input type="checkbox" /> Remember me</label>
+        <p>New to Netflix? <a href="#" class="sign-up-btn">Sign up now.</a></p>
+      </div>
+
+      <p class="captcha-note">
+        This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#">Learn more.</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal" id="signupModal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn" id="closeSignup">&times;</span>
+      <h1>Sign Up</h1>
+      <form id="signupForm" class="signup-form">
+        <input id="signup-name" type="text" placeholder="Your name" required />
+        <input id="signup-email" type="email" placeholder="Email address" required />
+        <input id="signup-password" type="password" placeholder="Password" required autocomplete="new-password" />
+        <button type="submit" class="btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="links">
+      <div><a href="#">FAQ</a></div>
+      <div><a href="#">Help Center</a></div>
+      <div><a href="#">Account</a></div>
+      <div><a href="#">Media Center</a></div>
+      <div><a href="#">Investor Relations</a></div>
+      <div><a href="#">Jobs</a></div>
+      <div><a href="#">Ways to Watch</a></div>
+      <div><a href="#">Terms of Use</a></div>
+      <div><a href="#">Privacy</a></div>
+      <div><a href="#">Cookie Preferences</a></div>
+      <div><a href="#">Corporate Information</a></div>
+      <div><a href="#">Contact Us</a></div>
+    </div>
+  </footer>
+  <script type="module" src="{{ url_for('static', path='js/main.js') }}"></script>
+</body>
+
+</html>

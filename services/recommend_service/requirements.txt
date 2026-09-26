@@ -1,0 +1,6 @@
+pydantic==2.10.6
+fastapi==0.116.1
+mlflow==3.1.4
+uvicorn==0.34.0
+httpx==0.28.1
+openai==3.19.2

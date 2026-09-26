@@ -1,0 +1,115 @@
+name: CI-CD - feature_store
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "services/feature_store_service/**"
+      - ".github/workflows/feature_store_service.yaml"
+      - "k8s/feature_store_service/**"
+  pull_request:
+    paths: 
+      - "services/feature_store_service/**"
+      - ".github/workflows/feature_store_service.yaml"
+      - "k8s/feature_store_service/**"
+  workflow_dispatch:
+
+env:
+  SERVICE_NAME: feature_store_service
+  DOCKER_IMAGE: ghcr.io/minhtb105/feature_store_service
+  PYTHON_VERSION: '3.10'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('services/${{ env.SERVICE_NAME }}/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r services/${{ env.SERVICE_NAME }}/requirements.txt
+          pip install ruff
+
+      - name: Run ruff and fix
+        run: ruff check services/${{ env.SERVICE_NAME }} --fix
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore: auto-fix code style with ruff" || echo "No changes to commit"
+          git push
+
+      - name: Run lint & tests
+        run: |
+          export PYTHONPATH=services/${{ env.SERVICE_NAME }}
+          pytest services/${{ env.SERVICE_NAME }}/tests --maxfail=1 -q
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/${{ env.SERVICE_NAME }}
+          push: true
+          tags: |
+            ${{ env.DOCKER_IMAGE }}:latest
+            ${{ env.DOCKER_IMAGE }}:v1
+            ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: v1.30.0   
+
+      - name: Set AKS context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: Minh_group
+          cluster-name: myAKSCluster
+
+      - name: List k8s folder
+        run: ls -R k8s
+
+      - name: Deploy to Kubernetes
+        uses: azure/k8s-deploy@v4
+        with:
+          manifests: |
+            k8s/${{ env.SERVICE_NAME }}/deployment.yaml
+            k8s/${{ env.SERVICE_NAME }}/service.yaml
+          images: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          namespace: default

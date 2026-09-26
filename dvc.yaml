@@ -1,0 +1,64 @@
+stages:
+  ingest:
+    wdir: .
+    cmd: PYTHONPATH=. python pipelines/ingest_pipeline.py
+    deps:
+      - pipelines/ingest_pipeline.py
+      - pipelines/ingest_steps.py
+      - pipelines/ingest_strategy.py
+      - data/raw/ml-100k/u.data
+      - data/raw/ml-100k/u.item
+      - data/raw/ml-100k/u.user
+    params:
+      - pipelines.ingest
+    outs:
+      - data/processed
+
+  simulate:
+    wdir: .
+    cmd: PYTHONPATH=. python pipelines/simulation.py
+    deps:
+      - pipelines/simulation.py
+    params:
+      - pipelines.simulation
+    outs:
+      - data/simulation/synthetic_interactions.csv
+
+  save_user_item_matrix:
+    wdir: .
+    cmd: PYTHONPATH=. python -c "from pipelines.train_pipeline import save_user_item_matrix; save_user_item_matrix()"
+    deps:
+      - pipelines/train_pipeline.py
+      - pipelines/model_dev.py
+      - data/processed/ratings.csv
+    params:
+      - pipelines.train
+    outs:
+      - model/user_item_matrix.pkl
+
+  user_based_cf:
+    wdir: .
+    cmd: PYTHONPATH=. python -c "from pipelines.train_pipeline import user_based_cf_pipeline; user_based_cf_pipeline()"
+    deps:
+      - pipelines/train_pipeline.py
+      - pipelines/model_dev.py
+      - model/user_item_matrix.pkl
+    params:
+      - pipelines.train
+
+  item_based_cf:
+    wdir: .
+    cmd: PYTHONPATH=. python -c "from pipelines.train_pipeline import item_based_cf_pipeline; item_based_cf_pipeline()"
+    deps:
+      - pipelines/train_pipeline.py
+      - pipelines/model_dev.py
+      - model/user_item_matrix.pkl
+    params:
+      - pipelines.train
+
+  anime_snapshot:
+    cmd: python -c "import shutil; shutil.copy('data/raw/anime_merged.ndjson', 'data/raw/anime_snapshot.ndjson')"
+    deps:
+      - data/raw/anime_merged.ndjson
+    outs:
+      - data/raw/anime_snapshot.ndjson

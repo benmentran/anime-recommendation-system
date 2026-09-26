@@ -1,0 +1,36 @@
+footer {
+    background-color: var(--footer-bg);
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+footer .links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: text-decoration 0.2s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    footer .links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    footer .links {
+        grid-template-columns: 1fr;
+    }
+}

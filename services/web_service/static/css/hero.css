@@ -1,0 +1,193 @@
+.hero {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.nav img {
+    height: 40px;
+}
+
+.nav .buttons a {
+    color: var(--text-light);
+    background-color: var(--netflix-red);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.nav .buttons a:hover {
+    background-color: var(--netflix-red-hover);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 800px;
+    z-index: 2;
+    color: white;
+}
+
+.hero-content h1,
+.hero-content h2 {
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 20px;
+}
+
+.email-form input {
+    padding: 15px;
+    font-size: 1rem;
+    width: 60%;
+    max-width: 500px;
+    border: none;
+    outline: none;
+}
+
+.email-form button {
+    padding: 15px 25px;
+    font-size: 1rem;
+    background-color: var(--netflix-red);
+    color: var(--text-light);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.email-form button:hover {
+    background-color: var(--netflix-red-hover);
+}
+
+.theme-toggle button {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle button:hover {
+    color: var(--netflix-red);
+}
+
+/* Right-align actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-greeting {
+    color: white;
+    font-weight: bold;
+}
+
+/* Sign in button */
+.sign-in-btn {
+    color: var(--text-light);
+    background-color: var(--netflix-red);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-btn:hover {
+    background-color: var(--netflix-red-hover);
+}
+
+/* Settings dropdown */
+.settings-dropdown {
+    position: relative;
+}
+
+.settings-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.settings-toggle i {
+    pointer-events: none;
+}
+
+.settings-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background-color: #222;
+    border-radius: 6px;
+    padding: 10px;
+    z-index: 99;
+    min-width: 150px;
+}
+
+.settings-menu.show {
+    display: block;
+}
+
+.settings-menu button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    text-align: left;
+    width: 100%;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.settings-menu button:hover {
+    background-color: var(--netflix-red);
+    color: white;
+}

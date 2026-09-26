@@ -1,0 +1,19 @@
+project: feature_repo
+registry: registry.db
+provider: local
+
+online_store:
+    type: milvus
+    host: "http:localhost"
+    port: 19530
+    path: "online_store.db"
+    embedding_dim: 2094
+    index_type: "IVF_FLAT"
+    metric_type: "COSINE"
+
+offline_store:
+    type: file
+
+entity_key_serialization_version: 3
+auth:
+    type: no_auth

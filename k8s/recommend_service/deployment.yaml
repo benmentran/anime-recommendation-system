@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommend-service
+  labels:
+    app: recommend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommend
+  template:
+    metadata:
+      labels:
+        app: recommend
+    spec:
+      containers:
+      - name: recommend-container
+        image: ghcr.io/minhtb105/recommend_service:${github.sha}
+        ports:
+        - containerPort: 8001

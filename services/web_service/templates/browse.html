@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/hero.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/auth.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/footer.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .content {
+            margin-top: 0;
+            padding-top: 20px;
+        }
+
+        .hero {
+            height: 80px;
+            background: transparent;
+        }
+
+        .hero .overlay {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <section class="hero">
+        <div class="overlay"></div>
+
+        <nav class="nav">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+            <div class="user-controls">
+                <span class="user-greeting">Hi, {{ user.display_name }}</span>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+                <div class="settings-dropdown">
+                    <button class="settings-toggle"><i class="fas fa-cog"></i></button>
+                    <div class="settings-menu">
+                        <button id="themeSwitcher"><i class="fas fa-moon"></i> Dark Mode</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- <div class="hero-content">
+            <h1>Welcome back, {{ user.display_name }}!</h1>
+            <h2>Here's what's trending now:</h2>
+        </div> -->
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Trending Movies</h2>
+        <div class="media-grid">
+            {% for movie in trending_movies %}
+            <div class="media-card">
+                <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path if movie.poster_path else '/static/images/hero-replacement.png' }}"
+                    alt="{{ movie.title or 'Movie poster' }}">
+                <p><a href="/movie/{{ movie.id }}">{{ movie.title }}</a></p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2 class="section-title">Trending TV Series</h2>
+        <div class="media-grid">
+            {% for show in trending_tv %}
+            <div class="media-card">
+                <img src="https://image.tmdb.org/t/p/w500{{ show.poster_path if show.poster_path else '/static/images/hero-replacement.png' }}"
+                    alt="{{ show.name or 'TV show poster' }}">
+                <p><a href="/tv/{{ show.id }}">{{ show.name }}</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="links">
+            <div><a href="#">FAQ</a></div>
+            <div><a href="#">Help Center</a></div>
+            <div><a href="#">Account</a></div>
+            <div><a href="#">Media Center</a></div>
+            <div><a href="#">Investor Relations</a></div>
+            <div><a href="#">Jobs</a></div>
+            <div><a href="#">Ways to Watch</a></div>
+            <div><a href="#">Terms of Use</a></div>
+            <div><a href="#">Privacy</a></div>
+            <div><a href="#">Cookie Preferences</a></div>
+            <div><a href="#">Corporate Information</a></div>
+            <div><a href="#">Contact Us</a></div>
+        </div>
+    </footer>
+
+    <script type="module" src="{{ url_for('static', path='js/main.js') }}"></script>
+</body>
+
+</html>
