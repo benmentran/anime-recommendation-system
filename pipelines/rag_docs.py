@@ -4,6 +4,12 @@ SYNOPSIS_MAX = 1500
 
 
 def _names(value) -> list[str]:
+    if isinstance(value, str):  # asyncpg returns jsonb as str
+        try:
+            import json as _json
+            value = _json.loads(value)
+        except ValueError:
+            return [value] if value else []
     if isinstance(value, list):
         return [str(v) for v in value if v]
     return []
@@ -32,6 +38,17 @@ def build_document(row: dict) -> str:
     genres = _names(row.get("genres"))
     if genres:
         facets.append(f"Genres: {', '.join(genres)}")
+    tags = row.get("tags_anilist") or []
+    if isinstance(tags, str):
+        try:
+            import json as _json
+            tags = _json.loads(tags)
+        except ValueError:
+            tags = []
+    tag_strs = [f"{t.get('name')} ({t.get('weight') or t.get('rank') or 0}%)"
+                for t in tags if isinstance(t, dict) and t.get("name")]
+    if tag_strs:
+        lines.append(f"Tags: {', '.join(tag_strs[:20])}")
     if row.get("score"):
         facets.append(f"Score: {row['score']}/10")
     if facets:

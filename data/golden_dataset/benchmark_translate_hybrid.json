@@ -1,0 +1,766 @@
+{
+ "retrieval": {
+  "n": 30,
+  "precision@5": 0.0733,
+  "precision@10": 0.0433,
+  "ndcg@5": 0.2712,
+  "ndcg@10": 0.2858,
+  "mrr@10": 0.3028,
+  "retrieval_latency_ms_p50": 1046.9,
+  "retrieval_latency_ms_p95": 1472.8
+ },
+ "mode": "translate+hybrid",
+ "rows": [
+  {
+   "id": "1",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    40272,
+    61603,
+    49918,
+    41587,
+    61323,
+    54789,
+    36456,
+    40540,
+    38408,
+    40356
+   ],
+   "lat_ms": 5167.2,
+   "contexts": [
+    "A3! Season Autumn & Winter — With the completion of the Summer Troupe's show, Izumi Tachibana must now recruit five members for the next sub-troupe, the Autumn Troupe. Luckily, enough people arrive at the audition: Banri Settsu, a talented but boastful jack of all trades; Juuza Hyoudou, a stone-faced delinquent passionate about acting; Taichi Nanao, a man wanting to impress girls through the stage; Omi Fushimi, a college student, amateur photographer, and adept cook; and Sakyou Furuichi, a yakuza member who shares a past connection with the Mankai Company.\n\nBut between the non-existent teamwork and multiple threats jeopardizing the show's success, Izumi realizes that the troupe might be more difficult to handle than she first thought. How will she be able to unite them in time for their debut performance?\n\n[Written by MAL Rewrite]",
+    "Ao Ashi Season 2 — Second season of Ao Ashi.",
+    "Boku no Hero Academia 6th Season — With Tomura Shigaraki at its helm, the former Liberation Army is now known as the Paranormal Liberation Front. This organized criminal group poses an immense threat to the Hero Association, not only because of its sheer size and strength, but also the overpowering quirks of Jin \"Twice\" Bubaigawara and Gigantomachia.\n\nAs new intel from the covert hero Keigo \"Hawks\" Takami confirms that Shigaraki is nowhere to be seen, the Hero Association decides to strike the enemy headquarters with a surprise attack using the entirety of its assets—and the UA students find themselves on the battlefield once again. As the fight rages on, the unsuspecting villains must regroup and push back, but the brave heroes are determined to eradicate every last one of them.\n\n[Written by MAL Rewrite]",
+    "Boku no Hero Academia 5th Season — UA Academy's Class 1-A has been the focus of a substantial amount of public attention due to the multiple villain attacks they have faced over the past school year. This attention has left Class 1-A's rivals, Class 1-B, feeling quite bitter. Desiring to prove their skills, they look forward to the opportunity that has been given to them: a set of mock battles between the students of each class.\n\nThe classes are split into squads of four, each of which is tasked with capturing the other group members. The winner is the group who first secures all of the opposing team. While this sounds simple, a curveball is thrown into the mix with the inclusion of General Course Student Hitoshi Shinsou, who wishes to transfer into the Hero Course. Despite using his training with Class 1-A's homeroom teacher Shouta \"Eraserhead\" Aizawa to prove that he's capable of being a real hero, he is still far behind the others due to his lack of experience. However, Shinsou is determined to overcome this challenge.\n\nThus begins the fiery competition between Class 1-A and 1-B as each tries to prove that they are superior to the other.\n\n[Written by MAL Rewrite]",
+    "Ao no Hako Season 2 — Second season of Ao no Hako."
+   ]
+  },
+  {
+   "id": "2",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    38777,
+    14719,
+    51009,
+    37188,
+    31405,
+    33322,
+    57658,
+    2403,
+    153,
+    4195
+   ],
+   "lat_ms": 1442.9,
+   "contexts": [
+    "Jujutsu Kaisen Official PVs — Just where do Curses, the fiendish spirits invisible to normal humans, come from? What is Sukuna Ryoumen, whose very existence grips the Jujutsu world in fear? And who exactly is Yuuji Itadori, the boy who recently became the center of attention in Jujutsu society?\n\nNo need to fear, for Satoru Gojou, the strongest Jujutsu sorcerer, has the answers! From the new sorcerers in training to the enemies they face, Gojou provides all you need to know about Jujutsu and the inner workings of the institution who protect us from Curses: the Tokyo Prefectural Jujutsu High School.\n\n[Written by MAL Rewrite]",
+    "JoJo no Kimyou na Bouken (TV) — The year is 1868; English nobleman George Joestar and his son Jonathan become indebted to Dario Brando after being rescued from a carriage incident. What the Joestars don't realize, however, is that Dario had no intention of helping them; he believed they were dead and was trying to ransack their belongings. After Dario's death 12 years later, George—hoping to repay his debt—adopts his son, Dio. \n\nWhile he publicly fawns over his new father, Dio secretly plans to steal the Joestar fortune. His first step is to create a divide between George and Jonathan. By constantly outdoing his foster brother, Dio firmly makes his place in the Joestar family. But when Dio pushes Jonathan too far, Jonathan defeats him in a brawl. \n\nYears later, the two appear to be close friends to the outside world. But trouble brews again when George falls ill, as Jonathan suspects that Dio is somehow behind the incident—and it appears he has more tricks up his sleeve.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen 2nd Season — The year is 2006, and the halls of Tokyo Prefectural Jujutsu High School echo with the endless bickering and intense debate between two inseparable best friends. Exuding unshakeable confidence, Satoru Gojou and Suguru Getou believe there is no challenge too great for young and powerful Special Grade sorcerers such as themselves. They are tasked with safely delivering a sensible girl named Riko Amanai to the entity whose existence is the very essence of the jujutsu world. However, the mission plunges them into an exhausting swirl of moral conflict that threatens to destroy the already feeble amity between sorcerers and ordinary humans.\n\nTwelve years later, students and sorcerers are the frontline defense against the rising number of high-level curses born from humans' negative emotions. As the entities grow in power, their self-awareness and ambition increase too. The curses unite for the common goal of eradicating humans and creating a world of only cursed energy users, led by a dangerous, ancient cursed spirit. To dispose of their greatest obstacle—the strongest sorcerer, Gojou—they orchestrate an attack at Shibuya Station on Halloween. Dividing into teams, the sorcerers enter the fight prepared to risk everything to protect the innocent and their own kind.\n\n[Written by MAL Rewrite]",
+    "Fumikiri Jikan — Every day, all kinds of different people stop at railroad crossings on their way to work or school, resulting in all sorts of different conversations. Friends, enemies, acquaintances, and complete strangers—there's always a new encounter to be had.\n\nFumikiri Jikan documents the discussions that take place at these locations. Whether these are funny or depressing, expected or completely unexpected, they certainly have the potential to be quite interesting.\n\n[Written by MAL Rewrite]",
+    "Joker Game — With World War II right around the corner, intelligence on other countries' social and economic situation has become a valuable asset. As a result, Japan has established a new spy organization known as the \"D Agency\" to obtain this weapon.\n\nUnder the command of Lieutenant Colonel Yuuki, eight agents have been assigned to infiltrate and observe some of the most powerful countries, reporting on any developments associated with the war. In order to carry out these dangerous tasks, these men have trained their bodies to survive in extreme conditions and studied numerous fields such as communications and languages. However, their greatest strength lies in their ability to manipulate people in order to obtain the information necessary to give their nation the upper hand.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "3",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    24227,
+    53,
+    20767,
+    33161,
+    51705,
+    31181,
+    32553,
+    394,
+    22057,
+    24151
+   ],
+   "lat_ms": 1385.7,
+   "contexts": [
+    "Nisekoi OVA — 1. Funshitsu / Miko-san\n2. Oshigoto / Henbou\n3. Sentou / Service",
+    "Ai Yori Aoshi — Kaoru Hanabishi, a college student who lives alone, met a beautiful but bewildered girl dressed in a kimono at a train station. He volunteered to guide her way to the address she was looking for, which happened to be in his neighborhood, but turned out to be an empty lot. Not knowing what to do next, Kaoru invited the devastated girl to his apartment and asked for any additional clues to her destination. She supplied him with a photo of two children whom Kaoru immediately identified as himself and Aoi Sakuraba, his childhood friend. It turned out that the girl in front of him is Aoi Sakuraba herself, his betrothed fiancee who came all the way to Tokyo to marry him. Her revelation was not only surprising but also reminded the deepest part of Kaoru's memory for why he left the Hanabishi family in the first place.",
+    "Noragami OVA — Kamigakari, Kamitatari\nHiyori Iki is excited to start high school alongside her two middle school friends, but \"Delivery God\" Yato seems to have other plans for the day. Will Hiyori be able to make a good impression on her first day? Or will Yato cost her a happy high school life?\n\nHaru no Hi no Yakusoku\nOn another day, Hiyori decides to take advantage of the beautiful weather and invites a number of people to gaze at the cherry blossoms, including the fearsome combat god, Bishamon. But how long will their blissful day last when Yato and his old rival Bishamon start to drink together? \n\n[Written by MAL Rewrite]",
+    "Yahari Ore no Seishun Love Comedy wa Machigatteiru. Zoku OVA — After accepting a weekend invitation, Hachiman Hikigaya accompanies Isshiki Iroha around the Chiba Prefecture to brainstorm ideas suitable for an ideal date with Hayato Hayama. As the duo wanders from place to place without a plan, they seemingly enjoy each other's company. Yet, through these straightforward and sincere interactions, the meaning behind what it means to be genuine continues to intrigue Hachiman and his outlook for the future of the Volunteer Service Club and its members.\n\n[Written by MAL Rewrite]",
+    "Otonari ni Ginga — Ichirou Kuga has suddenly found himself taking on the responsibility of caring for his two younger siblings after their father's untimely death. To make ends meet, Ichirou rents out rooms in the apartment complex he inherited and works full-time as a shoujo manga artist. However, his manga sales are low, his assistants have recently left, and deadlines are fast approaching.\n\nAs stress threatens to overtake Ichirou, salvation comes in the form of an extremely competent novice artist, Shiori Goshiki, who becomes his new assistant. With her skills, they are able to tide over the difficult situation, and things begin looking up. But in a bizarre accident, a supernatural experience unfolds between Ichirou and Shirou, which leads her to declare them engaged.\n\nWith this seemingly innocuous action upending his life, Ichirou now has to manage his new and peculiar relationship with the mysterious girl, all the while following his own passion and fulfilling the duties that rest on his shoulders.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "4",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    21,
+    60108,
+    36215,
+    57557,
+    16239,
+    37902,
+    15323,
+    1094,
+    31289,
+    19123
+   ],
+   "lat_ms": 1062.6,
+   "contexts": [
+    "One Piece — Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates. Despite being a naive-looking teenager, he is not to be underestimated. Unmatched in battle, Luffy is a pirate himself who resolutely pursues the coveted One Piece treasure and the King of the Pirates title that comes with it.\n\nThe late King of the Pirates, Gol D. Roger, stirred up the world before his death by disclosing the whereabouts of his hoard of riches and daring everyone to obtain it. Ever since then, countless powerful pirates have sailed dangerous seas for the prized One Piece only to never return. Although Luffy lacks a crew and a proper ship, he is endowed with a superhuman ability and an unbreakable spirit that make him not only a formidable adversary but also an inspiration to many.\n\nAs he faces numerous challenges with a big smile on his face, Luffy gathers one-of-a-kind companions to join him in his ambitious endeavor, together embracing perils and wonders on their once-in-a-lifetime adventure.\n\n[Written by MAL Rewrite]",
+    "One Piece: Gyojin Tou-hen — Two years after the Summit War, Monkey D. Luffy plans to reunite with the Straw Hat Pirates in the Sabaody Archipelago. However, the Marines obstruct Luffy's path with overwhelming force. Meanwhile, the Straw Hats must also foil the schemes of a group of impersonators acting in their likenesses.\n\nWith two years of intensive training with allies old and new, Luffy regroups with his friends aboard the Thousand Sunny to set sail for the New World. As the Straw Hat Crew departs for Fish-Man Island, new threats creep up from the abyss. But more determined than ever to become the King of the Pirates, Luffy is prepared to defeat any enemy that may stand between him and his dream.\n\n[Written by MAL Rewrite]",
+    "One Piece: Episode of East Blue - Luffy to 4-nin no Nakama no Daibouken — The words that Gold Roger, the King of the Pirates, uttered just before his death excited the masses and the world has entered a Great Pirate Era! There is a group of young pirates who are about to set sail on the Grand Line. Monkey D. Luffy, a rubber man. Roronoa Zoro aka “Pirate Hunter.” Usopp, a sniper. Sanji, a seafaring cook. And “Cat Burglar” Nami. They, the Straw Hats, all place a foot upon a barrel and make their vows before their next journey across the great ocean. Luffy shouts “In order to be the King of the Pirates!” A decade ago in the Windmill Village... A little boy Luffy was enthralled with a pirate boss Red-Haired Shanks. But a group of mountain bandits shows up and makes fun of the pirates. “Why didn't you fight them?!” Luffy yells out angrily but Shanks says that it's nothing worth getting mad over. At that time, Luffy snatches the Gum-Gum Fruit from a treasure box and eats it and as a result, his entire body becomes rubber and he loses the ability to swim for the rest of his life! A few days later, Luffy is surrounded by the mountain bandits again and Shanks comes to help. “No matter what the reason, anyone who hurts my friends has to pay!!” Shanks and his pirate crew are incredibly strong and they beat down the mountain bandits. Higuma, the head of the mountain bandits, runs away kidnapping Luffy and heads for the sea. However, they encounter a local Sea Monster there and are attacked. Luffy is in a desperate situation... But again, Shanks saves the day. ",
+    "The One Piece — Remake of One Piece.",
+    "One Piece: Episode of Luffy - Hand Island no Bouken — The story of the Hand Island no Bouken special is set a little before the events of One Piece Film Z and depicts a major \"Hand Island\" incident during the New World storyline. The story is set at \"Cannon Town\" where a parent and a child work as craftspeople. The incident revolves around them and a commodore of a marine base. The special will also have a flashback scene to the story in the first chapter of the manga, but with new animation. \n\n(Source: ANN)"
+   ]
+  },
+  {
+   "id": "5",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    302,
+    1364,
+    35798,
+    235,
+    39764,
+    9963,
+    781,
+    2171,
+    32005,
+    38770
+   ],
+   "lat_ms": 965.2,
+   "contexts": [
+    "Mirai Shounen Conan — Conan was the only child born on Remnant Island, a place settled by a group of refugees while they fled a terrifying wave of magnetic bombs that wiped out most of humanity. After 20 years, most of the castaways have died, save for Conan and the wise old man that raised him.\n\nBelieving Remnant Island to be the last inhabited place on Earth, Conan is shocked when he discovers a young girl named Lana washed up on the beach one day. Though he is thrilled to learn that humanity has survived, Lana tells him the nation of Industria wants her as a hostage to force her grandfather, Dr. Lao, to power their machinery. Their conversation is cut short when Industria's top pilot, Monsley, suddenly appears and seizes Lana. Determined to save her, Conan immediately sets off from Remnant Island and begins a journey that will ultimately determine the fate of the world. \n\n[Written by MAL Rewrite]",
+    "Meitantei Conan Movie 05: Tengoku e no Countdown — Conan Edogawa, the Detective Boys, and Professor Hiroshi Agasa decide to visit the Nishitamashi Twin Towers. There they run into Ran Mouri; her closest friend, Sonoko Suzuki; and Ran's father, the famous Kogorou. Learning the trio are attending the towers' grand opening, Conan and company tag along for a private tour of its floors.\n\nHowever, as preparations are finalized for the opening ceremony, their visit takes an unexpected turn—three brutal murders occur, seemingly linked to a mysterious Porsche 356A. Soon after, as Conan and the detectives dive deeper into the case, the towers are rocked by an explosion. With fire rapidly spreading and lives in danger, police desperately seek to evacuate everyone. But when the elevator, their only means to escape goes down, Conan and company are left behind. With help on its way, they frantically try to keep everyone safe, but time is running out if they want to bring the perpetrators to justice.\n\n[Written by MAL Rewrite]",
+    "Meitantei Conan Movie 22: Zero no Shikkounin — In the film's story, there is a sudden explosion at Tokyo Summit's giant Edge of Ocean facility. The shadow of Tooru Amuro, who works for the National Police Agency Security Bureau as Zero, appears at the site. In addition, the \"triple-face\" character is known as Rei Furuya as a detective and Kogorou Mouri's apprentice, and he is also known as Bourbon as a Black Organization member. Kogorou is arrested as a suspect in the case of the explosion. Conan conducts an investigation to prove Kogorou's innocence, but Amuro gets in his way.\n\n(Source: ANN)",
+    "Meitantei Conan — Shinichi Kudou, a high school student of astounding talent in detective work, is well known for having solved several challenging cases. One day, when Shinichi spots two suspicious men and decides to follow them, he inadvertently becomes witness to a disturbing illegal activity. Unfortunately, he is caught in the act, so the men dose him with an experimental drug formulated by their criminal organization, leaving him to his death. However, to his own astonishment, Shinichi lives to see another day, but now in the body of a seven-year-old child.\n\nPerfectly preserving his original intelligence, he hides his real identity from everyone, including his childhood friend Ran Mouri and her father, private detective Kogorou Mouri. To this end, he takes on the alias of Conan Edogawa, inspired by the mystery writers Arthur Conan Doyle and Ranpo Edogawa.\n\nShinichi, as Conan, starts secretly solving the senior Mouri's cases from behind the scenes with his still exceptional sleuthing skills, while covertly investigating the organization responsible for his current state, hoping to reverse the drug's effects someday.\n\n[Written by MAL Rewrite]",
+    "Meitantei Conan Movie 24: Hiiro no Dangan — Japan is about to celebrate the world's largest sports festival, \"WSG-World Sports Games\", in Tokyo. In line with the opening ceremony, it is announced that the world's first \"Vacuum Superconducting Linear\" train, boasting a maximum speed of 1,000 km/h which combined all of Japan's technologies, will be opened to the public between Shin-Nagoya Station and Shibahama Station and established in Tokyo. As the world's attention is garnered, an incident occurs at a party venue where famous tournament sponsors are gathered, leading to an abnormal situation where top dogs of companies are kidnapped one after another. Behind the scenes are Shuichi Akai who monitors the incident, and the FBI who waits for orders from Akai.\n\nConan's reasoning reveals the relevance of the apocalyptic WSG kidnapping incident that occurred in Boston, USA, fifteen years ago, and that the incident was also under the jurisdiction of the FBI. Is this a coincidence? What is going to happen in Japan, where many types of people from all over the world are gathered?\n\n(Source: Detective Conan World)"
+   ]
+  },
+  {
+   "id": "6",
+   "group": "Tìm theo tên (title search, có lỗi chính tả/viết tắt)",
+   "rel_n": 1,
+   "ranked": [
+    16498,
+    42091,
+    40028,
+    31374,
+    18397,
+    6572,
+    36838,
+    51535,
+    355,
+    63534
+   ],
+   "lat_ms": 989.1,
+   "contexts": [
+    "Shingeki no Kyojin — Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.\n\nAfter witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.\n\n[Written by MAL Rewrite]",
+    "Shingeki no Kyojin: Chronicle — The compilation film recaps the anime's 59 episodes from seasons one to three.",
+    "Shingeki no Kyojin: The Final Season — Gabi Braun and Falco Grice have been training their entire lives to inherit one of the seven Titans under Marley's control and aid their nation in eradicating the Eldians on Paradis. However, just as all seems well for the two cadets, their peace is suddenly shaken by the arrival of Eren Yeager and the remaining members of the Survey Corps.\n\nHaving finally reached the Yeager family basement and learned about the dark history surrounding the Titans, the Survey Corps has at long last found the answer they so desperately fought to uncover. With the truth now in their hands, the group set out for the world beyond the walls.\n\nIn Shingeki no Kyojin: The Final Season, two utterly different worlds collide as each party pursues its own agenda in the long-awaited conclusion to Paradis' fight for freedom.\n\n[Written by MAL Rewrite]",
+    "Shingeki! Kyojin Chuugakkou — On his first day of junior high, Eren Yeager comes face-to-face with a titan—and has his lunch stolen! From that day on, he holds a grudge against titans for taking his favorite food from him, a cheeseburger, vowing to eliminate their kind once and for all. Along with his adoptive sister Mikasa Ackerman and their friend Armin Arlert, the trio traverse the halls of Titan Junior High, encountering familiar faces and participating in various extracurricular activities as part of the Wall Cleanup Club.\n\nA parody of the immensely popular parent series, Shingeki! Kyojin Chuugakkou places beloved characters as junior high school students, fighting to protect their lunches from gluttonous titans.\n\n[Written by MAL Rewrite]",
+    "Shingeki no Kyojin OVA — Ilse no Techou: Aru Chousa Heidanin no Shuki\nDuring the Survey Corps' 49th recon mission, Hange Zoë is determined to capture a titan specimen. Despite not receiving clearance from Commander Erwin Smith, when a titan is spotted in nearby forestland, Hange rides out alone to meet it. Recklessly luring it out, she asks the titan numerous questions and puts her life on the line for the sake of her research. However, the behavior of this particular titan is far from normal. It quickly turns back and enters the wood once again, leading Hange to somewhere specific. What Hange finds is the legacy of former scout Ilse Langnar. In spite of her death, she provides a valuable piece of information that may serve to turn the tide for titan research—a diary documenting her last moments.\n\nTotsuzen no Raihousha: Sainamareru Seishun no Noroi\nJean Kirstein would do anything to escape his boring home life and overbearing mother. After enlisting in the military, it became his ultimate goal to join the Military Police regiment and live out in peace and luxury. However, during his time with the 104th Training Corps, things never really go the way Jean wants them to. Eventually, the stolen glory and condescending banter of his comrades become too much—and Jean challenges fellow cadet Sasha Blouse to a battle, in order to determine which of them is strongest—but who will come out on top?\n\nKonnan\nThe 104th Training Corps' most recent mission is a trek on horseback into the forest. Although a test of t"
+   ]
+  },
+  {
+   "id": "7",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    382,
+    9322,
+    12729,
+    40623,
+    11617,
+    13357,
+    7580,
+    31845,
+    21863,
+    32901
+   ],
+   "lat_ms": 777.8,
+   "contexts": [
+    "Futari Ecchi — Makoto and Yura Onoda are a newly-wed couple with zero sexual experience. Yura is a shy and naive 25-year-old woman whose good looks grab men's attention, something that she dislikes because she gets embarrassed very easily. Her husband Makoto is of the same age, but as opposed to his wife, he loves having dirty thoughts about other women. Physically though, Makoto is truly faithful to Yura.\n\nBoth of them may be virgins, but now that they are married, they are ready to dive into the world of sex, \"practicing\" as often as possible. However, the world of sex is complex, so they need all the help they can get to find their way through it. Thankfully, their friends, acquaintances, and porn media lend them a helping hand.",
+    "HHH Triple Ecchi — HHH Triple Ecchi is a collection of three short stories, depicting the unexpected lavish sexual lives of mundane individuals. Each revels in the truly mesmerizing physique of young women and their wild erotic adventures.\n\nShigure Hen and Shigure Hen Okawari\n\nShigure Takashima is the role model of a perfect high schooler. A charming student council president, she excels in sports and prides herself on countless academic achievements. Being born into a wealthy family, what else could she wish for?\n\nWhen Komatsu Kita catches her ferociously masturbating in an empty classroom after school hours, she instantly turns to him for sexual gratification. A relationship soon blooms between the two—one devoted purely to the seemingly insatiable desires of young adults.\n \nKonami Hen\n \nWhen Konami invites her neighbor over for dinner, little does she realize that the person she views as an older brother is actually haunted by sexual fantasies about her. He simply can not get his eyes off her well-endowed chest, and when Konami falls asleep, he decides to take advantage of her.\n \nMiyuki Hen\n \nDespite being an adult, Miyuki continues to bathe with her step-father. Oblivious as she may be, her parent's true intentions are crystal clear. After all, how can anyone resist such a scrumptious young body, displayed in its glorious entirety? The bath soon turns into something few families use it for.\n\n[Written by MAL Rewrite]",
+    "High School DxD OVA — #1: Oppai, Minorimasu! (Episode 13)\nA rumor is going about the school about how girls are disappearing and coming back ill and with their breast size decreased.\n\n#2: Oppai, Motomemasu! (Episode 14)\nWhile observing how the others do their jobs so they can do theirs better, Issei and Asia go with Rias to see if a coffin is cursed. During the investigation Issei is possessed by an Egyptian magician named Unas, It just so happens that Unas is just as perverted as Issei. Unas will only leave Issei's body if they can release Unas from the curse placed on him by a devil that Unas tried to make his bride.",
+    "Dokyuu Hentai HxEros — Five years ago, alien beings known as the \"Kiseichuu'' invaded the world. With the species endangered, the Kiseichuu are determined to take over Earth through a deadly plan that would gradually wipe out the human race: take away humanity's sexual drive using various methods, letting them die out. In response to the Kiseichuus' scheme, the HxEros device was developed—a powerful weapon that only those with high levels of erotic energy can utilize at its maximum capacity. \n\nRetto Enjou, a high schooler harboring an immense hatred toward the Kiseichuu, joins a group of HxEros users to fight against them and protect humankind. With their gear reliant on erotic energy as a source of power, the team must work together to maintain high levels of libido to ensure their readiness for combat at any given time. Moreover, as he lives in a house full of lustful girls, Enjou should not expect a shortage of power anytime soon.\n\n[Written by MAL Rewrite]",
+    "High School DxD — High school student Issei Hyoudou is your run-of-the-mill pervert who does nothing productive with his life, peeping on women and dreaming of having his own harem one day. Things seem to be looking up for Issei when a beautiful girl asks him out on a date, although she turns out to be a fallen angel who brutally kills him! However, he gets a second chance at life when beautiful senior student Rias Gremory, who is a top-class devil, revives him as her servant, recruiting Issei into the ranks of the school's Occult Research club.\n\nSlowly adjusting to his new life, Issei must train and fight in order to survive in the violent world of angels and devils. Each new adventure leads to many hilarious (and risqué) moments with his new comrades, all the while keeping his new life a secret from his friends and family in High School DxD!\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "8",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    63376,
+    38659,
+    5781,
+    34497,
+    50932,
+    53730,
+    52367,
+    60226,
+    36882,
+    43523
+   ],
+   "lat_ms": 1308.8,
+   "contexts": [
+    "Megami \"Isekai Tensei Nani ni Naritai desu ka\" Ore \"Yuusha no Rokkotsu de\" — The protagonist of the tale, simply referred to as \"I,\" experiences an endless cycle of reincarnation. The narrative takes place in a different universe where people are free to select their next form. However, the waiting list for popular roles, like \"Demon King\" or \"Hero with Cheat Skills and a Harem,\" has reached 50,000 years due to a recent spike in applications.\n\nThe protagonist decides to repeatedly reincarnate into increasingly strange forms because he refuses to wait. These roles include the rib of a hero in charge of a harem, a hermit crab, a vegetable, and even an explosive used to blow up blissfully happy couples.\n\n(Source: MAL News)",
+    "Shinchou Yuusha: Kono Yuusha ga Ore Tueee Kuse ni Shinchou Sugiru — There is a popular saying: \"you can never be too careful.\" It is very important to prepare for every situation you may face, even if it seems like an unnecessary waste of time. Also, in games like RPGs, it is good to exceed the level of your enemies to achieve total victory.\n\nThese words describe Seiya Ryuuguuin a little too perfectly. After being summoned by the goddess Ristarte to save the world of Gaeabrande from destruction, the hero prepares himself for his noble journey. While this might be normal, he spends a very long time training himself, despite having overpowered stats. He fights weak enemies using his strongest skills and buys excessive amounts of supplies and potions—all to stay safe.\n\nWhile his attitude may be a bit annoying, it might just be the saving grace of Gaeabrande, especially considering that it is a world where the forces of evil dominate each and every expectation.\n\n[Written by MAL Rewrite]",
+    "Isekai no Seikishi Monogatari — Kenshi Masaki has been kidnapped and brought to the world of Geminar by a mysterious group. To get back home, he agrees to help them assassinate the newly crowned empress of the Shtrayu Empire, Lashara Aasu XXVIII, using a giant robot called a Sacred Mechanoid.\n \nAs her army fights them off, Lashara takes note of Kenshi's abilities and demands that her attacker be captured alive, only to find out that the pilot is male which is extremely rare on Geminar. Believing it to be a waste to kill him, she makes Kenshi her attendant.\n \nAs the empress' new servant, Kenshi is required to accompany Lashara to the Holy Land, an academy where Sacred Mechanoid pilots hone their skills. His arrival attracts attention, but Kenshi is unaware that something sinister is brewing within the academy and it could plunge the entire world into war.\n\n[Written by MAL Rewrite]",
+    "Death March kara Hajimaru Isekai Kyousoukyoku — Ichirou Suzuki, a programmer nearing his thirties, is drowning in work. Worn out, he eventually has a chance to catch up on sleep, only to wake up and discover himself in a fantasy RPG world, which is mashed together from the games he was debugging in reality. In this new place, he realizes that not only has his appearance changed to a younger version of himself, but his name has also changed to Satou, a nickname he used while running beta tests on games. \n\nHowever, before Satou can fully grasp his situation, an army of lizardmen launch an assault on him. Forced to cast a powerful spell in retaliation, Satou wipes them out completely and his level is boosted to 310, effectively maximizing his stats. Now, as a high-leveled adventurer armed with a plethora of skills and no way to return to reality, Satou sets out to explore this magical new world.\n\n[Written by MAL Rewrite]",
+    "Saikyou Onmyouji no Isekai Tenseiki — Despite standing at the zenith as the strongest exorcist, Haruyoshi Kuga sought even greater power, which led to his demise at the hands of those who envied his might. As he draws his last breath, he casts a spell that allows him to reincarnate and swears to become more cunning, hoping that all his efforts will prove useful in his next life.\n\nHaruyoshi is soon reborn in another world as Seika Lamprogue, an illegitimate son of a noble family that prides itself on magic. However, his new family largely ignores him due to his lineage and magic deficiency. Nevertheless, the unbothered Seika leverages the knowledge from his previous life to make numerous valuable allies. As he begins to explore the true limits of his abilities, Seika must also be wary of the consequences that tarnished his past and avoid repeating the same mistakes.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "9",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    3457,
+    405,
+    4752,
+    9260,
+    6747,
+    2993,
+    33985,
+    18277,
+    58265,
+    39518
+   ],
+   "lat_ms": 1472.8,
+   "contexts": [
+    "Vampire Knight — The cheerful Yuuki Cross and the gruff Zero Kiryuu are members of the disciplinary committee at Cross Academy, which houses two very distinct classes: the Day Class and the Night Class. Their job consists of upholding order between the classes when they switch out. While that may not seem like an especially difficult task, the Day Class is unaware of the truth behind the Night Class—their utterly gorgeous students are vampires.\n\nTen years ago, Yuuki was saved from a vampire attack by Kaname Kuran, a Pureblood vampire. Now, Kaname is the leader of the Night Class, and Yuuki's disciplinary committee position allows her to see him again, making her feelings for him grow complicated. Meanwhile, Zero bears a white-hot hatred of all vampires and believes they can never live in harmony with humans. But a secret from Zero's past soon threatens the fragile peace of all at the academy, and things may never be the same again.\n\n[Written by MAL Rewrite]",
+    "Blood: The Last Vampire — Teropterids are evil beasts which pose as humans and live only to drink human blood. Fortunately for the human world there are groups dedicated to destroying them. A brooding and mysterious girl named Saya is the best teropterid slayer there is, and now, in 1960s Japan, she is sent to a U. S. army base which may be infested...\n\n(Source: ANN)",
+    "Vampire Knight Guilty — When the missing Zero Kiryuu returns to Cross Academy, Yuuki Cross is relieved to see him safe, but finds that Zero has changed in more ways than one. As a result of choices he made, Zero is plagued by visions, and he seeks to uncover the reason behind them—unaware that the answers may be much closer than he thinks.\n\nSoon Yuuki also begins to be tormented by ghastly hallucinations, and she seeks an explanation about her shrouded past from the only one who can provide clarity: Pureblood vampire Kaname Kuran, who is closest to her heart. But what will happen when the truth is finally revealed?\n\n[Written by MAL Rewrite]",
+    "Kizumonogatari I: Tekketsu-hen — During Koyomi Araragi's second year at Naoetsu Private High School, he has a chance encounter with Tsubasa Hanekawa, the top honor student in his class. When they strike up a conversation, Hanekawa mentions a shocking rumor: a vampire with beautiful blonde hair and freezing cold eyes has been seen lurking around town.\n\nHappy to have made a new friend, Araragi writes off the rumor and goes about the rest of his evening in a carefree manner. However, on his way home, he stumbles across splatters of blood leading down the stairs to the subway. His curiosity pushes him to investigate further, so he follows the gruesome pools into the depths of the station. \n\nWhen he arrives at the source of the blood, he is terrified by what he sees—the rumored blonde vampire herself, completely dismembered. After she calls for his help, Araragi must make a decision, one which carries the potential to change his life forever.\n\n[Written by MAL Rewrite]",
+    "Dance in the Vampire Bund — On live television, Mina Tepes, the ruler of all vampires, reveals the existence of her species to the world and states her plan to build a sanctuary in Japan for vampires, called the Vampire Bund. Using her family's wealth to pay off the nation's debt, they have agreed to let her build this safe-haven for her fellow creatures of the night. But not everyone is so easily swayed by Mina's influence, as her announcement brings about conflict with humans who believe that the queen's quest for peace is a façade.\n\nAkira Kaburagi does not believe in vampires and gets uneasy whenever they are brought up, although he has yet to realize why. Apart from suffering a head injury a year ago, he lives on blissfully until he meets Mina. She triggers within him memories of a life he had long forgotten, and he soon begins protecting her without understanding why. But Akira's secret is far stranger than he could have ever thought possible—he discovers that he is a werewolf, sworn from birth to protect the vampire queen, even if it costs him his life. Now, as these two dance a rondo of death in the Vampire Bund, Mina and Akira find out just how deep their bond goes.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "10",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    34494,
+    60071,
+    17637,
+    32547,
+    37921,
+    35673,
+    976,
+    49363,
+    3841,
+    31080
+   ],
+   "lat_ms": 1467.8,
+   "contexts": [
+    "Sakura Quest — Tired of her rural home, recent college graduate Yoshino Koharu is desperate to lead a more exciting life in Tokyo. After a fruitless job hunt, she finally receives a part-time offer as queen of the bizarre \"Kingdom of Chupakabura,\" a rundown mini-attraction in the small agricultural town of Manoyama. However, Yoshino discovers upon her arrival in Manoyama that she was mistaken for a celebrity and the job offer was a mistake. Left with no other options, Yoshino reluctantly agrees to take on the role and aid the Board of Tourism in their efforts to revitalize Manoyama. Determined to bring excitement to the dying town with the help of local residents, the queen enacts a series of projects to highlight the beauty and charm of Manoyama's culture.\n\nSakura Quest delves into the story of a tight-knit community that is struggling to balance change while also maintaining the rich traditions and bonds which define their identity.\n\n[Written by MAL Rewrite]",
+    "Odayaka Kizoku no Kyuuka no Susume. — When Lizel mysteriously finds himself in a city that bears odd similarities to his own but clearly isn't, he quickly comes to terms with the unlikely truth: this is an entirely different world. Even so, laid-back Lizel isn't the type to panic. He immediately sets out to learn more about this strange place, and to help him do so, hires a seasoned adventurer named Gil as his tour guide and protector.\n\nUntil he's able to find a way home, Lizel figures this is a perfect opportunity to explore a new way of life adventuring as part of a guild. After all, he's sure he'll go home eventually... might as well enjoy the otherworldly vacation for now!\n\n(Source: Tokyopop)",
+    "Miyakawa-ke no Kuufuku — A spin-off of Lucky Star. Centers around big sister Hinata Miyakawa and little sister Hikage Miyakawa's impoverished daily life at home (due to Hinata's wasteful habits) and Hikage's life at elementary school.",
+    "Non Non Biyori Repeat: Hotaru ga Tanoshinda — Life in rural Asahigaoka moves at its own pace. Devoid of the pleasures and worries of a bustling metropolis, this small village might seem painfully dull at first glance. However, despite living this far from her hometown of Tokyo, Hotaru Ichijou manages to find a group of friends whom she can spend quality time with. No matter whether it is winter, spring, summer, or fall, they make full use of everything the nature around them has to offer.\n\n[Written by MAL Rewrite]",
+    "ReLIFE: Kanketsu-hen Specials — Two specials of ReLIFE: Kanketsu-hen released on mobile and later included on Blu-ray/DVD volume."
+   ]
+  },
+  {
+   "id": "11",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    35806,
+    20583,
+    32935,
+    40679,
+    7720,
+    11371,
+    61142,
+    42395,
+    58919,
+    15
+   ],
+   "lat_ms": 846.8,
+   "contexts": [
+    "Haikyuu!! vs. \"Akaten\" — Right before the volleyball club's training camp in Tokyo, both Shouyou Hinata and Tobio Kageyama fail a final exam. As the make-up exams and the trip overlap, the boys plead their desperate case to the vice principal to no avail. Since their indispensable teammates are forced to stay behind to study, the club's members find different ways to help them pass and join the camp in time.\n\n[Written by MAL Rewrite]",
+    "Haikyuu!! — Ever since having witnessed the \"Little Giant\" and his astonishing skills on the volleyball court, Shouyou Hinata has been bewitched by the dynamic nature of the sport. Even though his attempt to make his debut as a volleyball regular during a middle school tournament went up in flames, he longs to prove that his less-than-impressive height ceases to be a hindrance in the face of his sheer will and perseverance.\n\nWhen Hinata enrolls in Karasuno High School, the Little Giant's alma mater, he believes that he is one step closer to his goal of becoming a professional volleyball player. Although the school only retains a shadow of its former glory, Hinata's conviction isn't shaken until he learns that Tobio Kageyama—the prodigy who humiliated Hinata's middle school volleyball team in a crushing defeat—is now his teammate.\n\nTo fulfill his desire of leaving a mark on the realm of volleyball—so often regarded as the domain of the tall and the strong—Hinata must smooth out his differences with Kageyama. Only when Hinata learns what it takes to be a part of a team will he be able to join the race to the top in earnest.\n\n[Written by MAL Rewrite]",
+    "Haikyuu!! Karasuno Koukou vs. Shiratorizawa Gakuen Koukou — After the victory against Aoba Jousai High, Karasuno High School, once called “a fallen powerhouse, a crow that can’t fly,” has finally reached the climax of the heated Spring tournament. Now, to advance to nationals, the Karasuno team has to defeat the powerhouse Shiratorizawa Academy. Karasuno’s greatest hurdle is their adversary’s ace, Wakatoshi Ushijima, the number one player in the Miyagi Prefecture, and one of the country’s top three aces.\n\nOnly the strongest team will make it to the national tournament. Since this match is the third-year players’ last chance to qualify for nationals, Karasuno has to use everything they learned during the training camp and prior matches to attain victory. Filled with restlessness and excitement, both teams are determined to come out on top in the third season of Haikyuu!!.\n\n[Written by MAL Rewrite]",
+    "2.43: Seiin Koukou Danshi Volley-bu — Genius setter Kimichika Haijima moves back to Fukui from Tokyo after an incident within his school's volleyball team forces him out. There, he is reunited with his childhood friend, Yuni Kuroba, a member of the Monshiro Middle School Boys' Volleyball Team, who is unaware of his own talents. Haijima notices Kuroba's abilities and is determined to form a new volleyball team with Kuroba as the team's ace. At the prefectural tournament, Kuroba crumbles under the pressure, which causes the Monshiro team to fall apart after losing. The loss also creates a rift between Haijima and Kuroba, leading the former to quit the team.\n\nNow, as students at Seiin High School, Haijima and Kuroba find themselves on the same volleyball team once again. Having learned from his past mistakes, Haijima helps Kuroba overcome his performance anxiety to become the ace and carry the team to the prefectural championship. With support from team captain Shinichirou Oda and vice captain Misao Aoki, Seiin aim to win the prefecturals and become Fukui's representatives at the Spring Tournament. To do this, they will need to beat Fukuho Technical High School, the reigning champions of Fukui. Will Haijima's team defeat the odds, or are they doomed to repeat his history of losing?\n\n[Written by MAL Rewrite]",
+    "Ookiku Furikabutte: Natsu no Taikai-hen — Picking up where the original series left off, Ren Mihashi, the ace pitcher of the newly-formed Nishiura High School baseball team, and his teammates face the Sakitama High School team in the next round of the High School Baseball Invitational Tournament as they aim to play in the finals at legendary Hanshin Koushien Stadium.\n\n(Source: ANN)"
+   ]
+  },
+  {
+   "id": "12",
+   "group": "Tìm theo thể loại/tag",
+   "rel_n": 3,
+   "ranked": [
+    44524,
+    41848,
+    41946,
+    193,
+    52281,
+    54968,
+    12549,
+    31845,
+    189,
+    13367
+   ],
+   "lat_ms": 1046.9,
+   "contexts": [
+    "Isekai Meikyuu de Harem wo — One day, high school student Michio Kaga attempts to start a strange online game he found while browsing the internet. Instead, he gets transported to a rural village in the game's world, equipped with special skills and an overpowered sword. After collecting his thoughts, he finds himself battling against bandits and soon realizes that he cannot log out. Resigning himself to fate and accepting this reality, Michio sets out on a journey—enjoying his new life, conquering dungeons to earn money, and building a harem to satisfy all his manly desires.\n\n[Written by MAL Rewrite]",
+    "Isekai Harem Monogatari — A 16-year-old named Naoki Oikawa is addicted to masturbating. One day, while pleasuring himself as usual, his erotic magazine begins to glow and Naoki suddenly finds himself in a fantastic world. He appears among three female adventurers who later present themselves as the swordswoman Filia Shiora, the priestess Tiane Rutheim, and the elf Llusse. They explain to Naoki that the world is in danger of destruction due to the resurrection of the Demon King, and the only way to save it is for him to use his special power—feeding his semen to the three girls so as to increase their strength exponentially. Of course, the young hero agrees to join the party, and his erotic quest begins.\n\n[Written by MAL Rewrite]",
+    "Shuumatsu no Harem — Reito Mizuhara is a medical student at the National Advanced Medical School in Tokyo who contracts a rare, lethal disease called cellular sclerosis. In order to be treated, he is put into cryogenic sleep for five years. Upon awakening, he learns that a year into his slumber, a worldwide pandemic broke out, caused by the novel Male Killer (MK) virus which exclusively afflicts males and has killed all other men on Earth. \n\nFortunately, Reito and four other men were spared during their cryosleep and are now immune to the virus. As the only men left in the world, they are thus tasked with mating with as many women as possible to repopulate the planet. However, Reito is committed to his childhood friend and sole love interest, Elisa Tachibana—only to learn that she went missing three years ago. While the other male survivors adapt accordingly to this new world, Reito instead chooses to pursue Elisa, fight never-ending temptation, and investigate this mysterious virus. \n\n[Written by MAL Rewrite]",
+    "Maburaho — In the world of Maburaho, everyone is born with the ability to use magic and are thus labeled magicians. However, the magical ability of each person is not equal. The number of times you can use magic determines the amount of respect you receive, and since one’s magical power is determined at birth by traits and genetics, those who have a bloodline stemming from famous magicians are highly sought after.\n\nHaving the lowest magic count in Aoi Academy, Kazuki Shikimori is looked down upon by his classmates and seen as a nearly worthless magician. However, his bloodline consists of many great magicians throughout the ages, meaning that while he may not be a great magician, his offspring could be. This leads to him being sought after by three different young women: Yuna Miyama, a transfer student who declares herself his wife upon arrival, Rin Kamishiro, a prideful swordswoman of a traditional family who wants to kill him so she will be free to pursue her own desires, and Kuriko Kazetsubaki, a member of an influential family who bluntly tries to seduce him for his genes.\n\nNow he has to deal with not only the jealousy of all the guys in his school, but also various women chasing after him!",
+    "Isekai Meikyuu de Harem wo Specials — Sex scenes that were cut from the main anime."
+   ]
+  },
+  {
+   "id": "13",
+   "group": "Tìm theo tâm trạng/cảm xúc (mood-based)",
+   "rel_n": 3,
+   "ranked": [
+    37987,
+    2129,
+    5365,
+    7651,
+    8142,
+    2924,
+    59985,
+    1723,
+    4789,
+    1601
+   ],
+   "lat_ms": 944.7,
+   "contexts": [
+    "Violet Evergarden Movie — Several years have passed since the end of The Great War. As the radio tower in Leidenschaftlich continues to be built, telephones will soon become more relevant, leading to a decline in demand for \"Auto Memory Dolls.\" Even so, Violet Evergarden continues to rise in fame after her constant success with writing letters. However, sometimes the one thing you long for is the one thing that does not appear.\n\nViolet Evergarden Movie follows Violet as she continues to comprehend the concept of emotion and the meaning of love. At the same time, she pursues a glimmer of hope that the man who once told her, \"I love you,\" may still be alive even after the many years that have passed.\n\n[Written by MAL Rewrite]",
+    "True Tears — Shinichirou Nakagami was living the life other boys from his grade could only dream of—staying under the same roof as prodigal student Hiromi Yuasa. However, the bright and cheerful Hiromi has been depressed and cold at home ever since her mother passed away. While he is the subject of the ignorant jealousy of his peers, rumors begin to spread when Shinichirou meets Noe Isurugi—a girl known for cursing classmates, curses which always end up becoming reality.\n\nNoe curses Shinichirou as well, but two pits are created when you curse someone, and her curse on Shinichirou comes back to bite her in the form of a raccoon to her beloved chicken, Raigomaru. Despite this, she does not shed a single tear; Noe had had her tears stolen. For Noe to be able to cry again, she would need the tears of another, and Shinichirou knows a person whose tears he wants to take away.\n\n[Written by MAL Rewrite]",
+    "Tsumiki no Ie — In a flooded town where the waters are ever-rising, an old man must constantly build new floors onto his home in order to keep dry. But when his favorite smoking pipe falls into the watery abyss beneath him, he dives into the depths of not only his house, but memories of years past.\n\nTsumiki no Ie is a short film about the everlasting effect of time on one's life—how it can swallow the past entirely, and how one must learn to continue moving forward despite what has already happened.\n\n[Written by MAL Rewrite]",
+    "Ningen Shikkaku: Director's Cut-ban — A compilation film of four episodes of the Madhouse Aoi Bungaku Series anime, adapting Osamu Dazai's classic literary novel, No Longer Human. The film follows the story of Yozo Oba, a troubled man who is isolated, pretends to be cheerful, and descends into alcoholism and drug abuse. \n\n(Source: Letterboxd)",
+    "Colorful (Movie) — Upon arriving at the train station of death, an impure soul is granted a second chance at life against his will. Reincarnating into the body of Makoto Kobayashi, a 14-year-old boy who recently committed suicide, the soul is tasked to identify the boy's greatest sin in life within a time limit of six months. Although it remains reluctant toward continuing life as Makoto, the soul soon begins to notice the complexities of people's emotions and actions.\n\nDeconstructing the ideas of fractured families and suicide, Colorful explores the intricacies of the daily struggles humans face but are too abashed to confront.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "14",
+   "group": "Tìm theo tâm trạng/cảm xúc (mood-based)",
+   "rel_n": 3,
+   "ranked": [
+    27911,
+    10165,
+    5118,
+    4872,
+    2605,
+    15125,
+    846,
+    32977,
+    66,
+    6512
+   ],
+   "lat_ms": 740.1,
+   "contexts": [
+    "Anime de Wakaru Shinryounaika — The psychologist Ryou and his cheerful nurse Asuna explain many aspects of mental illness to the reader. They cover topics such as the validity, prevalence, and origins of mental disorders, in addition to addressing specific disorders. The information is imparted in a cheerful and comic manner, with various jokes, puns, and pop culture references.\n\n(Source: MU)",
+    "Nichijou — Nichijou primarily focuses on the daily antics of a trio of childhood friends—high school girls Mio Naganohara, Yuuko Aioi and Mai Minakami—whose stories soon intertwine with the young genius Hakase Shinonome, her robot caretaker Nano, and their talking cat Sakamoto. With every passing day, the lives of these six, as well as of the many people around them, experience both the calms of normal life and the insanity of the absurd. Walking to school, being bitten by a talking crow, spending time with friends, and watching the principal suplex a deer: they are all in a day's work in the extraordinary everyday lives of those in Nichijou. \n\n[Written by MAL Rewrite]",
+    "Suzumiya Haruhi-chan no Yuuutsu — A parody series featuring the entire cast of The Melancholy of Haruhi Suzumiya in a smaller form factor.  Among the changes are: Yuki plays eroge, Haruhi is even more obnoxiuous and loud, Mikuru is even more emotional and Koizumi harbors a deep love for Kyon.  Kyon, on the other hand, is generally the same as ever.",
+    "Goku Sayonara Zetsubou Sensei — Sayonara Zetsubou Sensei OVA.",
+    "Sayonara Zetsubou Sensei — Nozomu Itoshiki is a high school teacher so pessimistic that even the smallest of misfortunes can send him into a pit of raging despair; some of these \"catastrophes\" even lead to suicide attempts. Sayonara Zetsubou Sensei is a satirical slice-of-life comedy set in the modern day, covering various aspects of Japanese life and culture through Nozomu and his interactions with his students: Kiri Komori, a recluse who refuses to leave the school; Abiru Kobushi, an enigma who frequently arrives to class with severe and mysterious injuries; the hyper-optimistic Kafuuka Fuura, Nozomu's polar opposite; and several other unusual girls, all of whom are just as eccentric as their teacher.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "15",
+   "group": "Tìm theo tâm trạng/cảm xúc (mood-based)",
+   "rel_n": 3,
+   "ranked": [
+    2129,
+    5079,
+    5342,
+    4181,
+    122,
+    2167,
+    55102,
+    28105,
+    3594,
+    25835
+   ],
+   "lat_ms": 918.1,
+   "contexts": [
+    "True Tears — Shinichirou Nakagami was living the life other boys from his grade could only dream of—staying under the same roof as prodigal student Hiromi Yuasa. However, the bright and cheerful Hiromi has been depressed and cold at home ever since her mother passed away. While he is the subject of the ignorant jealousy of his peers, rumors begin to spread when Shinichirou meets Noe Isurugi—a girl known for cursing classmates, curses which always end up becoming reality.\n\nNoe curses Shinichirou as well, but two pits are created when you curse someone, and her curse on Shinichirou comes back to bite her in the form of a raccoon to her beloved chicken, Raigomaru. Despite this, she does not shed a single tear; Noe had had her tears stolen. For Noe to be able to cry again, she would need the tears of another, and Shinichirou knows a person whose tears he wants to take away.\n\n[Written by MAL Rewrite]",
+    "Kurokami The Animation — High school student Ibuki Keita has been haunted by misfortune for as long as he can remember. For no apparent reason, everyone around him dies tragically. Ultimately, he refuses to become too close to anyone, even his childhood friend Akane. This leaves Keita alone in a life full of misery and disgrace.\n\nWhile eating at his favorite ramen shop one evening, Keita meets a strange young girl named Kuro. Possessing abilities that surpass that of a normal human being, Kuro classifies herself as a Mototsumitama. She explains to Keita about \"Terra,\" a life-energy force split between three identical looking people; a global phenomenon dubbed the \"Doppeliner System.\" As a Mototsumitama, Kuro guards the \"Coexistence Equilibrium,\" the beings that protect the flow of Terra around the world. Keita refuses to believe her story, until he is caught up in the crossfire of this hidden world. On the verge of death, he makes a contract with Kuro, unbeknownst to its true meaning. Now he is bound to Kuro, and must be with her at all times. Could Keita's misfortune possibly get any greater?\n\n[Written by MAL Rewrite]",
+    "Asura Cryin' — Natsume Tomoharu is a normal high-school student in every way with one exception: he's being followed by the ghost of his best friend, Misao.\n\nAfter moving into his brother's old house, Tomoharu expects to continue living his normal life but is one day left with a mysterious and locked briefcase without any instruction. At first he plans to leave it in storage; however, his house is soon invaded by multiple groups of people after the briefcase. Although still not knowing the purpose of the briefcase, Tomoharu and Misao attempt to escape with it.\n\nFrom there on, Tomoharu tries to learn the secrets behind the briefcase, the connections between it and Misao, and why it has the power to change the world.\n\n[Written by MAL Rewrite]",
+    "Clannad: After Story — Tomoya Okazaki and Nagisa Furukawa have graduated from high school, and together, they experience the emotional rollercoaster of growing up. Unable to decide on a course for his future, Tomoya learns the value of a strong work ethic and discovers the strength of Nagisa's support. Through the couple's dedication and unity of purpose, they push forward to confront their personal problems, deepen their old relationships, and create new bonds.\n\nTime also moves on in the Illusionary World. As the plains grow cold with the approach of winter, the Illusionary Girl and the Garbage Doll are presented with a difficult situation that reveals the World's true purpose.\n\n[Written by MAL Rewrite]",
+    "Full Moon wo Sagashite — Two years ago, Mitsuki Kouyama's friend, Eichi Sakurai, moved to America before she could confess her feelings to him. Though she cannot contact him, they made a promise to fulfill their respective dreams: Mitsuki wants to become a professional singer, and Eichi an astronomer. She hopes that one day her music will reach him across the world with a brilliance like that of the full moon.\n\nThere is just one catch: Mitsuki suffers from throat cancer, which makes her voice quiet and singing strenuous. Her grandmother, who has a hatred of music, insists that Mitsuki undergo surgery to remove the cancer, but she refuses due to the risk of losing her voice. One day, two shinigami—Meroko Yui and Takuto Kira—appear to tell her that she only has one year left to live. This sudden revelation spurs Mitsuki into action, and she decides that with Meroko and Takuto's help, she will become a professional singer in the time she has left.\n\nFull Moon wo Sagashite follows the emotional story of Mitsuki and her shinigami friends as they discover what it means to sing—and ultimately, what it means to live.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "16",
+   "group": "Tìm theo tâm trạng/cảm xúc (mood-based)",
+   "rel_n": 3,
+   "ranked": [
+    26213,
+    3901,
+    32827,
+    33845,
+    35191,
+    37994,
+    35198,
+    19671,
+    38027,
+    22265
+   ],
+   "lat_ms": 1090.5,
+   "contexts": [
+    "Free! Eternal Summer: Kindan no All Hard! — Unaired episode included with volume 7 of the Blu-ray/DVD.",
+    "Baccano! Specials — In 1929, Ladd Russo spared Graham Specter's life and earned his unwavering loyalty. Three years later, Graham is infuriated upon learning that Ladd was pushed off the train after the events aboard the Flying Pussyfoot. As a man of bizarre yet passionate philosophies, he plans to make an offering to Ladd by kidnapping Eve Genoard and subsequently capturing Jacuzzi Splot, who has been living in the Genoard mansion with his gang.\n\nMeanwhile, Jacuzzi and his gang take in an unfamiliar woman, Elmer C. Albatross pays a visit to the prison to meet an old friend, and Czeslaw Meyer runs into the man he hoped he would never see again.\n\nThese seemingly separate storylines merge, tying up several loose ends and revealing the whole truth of the anomaly that occurred aboard the Advena Avis in 1711.\n\n[Written by MAL Rewrite]",
+    "B: The Beginning — On the islands of Cremona, a vigilante runs amok. Celebrated by some and hunted by others, the notorious \"Killer B\" takes justice into his own hands, armed with a sharp blade and superhuman abilities. Unable to apprehend this renegade, the Royal Investigation Service (RIS) calls upon the expertise of Keith Flick, a seasoned, yet eccentric detective who was relegated to the Archives Department following a personal loss. As crimes in Cremona begin to escalate, from stealthy executions of wrongdoers to sophisticated strikes on public figures, it soon becomes clear that there is more than one person responsible.\n\nWith the help of his impulsive sidekick Lily Hoshina, and unexpected aid from the elusive Killer B himself, Keith begins to unravel plots involving secret organizations, domestic terrorism, and human experiments. When the involvement of the RIS extends beyond the scope of justice, the extent of the government's corruption—as well as the trustworthiness of close allies—are thrown into question. \n\n[Written by MAL Rewrite]",
+    "Free! Movie 1: Timeless Medley - Kizuna — Haruka Nanase has reconciled with his rival Rin Matsuoka, and they have re-established their friendship, determined to race each other again. Now Haruka, along with Makoto Tachibana, Rei Ryuugazaki, and Nagisa Hazuki, prepare for their upcoming tournaments, determined to compete wholeheartedly and achieve victory as a team. At Samezuka Academy, Rin resolves to do the same.\n\nFurther, the seniors near graduation, and Rin has decided his future plans. However, Haruka and Makoto remain uncertain, and they begin to feel the pressure of having to choose their own paths.\n\n[Written by MAL Rewrite]",
+    "Free! Movie 2: Timeless Medley - Yakusoku — Rin Matsuoka’s childhood friend, Sousuke Yamazaki, has recently transferred to Samezuka Academy. Upon their reunion, the two reminisce about their childhood days and reaffirm their wish to swim together. Now with Rin, Sousuke, Captain Mikoshiba’s younger brother Momotarou Mikoshiba, and hard-working Aiichirou Nitori, the Samezuka relay team is formed, and their friendship deepens. However, as tournaments, races, and training go on, the reason for Sousuke’s sudden return begins to trouble him and affect his swimming. Noticing Sousuke’s change, Rin pushes to uncover what is holding him back.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "17",
+   "group": "Tìm theo tâm trạng/cảm xúc (mood-based)",
+   "rel_n": 3,
+   "ranked": [
+    24833,
+    40004,
+    6347,
+    35806,
+    34580,
+    54309,
+    785,
+    38186,
+    27911,
+    24133
+   ],
+   "lat_ms": 718.6,
+   "contexts": [
+    "Ansatsu Kyoushitsu — Tucked in the mountains near the elite Kunugigaoka Middle School lies a small derelict building that houses the delinquents and dropouts of Class 3-E. Looked down upon by their peers, the students in this class appear to have little hope in advancing their academic careers. That is, until the national government tasks them with eliminating the greatest threat to their planet: their new teacher. \n\nHaving already destroyed the moon, the octopus-like professor—dubbed \"Koro-sensei\"—has now threatened to destroy the Earth by March of the following year. In light of their mission, the students have found that killing him is easier said than done. Not only can Koro-sensei move at speeds of up to Mach 20, but he can also resist almost every earthly weapon. Ironically, he also proves to be one of the best teachers Class 3-E has ever had. Training the class to excel in both their studies as students and skills as assassins, Koro-sensei is confident that his students' ingenuity and indomitable will could return them to the main campus. \n\nThrough trial and error, Nagisa Shiota, as well as the other students of Class 3-E, must figure out Koro-sensei's weaknesses—and fast, for the very fate of the world depends upon it.\n\n[Written by MAL Rewrite]",
+    "Bokutachi wa Benkyou ga Dekinai! — Under Nariyuki Yuiga's devoted tutelage, his classmates Rizu Ogata, Fumino Furuhashi, and Uruka Takemoto are finally pulling average test scores on their worst subjects. But time is ticking, and there is still a long way to go before the three geniuses of Ichinose Academy are ready for their upcoming university exams. Meanwhile, the girls still struggle to balance the pursuit of their dreams with their growing affections for their unsuspecting tutor.\n\nJoining them are Mafuyu Kirisu, a teacher with strong views about education and talent because of her past as a rising figure skater, and Asumi Kominami, a graduate from their school aiming to attend a national medical university. With these two additions, the group of six is livelier than ever before. Completely caught up in hilarious antics with his new friends, Yuiga finds that his last year of high school now includes a lot more than just going to class and studying.\n\n[Written by MAL Rewrite]",
+    "Baka to Test to Shoukanjuu — Fumizuki Academy is not a typical Japanese high school. This unique institution has implemented a new and innovative system to sort its students. At the end of their freshman year, students take a test that divides up the student body. The highest scorers are placed into A class, all the way down until F class, for the lowest of the low.\n\nUnfortunately for Akihisa Yoshii, his supposedly \"great\" intellect was not quite enough for such a test, and he is now stuck at the bottom of F class. Naturally, F class has the worst facilities: not only rotten tatami mats and broken tables, but also outdated equipment and worn out furniture. On the bright side, his friend Yuuji Sakamoto is in the same class, and to everyone's surprise, the genius girl Mizuki Himeji has also ended up in the same class due to an unforeseen fever on the day of the test.\n\nUnsatisfied with their perquisites, F class rallies behind Yuuji, determined to take on the higher-tiered classes in order to seize their perks by using the school's Examinations Summon Battle system. The participants can summon fantasy characters—whose power levels are equal to their student's test scores—in an all-out battle. Will F class be able to rise to the top, or will they live up to everyone's expectations and fail?\n\n[Written by MAL Rewrite]",
+    "Haikyuu!! vs. \"Akaten\" — Right before the volleyball club's training camp in Tokyo, both Shouyou Hinata and Tobio Kageyama fail a final exam. As the make-up exams and the trip overlap, the boys plead their desperate case to the vice principal to no avail. Since their indispensable teammates are forced to stay behind to study, the club's members find different ways to help them pass and join the camp in time.\n\n[Written by MAL Rewrite]",
+    "Nana Maru San Batsu — As soon as he entered high school, the first year student Koshiyama Shiki was invited to the mysterious Quiz Study Group led by his senpai. What will Shiki run into when being dragged along by his class mate Mari into the dazzling world of competitive quizzes?!\n\n(Source: Comic Walker)"
+   ]
+  },
+  {
+   "id": "18",
+   "group": "Gợi ý dựa trên phim đã xem (similar recommendation)",
+   "rel_n": 3,
+   "ranked": [
+    16498,
+    18397,
+    42091,
+    31374,
+    32071,
+    36106,
+    25781,
+    23775,
+    40028,
+    384
+   ],
+   "lat_ms": 973.1,
+   "contexts": [
+    "Shingeki no Kyojin — Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.\n\nAfter witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.\n\n[Written by MAL Rewrite]",
+    "Shingeki no Kyojin OVA — Ilse no Techou: Aru Chousa Heidanin no Shuki\nDuring the Survey Corps' 49th recon mission, Hange Zoë is determined to capture a titan specimen. Despite not receiving clearance from Commander Erwin Smith, when a titan is spotted in nearby forestland, Hange rides out alone to meet it. Recklessly luring it out, she asks the titan numerous questions and puts her life on the line for the sake of her research. However, the behavior of this particular titan is far from normal. It quickly turns back and enters the wood once again, leading Hange to somewhere specific. What Hange finds is the legacy of former scout Ilse Langnar. In spite of her death, she provides a valuable piece of information that may serve to turn the tide for titan research—a diary documenting her last moments.\n\nTotsuzen no Raihousha: Sainamareru Seishun no Noroi\nJean Kirstein would do anything to escape his boring home life and overbearing mother. After enlisting in the military, it became his ultimate goal to join the Military Police regiment and live out in peace and luxury. However, during his time with the 104th Training Corps, things never really go the way Jean wants them to. Eventually, the stolen glory and condescending banter of his comrades become too much—and Jean challenges fellow cadet Sasha Blouse to a battle, in order to determine which of them is strongest—but who will come out on top?\n\nKonnan\nThe 104th Training Corps' most recent mission is a trek on horseback into the forest. Although a test of t",
+    "Shingeki no Kyojin: Chronicle — The compilation film recaps the anime's 59 episodes from seasons one to three.",
+    "Shingeki! Kyojin Chuugakkou — On his first day of junior high, Eren Yeager comes face-to-face with a titan—and has his lunch stolen! From that day on, he holds a grudge against titans for taking his favorite food from him, a cheeseburger, vowing to eliminate their kind once and for all. Along with his adoptive sister Mikasa Ackerman and their friend Armin Arlert, the trio traverse the halls of Titan Junior High, encountering familiar faces and participating in various extracurricular activities as part of the Wall Cleanup Club.\n\nA parody of the immensely popular parent series, Shingeki! Kyojin Chuugakkou places beloved characters as junior high school students, fighting to protect their lunches from gluttonous titans.\n\n[Written by MAL Rewrite]",
+    "Gantz:O — Death does not have to be the end; one can live again, but only through beating the game posed by the black ball called Gantz.\n \nOn his way home to celebrate his younger brother's birthday, brave and kind-hearted student named Masaru Katou is stabbed to death. He awakes in a small room with a cityscape view in the heart of Tokyo—and he is not alone. To his surprise, it is not the afterlife, but the waiting room for a high stakes game with their lives on the line. Before he has the chance to process the situation, Masaru is handed a gun and teleported into the center of Osaka to carry out one simple task: eliminate any alien on sight.\n \nAccompanied by the aged Yoshikazu Suzuki, the stunning idol Reika Shimohira, and the cold but experienced Jouichirou Nishi, Masaru must overcome his fears in order to survive the game and return home to his waiting brother.\n \n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "19",
+   "group": "Gợi ý dựa trên phim đã xem (similar recommendation)",
+   "rel_n": 2,
+   "ranked": [
+    1535,
+    2994,
+    28223,
+    54743,
+    42307,
+    53613,
+    6547,
+    22199,
+    10067,
+    3323
+   ],
+   "lat_ms": 1100.1,
+   "contexts": [
+    "Death Note — Brutal murders, petty thefts, and senseless violence pollute the human world. In contrast, the realm of death gods is a humdrum, unchanging gambling den. The ingenious 17-year-old Japanese student Light Yagami and sadistic god of death Ryuk share one belief: their worlds are rotten.\n\nFor his own amusement, Ryuk drops his Death Note into the human world. Light stumbles upon it, deeming the first of its rules ridiculous: the human whose name is written in this note shall die. However, the temptation is too great, and Light experiments by writing a felon's name, which disturbingly enacts his first murder.\n\nAware of the terrifying godlike power that has fallen into his hands, Light—under the alias Kira—follows his wicked sense of justice with the ultimate goal of cleansing the world of all evil-doers. The meticulous mastermind detective L is already on his trail, but as Light's brilliance rivals L's, the grand chase for Kira turns into an intense battle of wits that can only end when one of them is dead.\n\n[Written by MAL Rewrite]",
+    "Death Note: Rewrite — When approached by a fellow death god tempted to visit the human realm, Ryuk recounts his own journey to the other side and the story of Light Yagami—a brilliant young man who impressed him there. \n\nOne day at school, Light stumbles upon Ryuk's lost Death Note and realizes it is not an ordinary notebook. He learns that it has the ability to kill every person whose name is written inside, provided that the user can visualize the victim's face. Having long deplored the decadence of current society, Light believes this sinister weapon offers him an unexpected opportunity: to eradicate all evil and bring about a new ideal world.\n\nFollowing a string of fatal heart attacks, the authorities start to suspect that the alarming number of dead criminals is not coincidental. Determined to uncover the mysterious culprit, they join forces with L, an internationally renowned detective. As the death count escalates, Light and L clash in a breathtaking confrontation of wits and deception—a duel that will decide the future of humanity.\n\n[Written by MAL Rewrite]",
+    "Death Parade — After death, either Heaven or Hell awaits most humans. But for a select few, death brings them to Quindecim—a bar where only pairs of people who die at the same time can enter. Attending the bar is an enigmatic figure known as Decim, who also acts as the arbiter. He passes judgment on those who wind up at Quindecim by challenging them to a life-threatening game. These games determine if the patron's soul will reincarnate into a new life, or be sent into the void, never to be seen again.\n\nFrom darts and bowling to fighting games, the true nature of each patron slowly comes to light as they wager their souls. Though his methods remain unchanged, the sudden appearance of a black-haired amnesiac causes Decim to reevaluate his own rulings.\n\n[Written by MAL Rewrite]",
+    "Dead Mount Death Play Part 2 — Polka Shinoyama's life takes a dramatic turn after being forced to use his magical powers in public. His divination cabinet attracts the attention of several people hellbent on exposing his true nature as the reincarnation of Corpse God, a necromancer from the Other World. To make matters worse, Polka and his friends are framed for the murder of one of their protector's employees.\n\nWhen group member Takumi Kuruya is abducted by his former boss, Kuon Higuro, Polka sends his most trustworthy ally Misaki Sakimiya to their friend's rescue. It turns out that some of the recent incidents the group finds themselves caught up in are interconnected, and Polka needs to be twice as careful if he wants to make it out alive from this maze of pitfalls.\n\n[Written by MAL Rewrite]",
+    "Subarashiki Kono Sekai The Animation — One day in the bustling city of Shibuya, a boy named Neku Sakuraba finds himself holding two black pins that enable him to read the minds of people around him. However, these pins also give him the ability to see the \"Noise,\" hostile creatures capable of \"erasing\" people from existence. After discovering that he is trapped within the confines of the city, Neku receives a message regarding a mission that will nevertheless erase him should he fail. \n\nWhile trying to fend off a Noise attack, Neku meets a girl named Shiki Misaki who asks him to form a partnership pact with her to fight against the monsters. Shiki explains that she and Neku have become \"Players\" participating in the \"Reaper's Game\"—an event spanning over seven days, each featuring a different mission.\n\nAs Neku and Shiki both strive to survive each day that passes, they begin to meet other Players and Reapers alike, battle stronger Noise, and learn the truth behind the mystery that this game is shrouded in.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "20",
+   "group": "Gợi ý dựa trên phim đã xem (similar recommendation)",
+   "rel_n": 3,
+   "ranked": [
+    32281,
+    15039,
+    59957,
+    36538,
+    875,
+    37987,
+    36990,
+    37426,
+    37682,
+    1793
+   ],
+   "lat_ms": 1005.6,
+   "contexts": [
+    "Kimi no Na wa. — Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture.\n\nOne day, Mitsuha awakens in a room that is not her own and suddenly finds herself living the dream life in Tokyo—but in Taki's body! Elsewhere, Taki finds himself living Mitsuha's life in the humble countryside. In pursuit of an answer to this strange phenomenon, they begin to search for one another.\n\nKimi no Na wa. revolves around Mitsuha and Taki's actions, which begin to have a dramatic impact on each other's lives, weaving them into a fabric held together by fate and circumstance.\n\n[Written by MAL Rewrite]",
+    "Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai. Movie — A year after their deceased friend Honma Meiko appeared to them, Jinta Yadomi and the other members of the Super Peace Busters decide to write letters in her memory. Attempting to enjoy their summer together, they reminisce about their time together before and after her death.\n\nAnoHana. Movie retells the main events of the parent story in the perspective of each member of the Super Peace Busters.\n\n[Written by MAL Rewrite]",
+    "Senpai wa Otokonoko Movie: Ame Nochi Hare — Movie sequel to Senpai wa Otokonoko.",
+    "Natsume Yuujinchou Movie: Utsusemi ni Musubu — Takashi Natsume and his spirit companion Madara, nicknamed \"Nyanko,\" continue returning the names of spirits from the Book of Friends given by his late grandmother Reiko Natsume.\n\nOn his way back from school one day, Takashi encounters a lurking spirit named Monmonbou, who recalls memories of Takashi's grandmother after hearing his name. Takashi's natural curiosity leads him to explore a mysterious town where his grandmother used to live. Befriending her old acquaintance Yorie Tsumura and Yorie's son Mukuo, Takashi unveils more of his grandmother's past.\n\nIn the meantime, Nyanko detours for food and stumbles upon a suspicious \"Spirit Seed,\" which miraculously sprouts into a fruit tree overnight. Giving in to temptation, Nyanko consumes the fruit, splitting him into three. Seeking a solution to Nyanko's predicament, Takashi and his friends lend a hand, unexpectedly uncovering more secrets the town holds in the process.\n\n[Written by MAL Rewrite]",
+    "Mind Game — After seeing her jump onto a subway at the last second and getting her ankle crushed between the doors, Nishi reconnects with his high school sweetheart, Myon. Nishi is still very much in love with Myon, but is shocked to learn that she is engaged to another man. Nishi agrees to meet Myon's fiancé at her family's Yakitori restaurant, but members of the Yakuza storm the joint and murder Nishi when he tries to stop them from raping Myon.\n\nNishi, now dead, wakes up and meets a constantly shapeshifting god, who mocks him for dying. The god tells Nishi to walk into a portal and disappear from existence, which Nishi rejects, choosing instead to sprint past the god and reanimate. With a new outlook on life and knowledge of how the Yakuza are going to attack him, Nishi kills one of the Yakuza with his own gun, fleeing in a stolen car with Myon and her sister.\n\nAcclaimed director Masaaki Yuasa's debut film, Mind Game's constantly shifting visuals tell a story about living one's life without regrets that is unlike any other.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "21",
+   "group": "Gợi ý dựa trên phim đã xem (similar recommendation)",
+   "rel_n": 2,
+   "ranked": [
+    20,
+    1735,
+    53236,
+    10075,
+    594,
+    761,
+    2248,
+    10686,
+    10659,
+    54688
+   ],
+   "lat_ms": 1324.2,
+   "contexts": [
+    "Naruto — Twelve years ago, a colossal demon fox terrorized the world. During the monster's attack on the Hidden Leaf Village, the Hokage—the village's leader and most powerful ninja—sacrifices himself to seal the beast inside a newborn, relieving civilization from destruction while dooming the baby to a lonely life.\n\nNow, after years of being shunned and bullied, Naruto Uzumaki pesters the village with elaborate pranks and vandalism. Despite these antics, he works hard to achieve his dream: to become the Hokage and earn the acknowledgement of those who have mistreated him for his entire life. Naruto joins Team 7, a ninja squad made up of two of his peers—prodigy Sasuke Uchiha and clever Sakura Haruno.\n\nUnder the aloof Kakashi Hatake's leadership, Team 7 takes on a series of difficult missions, forcing its members to grow in strength and comradery despite their many differences. Naruto strives to stand out in his rivalry with Sasuke and earn the romantic affection of Sakura. But as the trio brush against danger and death, their tragic pasts threaten to tear them apart.\n\n[Written by MAL Rewrite]",
+    "Naruto: Shippuuden — It has been two and a half years since Naruto Uzumaki left Konohagakure, the Hidden Leaf Village, for intense training following events which fueled his desire to be stronger. Now Akatsuki, the mysterious organization of elite rogue ninja, is closing in on their grand plan which may threaten the safety of the entire shinobi world.\n \nAlthough Naruto is older and sinister events loom on the horizon, he has changed little in personality—still rambunctious and childish—though he is now far more confident and possesses an even greater determination to protect his friends and home. Come whatever may, Naruto will carry on with the fight for what is important to him, even at the expense of his own body, in the continuation of the saga about the boy who wishes to become Hokage.\n\n[Written by MAL Rewrite]",
+    "Road of Naruto — In celebration of 20 years of Naruto, Studio Pierrot posted an anniversary PV on their YouTube channel. The PV is a compilation of newly reworked scenes from Naruto containing new animation.",
+    "Naruto x UT — All-new animation offered throughout UNIQLO clothing stores in Japan on January 1, 2011. The DVD contains an exclusive version of Mayonaka Orchestra, by the Japanese rock band Aqua Timez. A limited number of the DVDs was offered as presents to people who bought UNIQLO's Naruto graphic T-shirts online or in their stores.\n\n(Source: ANN, edited)",
+    "Naruto: Takigakure no Shitou - Ore ga Eiyuu Dattebayo! — After safely escorting the cowardly Takigakure leader Shibuki to his homeland, Naruto Uzumaki, Sasuke Uchiha, and Sakura Haruno are taken aback by the village's sudden invasion of rogue ninjas. As their teacher Kakashi Hatake had departed for Konohagakure beforehand, the team is left to deal with the attacking forces on their own. \n\nWhile the group prepares for a rescue operation, they learn that Suien, the mastermind behind the assault, is pursuing the Hero Water—an elixir that briefly increases the chakra of those who drink it by tenfold. Knowing that the liquid is in Shibuki's possession, Suien takes the villagers hostage to use them as a bargaining chip. \n\nDespite the odds stacked against them, Naruto fights the enemy heroically, spurring Shibuki on to discover the courage to protect his people.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "22",
+   "group": "Gợi ý dựa trên phim đã xem (similar recommendation)",
+   "rel_n": 3,
+   "ranked": [
+    52991,
+    59978,
+    56885,
+    75,
+    35842,
+    48830,
+    38400,
+    33845,
+    17205,
+    63816
+   ],
+   "lat_ms": 1108.0,
+   "contexts": [
+    "Sousou no Frieren — During their decade-long quest to defeat the Demon King, the members of the hero's party—Himmel himself, the priest Heiter, the dwarf warrior Eisen, and the elven mage Frieren—forge bonds through adventures and battles, creating unforgettable precious memories for most of them.\n\nHowever, the time that Frieren spends with her comrades is equivalent to merely a fraction of her life, which has lasted over a thousand years. When the party disbands after their victory, Frieren casually returns to her \"usual\" routine of collecting spells across the continent. Due to her different sense of time, she seemingly holds no strong feelings toward the experiences she went through.\n\nAs the years pass, Frieren gradually realizes how her days in the hero's party truly impacted her. Witnessing the deaths of two of her former companions, Frieren begins to regret having taken their presence for granted; she vows to better understand humans and create real personal connections. Although the story of that once memorable journey has long ended, a new tale is about to begin.\n\n[Written by MAL Rewrite]",
+    "Sousou no Frieren 2nd Season — Following the First-Class Mage Exam, the trio—elven mage Frieren, warrior Stark, and first-class mage Fern—gains access to the dangerous Northern Plateau. As the party presses onward toward Aureole, formidable adversaries force Stark to confront his insecurities, solidifying his resolve and his role as the party's frontliner. Meanwhile, Fern continues to cherish the gifts she has been blessed with throughout her life, each a reminder of those she holds dear.\n\nFrieren—still honoring her vow to understand humanity—revisits memories of her journey with the Hero's party and her fleeting encounter with a legendary figure. As she reflects on the passage of time, the elven mage quietly questions whether she has truly changed, yet in the small, almost subtle choices that she makes, there are signs that she might have become more human than she realizes.\n\n[Written by MAL Rewrite]",
+    "Sousou no Frieren: ●● no Mahou — Frieren loves collecting peculiar spells, and her ever-growing arsenal of magic contains the perfect spells for many occasions. Whether it be by stealthily removing alcohol from Heiter's drinks or by remedying her own sleep issues, Frieren is sure to brighten her companions' days with her magic.\n\n[Written by MAL Rewrite]",
+    "Soukyuu no Fafner: Dead Aggressor — Tatsumiyajima is the central island in the middle of a small cluster of islands, in a sleepy backwater of the Japanese isles. Not much happens there, and the island's young people go to school knowing that their lives are likely to remain peaceful and undisturbed. Or so they have been taught... but the truth is different. The fate of mankind is on the line, and Tatsumiyajima is the last line of defense against a hostile and incomprehensible enemy. At the center of it all, fighting for Humanity's continued existence, is the giant robot Fafner, the dragon that guards this final treasure of mankind.\n\n(Source: ANN)",
+    "FLCL Alternative — Life seems to drift by for Kana Koumoto and her friends in their small Japanese town. Every day is just like the last, and it feels like every new day will be the same. Kana goes to school, hangs out with her friends, and likes to paint her nails and listen to music, but it feels like nothing special is ever going to happen. \n\nAs a change of pace, Kana and her friends decide to design a bottle rocket and launch it into space, even though it might not get there at all. However, just when the rocket is completed, a robot suddenly crashes into and destroys it, shortly followed by a pink-haired woman claiming to be a \"Galactic Investigator.\" Kana's life quickly becomes more exciting than she ever imagined, dealing with new feelings, changing friends, and even boy troubles. It turns out life can go by in the blink of an eye, fast enough to even miss it, so what's with these weird robots that seem to show up at the worst times?!\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "23",
+   "group": "So sánh giữa các anime",
+   "rel_n": 2,
+   "ranked": [
+    5114,
+    121,
+    6421,
+    908,
+    664,
+    7902,
+    430,
+    9135,
+    2251,
+    71
+   ],
+   "lat_ms": 836.4,
+   "contexts": [
+    "Fullmetal Alchemist: Brotherhood — After a horrific alchemy experiment goes wrong in the Elric household, brothers Edward and Alphonse are left in a catastrophic new reality. Ignoring the alchemical principle banning human transmutation, the boys attempted to bring their recently deceased mother back to life. Instead, they suffered brutal personal loss: Alphonse's body disintegrated while Edward lost a leg and then sacrificed an arm to keep Alphonse's soul in the physical realm by binding it to a hulking suit of armor.\n\nThe brothers are rescued by their neighbor Pinako Rockbell and her granddaughter Winry. Known as a bio-mechanical engineering prodigy, Winry creates prosthetic limbs for Edward by utilizing \"automail,\" a tough, versatile metal used in robots and combat armor. After years of training, the Elric brothers set off on a quest to restore their bodies by locating the Philosopher's Stone—a powerful gem that allows an alchemist to defy the traditional laws of Equivalent Exchange.\n\nAs Edward becomes an infamous alchemist and gains the nickname \"Fullmetal,\" the boys' journey embroils them in a growing conspiracy that threatens the fate of the world.\n\n[Written by MAL Rewrite]",
+    "Fullmetal Alchemist — Edward Elric, a young, brilliant alchemist, has lost much in his twelve-year life: when he and his brother Alphonse try to resurrect their dead mother through the forbidden act of human transmutation, Edward loses his brother as well as two of his limbs. With his supreme alchemy skills, Edward binds Alphonse's soul to a large suit of armor.\n\nA year later, Edward, now promoted to the fullmetal alchemist of the state, embarks on a journey with his younger brother to obtain the Philosopher's Stone. The fabled mythical object is rumored to be capable of amplifying an alchemist's abilities by leaps and bounds, thus allowing them to override the fundamental law of alchemy: to gain something, an alchemist must sacrifice something of equal value. Edward hopes to draw into the military's resources to find the fabled stone and restore his and Alphonse's bodies to normal. However, the Elric brothers soon discover that there is more to the legendary stone than meets the eye, as they are led to the epicenter of a far darker battle than they could have ever imagined.\n\n[Written by MAL Rewrite]",
+    "Fullmetal Alchemist: Brotherhood Specials — 1. Moumoku no Renkinjutsushi (The Blind Alchemist)\n2. Simple na Hitobito (Simple People)\n3. Sensei Monogatari (The Tale of Teacher)\n4. Sore mo mata Kare no Senjou (Yet Another Man's Battlefield)",
+    "Fullmetal Alchemist: Premium Collection — 1. State Alchemists vs Seven Homunculi\nA 10 minute film featuring: Ed, Al, Mustang and many other members of the State doing battle with the deadly Homonculi in an alternate reality Amestris.\n\n2. Chibi Party (Enkai-hen)\nShort 6 minute Skit drawn in Super Deformed style where every character in the series (including bad guys) are celebrating an \"After Party\" of the Conqueror of Shambala movie.\n\n3. Kids (Kodomo-hen)\nShort 3 minute story which features Edward and his grandkids in present day 2005.\n\n(Source: ANN)",
+    "Fullmetal Alchemist: Reflections — A reflection on what happened during the FMA TV series."
+   ]
+  },
+  {
+   "id": "24",
+   "group": "So sánh giữa các anime",
+   "rel_n": 2,
+   "ranked": [
+    21,
+    36215,
+    12859,
+    60108,
+    459,
+    269,
+    4155,
+    25161,
+    57557,
+    9999
+   ],
+   "lat_ms": 1047.2,
+   "contexts": [
+    "One Piece — Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates. Despite being a naive-looking teenager, he is not to be underestimated. Unmatched in battle, Luffy is a pirate himself who resolutely pursues the coveted One Piece treasure and the King of the Pirates title that comes with it.\n\nThe late King of the Pirates, Gol D. Roger, stirred up the world before his death by disclosing the whereabouts of his hoard of riches and daring everyone to obtain it. Ever since then, countless powerful pirates have sailed dangerous seas for the prized One Piece only to never return. Although Luffy lacks a crew and a proper ship, he is endowed with a superhuman ability and an unbreakable spirit that make him not only a formidable adversary but also an inspiration to many.\n\nAs he faces numerous challenges with a big smile on his face, Luffy gathers one-of-a-kind companions to join him in his ambitious endeavor, together embracing perils and wonders on their once-in-a-lifetime adventure.\n\n[Written by MAL Rewrite]",
+    "One Piece: Episode of East Blue - Luffy to 4-nin no Nakama no Daibouken — The words that Gold Roger, the King of the Pirates, uttered just before his death excited the masses and the world has entered a Great Pirate Era! There is a group of young pirates who are about to set sail on the Grand Line. Monkey D. Luffy, a rubber man. Roronoa Zoro aka “Pirate Hunter.” Usopp, a sniper. Sanji, a seafaring cook. And “Cat Burglar” Nami. They, the Straw Hats, all place a foot upon a barrel and make their vows before their next journey across the great ocean. Luffy shouts “In order to be the King of the Pirates!” A decade ago in the Windmill Village... A little boy Luffy was enthralled with a pirate boss Red-Haired Shanks. But a group of mountain bandits shows up and makes fun of the pirates. “Why didn't you fight them?!” Luffy yells out angrily but Shanks says that it's nothing worth getting mad over. At that time, Luffy snatches the Gum-Gum Fruit from a treasure box and eats it and as a result, his entire body becomes rubber and he loses the ability to swim for the rest of his life! A few days later, Luffy is surrounded by the mountain bandits again and Shanks comes to help. “No matter what the reason, anyone who hurts my friends has to pay!!” Shanks and his pirate crew are incredibly strong and they beat down the mountain bandits. Higuma, the head of the mountain bandits, runs away kidnapping Luffy and heads for the sea. However, they encounter a local Sea Monster there and are attacked. Luffy is in a desperate situation... But again, Shanks saves the day. ",
+    "One Piece Film: Z — The Straw Hat Pirates enter the rough seas of the New World in search of the hidden treasures of the Pirate King, Gol D. Roger－One Piece. On their voyage, the pirates come across a terrifying, powerful man, former Marine Admiral Z.\n\nZ is accused of having stolen the \"Dyna Stones\", weapons believed to have the power to shake up the New World. The Marine Headquarters believes Z is about to use it to end the pirate era, and with it, the lives of many innocent people. In fear of such a phenomenal event, marines start to take action against the former admiral.\n\nEven if it means stumbling upon marines and the navy, the Straw Hat Pirates decided to chase after Z and stop him from causing havoc. As they continue to embark on their ventures, the pirates bump into new and familiar acquaintances.",
+    "One Piece: Gyojin Tou-hen — Two years after the Summit War, Monkey D. Luffy plans to reunite with the Straw Hat Pirates in the Sabaody Archipelago. However, the Marines obstruct Luffy's path with overwhelming force. Meanwhile, the Straw Hats must also foil the schemes of a group of impersonators acting in their likenesses.\n\nWith two years of intensive training with allies old and new, Luffy regroups with his friends aboard the Thousand Sunny to set sail for the New World. As the Straw Hat Crew departs for Fish-Man Island, new threats creep up from the abyss. But more determined than ever to become the King of the Pirates, Luffy is prepared to defeat any enemy that may stand between him and his dream.\n\n[Written by MAL Rewrite]",
+    "One Piece Movie 01 — Many years ago, Woonan, a legendary pirate, plundered one-third of the world's gold and stashed it away on his secret island shrouded in mystery. \n\nIn the present, Luffy and the rest of the Straw Hats continue on their journey to the Grand Line. They are robbed by a group of bandits. Led by their captain, El Drago, these same bandits are headed towards Woonan's famed island. Even though the Straw Hat Pirates must now recover their stolen treasure, they have gained another objective: to discover the lost island, its treasures, and learn about the legend of Woonan.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "25",
+   "group": "So sánh giữa các anime",
+   "rel_n": 2,
+   "ranked": [
+    40748,
+    57658,
+    48561,
+    38777,
+    55701,
+    38000,
+    49926,
+    49778,
+    51019,
+    51009
+   ],
+   "lat_ms": 994.2,
+   "contexts": [
+    "Jujutsu Kaisen — Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the King of Curses.\n\nYuuji experiences first-hand the threat these Curses pose to society as he discovers his own newfound powers. Introduced to the Tokyo Prefectural Jujutsu High School, he begins to walk down a path from which he cannot return—the path of a Jujutsu sorcerer.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen — Kenjaku, the one known as Noritoshi Kamo and most recently as Suguru Getou, has initiated the next step in his destructive, thousand-year plan of ordinary humans' evolution and eventual eradication. The jujutsu world higher-ups reinstate 15-year-old Yuuji Itadori's execution, as Satoru Gojou is incapacitated as a result of Kenjaku's master plan in Shibuya. While Yuuji is unaware of this, he patrols the abandoned Tokyo streets with Chousou, exterminating any and all cursed spirits in his way.\n\nMeanwhile, the bigoted and arrogant Naoya Zenin's pride takes a hit when Megumi Fushiguro is selected as the Zenin Clan's next head. To draw out Megumi and eliminate him, he goes after Yuuji—but Yuuta Okkotsu is set on being Yuuji's executioner. Kenjaku's \"Culling Game\"—a rigorous battle royale spanning throughout Japan and forcing the jujutsu competitors to kill each other—is set in motion, and the young jujutsu sorcerers join the fray to settle old scores, free Gojou, and liberate the jujutsu world from the threat that is Kenjaku.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen 0 Movie — Violent misfortunes frequently occur around 16-year-old Yuuta Okkotsu, a timid victim of high school bullying. Yuuta is saddled with a monstrous curse, a power that dishes out brutal revenge against his bullies. Rika Orimoto, Yuuta's curse, is a shadow from his tragic childhood and a potentially lethal threat to anyone who dares wrong him.\n\nYuuta's unique situation catches the attention of Satoru Gojou, a powerful sorcerer who teaches at Tokyo Prefectural Jujutsu High School. Gojou sees immense potential in Yuuta, and he hopes to help the boy channel his deadly burden into a force for good. Yet Yuuta struggles to find his place among his talented classmates: the selectively mute Toge Inumaki, weapons expert Maki Zenin, and Panda.\n\nYuuta clumsily utilizes Rika on missions with the other first-year students, but the grisly aftermath of Rika's tremendous displays of power draws the interest of the calculating curse user Suguru Getou. As Getou strives to claim Rika's strength and use it to eliminate all non-jujutsu users from the world, Yuuta fights alongside his friends to stop the genocidal plot.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen Official PVs — Just where do Curses, the fiendish spirits invisible to normal humans, come from? What is Sukuna Ryoumen, whose very existence grips the Jujutsu world in fear? And who exactly is Yuuji Itadori, the boy who recently became the center of attention in Jujutsu society?\n\nNo need to fear, for Satoru Gojou, the strongest Jujutsu sorcerer, has the answers! From the new sorcerers in training to the enemies they face, Gojou provides all you need to know about Jujutsu and the inner workings of the institution who protect us from Curses: the Tokyo Prefectural Jujutsu High School.\n\n[Written by MAL Rewrite]",
+    "Kimetsu no Yaiba: Hashira Geiko-hen — After a series of mighty clashes with Upper Rank Demons, the Ubuyashiki clan prepares for one last battle with the hellish forces of Muzan Kibutsuji. In order to finally defeat the Demon leader once and for all, the clan devises a training camp for the Demon Slayer Corps, one led by the remaining Hashira—the most elite warriors in the organization. Each Hashira forms a specialized exercise that will hone both their own abilities and the skills of the ordinary soldiers.\n\nTanjirou Kamado, a boy at the heart of the brewing conflict, recovers from wounds received in a recent fight. While his half-Demon sister Nezuko is studied by researchers like Shinobu Kochou, Tanjirou embarks to train with the Hashira, seeking mastery in each of their assigned areas of expertise to be best prepared for the coming war—skills vital to Tanjirou, as he has vowed to be the very warrior who will eliminate Muzan for good.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "26",
+   "group": "Hỏi thông tin chi tiết 1 bộ phim",
+   "rel_n": 1,
+   "ranked": [
+    44511,
+    63143,
+    57555,
+    34134,
+    56704,
+    51369,
+    39705,
+    40529,
+    34055,
+    63147
+   ],
+   "lat_ms": 835.2,
+   "contexts": [
+    "Chainsaw Man — Denji is robbed of a normal teenage life, left with nothing but his deadbeat father's overwhelming debt. His only companion is his pet, the chainsaw devil Pochita, with whom he slays devils for money that inevitably ends up in the yakuza's pockets. All Denji can do is dream of a good, simple life: one with delicious food and a beautiful girlfriend by his side. But an act of greedy betrayal by the yakuza leads to Denji's brutal, untimely death, crushing all hope of him ever achieving happiness.\n\nRemarkably, an old contract allows Pochita to merge with the deceased Denji and bestow devil powers on him, changing him into a hybrid able to transform his body parts into chainsaws. Because Denji's new abilities pose a significant risk to society, the Public Safety Bureau's elite devil hunter Makima takes him in, letting him live as long as he obeys her command. Guided by the promise of a content life alongside an attractive woman, Denji devotes everything and fights with all his might to make his naive dreams a reality.\n\n[Written by MAL Rewrite]",
+    "Chainsaw Man: Shikaku-hen — Sequel to Chainsaw Man Movie: Reze-hen.",
+    "Chainsaw Man Movie: Reze-hen — Despite the immediate challenges following becoming a devil hunter with the Public Safety Bureau, Denji has quickly adapted to his new life and responsibilities. As the chaos of Denji's first ordeal with Public Safety settles down, the elite devil hunter Makima decides to take Denji out on a date. Although the date strengthens his affection for Makima and he swears to not fall in love with anyone else, Denji soon finds himself in a tricky situation when he meets a seemingly innocent cafe worker named Reze.\n\nWith her forward and flirty demeanor, Reze immediately captures Denji's heart, driving him to frequent the cafe where she works and deepen his relationship with her. However, Denji is completely oblivious to the fact that meeting Reze might have grave consequences beyond simply deciding which woman his heart belongs to. \n\n[Written by MAL Rewrite]",
+    "One Punch Man 2nd Season — In the wake of defeating Boros and his mighty army, Saitama has returned to his unremarkable everyday life in Z-City. However, unbeknownst to him, the number of monsters appearing is still continuously on the rise, putting a strain on the Hero Association's resources. Their top executives decide on the bold move of recruiting hoodlums in order to help in their battle. But during the first meeting with these potential newcomers, a mysterious man calling himself Garou makes his appearance. Claiming to be a monster, he starts mercilessly attacking the crowd.\n\nThe mysterious Garou continues his rampage against the Hero Association, crushing every hero he encounters. He turns out to be the legendary martial artist Silverfang's best former disciple and seems driven by unknown motives. Regardless, this beast of a man seems unstoppable. Intrigued by this puzzling new foe and with an insatiable thirst for money, Saitama decides to seize the opportunity and joins the interesting martial arts competition.\n\nAs the tournament commences and Garou continues his rampage, a new great menace reveals itself, threatening the entire human world. Could this finally be the earth-shattering catastrophe predicted by the great seer Madame Shibabawa?\n\n[Written by MAL Rewrite]",
+    "Kengan Ashura Season 2 Part 2 — Part two of Kengan Ashura Season 2."
+   ]
+  },
+  {
+   "id": "27",
+   "group": "Hỏi thông tin chi tiết 1 bộ phim",
+   "rel_n": 1,
+   "ranked": [
+    56885,
+    52991,
+    59978,
+    63816,
+    60697,
+    4447,
+    20031,
+    43465,
+    38422,
+    8187
+   ],
+   "lat_ms": 1008.7,
+   "contexts": [
+    "Sousou no Frieren: ●● no Mahou — Frieren loves collecting peculiar spells, and her ever-growing arsenal of magic contains the perfect spells for many occasions. Whether it be by stealthily removing alcohol from Heiter's drinks or by remedying her own sleep issues, Frieren is sure to brighten her companions' days with her magic.\n\n[Written by MAL Rewrite]",
+    "Sousou no Frieren — During their decade-long quest to defeat the Demon King, the members of the hero's party—Himmel himself, the priest Heiter, the dwarf warrior Eisen, and the elven mage Frieren—forge bonds through adventures and battles, creating unforgettable precious memories for most of them.\n\nHowever, the time that Frieren spends with her comrades is equivalent to merely a fraction of her life, which has lasted over a thousand years. When the party disbands after their victory, Frieren casually returns to her \"usual\" routine of collecting spells across the continent. Due to her different sense of time, she seemingly holds no strong feelings toward the experiences she went through.\n\nAs the years pass, Frieren gradually realizes how her days in the hero's party truly impacted her. Witnessing the deaths of two of her former companions, Frieren begins to regret having taken their presence for granted; she vows to better understand humans and create real personal connections. Although the story of that once memorable journey has long ended, a new tale is about to begin.\n\n[Written by MAL Rewrite]",
+    "Sousou no Frieren 2nd Season — Following the First-Class Mage Exam, the trio—elven mage Frieren, warrior Stark, and first-class mage Fern—gains access to the dangerous Northern Plateau. As the party presses onward toward Aureole, formidable adversaries force Stark to confront his insecurities, solidifying his resolve and his role as the party's frontliner. Meanwhile, Fern continues to cherish the gifts she has been blessed with throughout her life, each a reminder of those she holds dear.\n\nFrieren—still honoring her vow to understand humanity—revisits memories of her journey with the Hero's party and her fleeting encounter with a legendary figure. As she reflects on the passage of time, the elven mage quietly questions whether she has truly changed, yet in the small, almost subtle choices that she makes, there are signs that she might have become more human than she realizes.\n\n[Written by MAL Rewrite]",
+    "Sousou no Frieren: Ougonkyou-hen — Third season of Sousou no Frieren.",
+    "Fermat no Ryouri — Since childhood, Gaku Kitada has been fascinated with mathematics. As a student at the prestigious Wels Academy, he aimed to qualify for the Mathematics Olympiad and eventually secure admission to the University of Tokyo to become a great mathematician. His ambitious plans, however, do not come to fruition, as Gaku fails to qualify for the Olympiad's main event due to his anxiety and lack of self-confidence. This disastrous performance, coupled with his decision not to participate in future competitions, leads to his expulsion from the academy.\n\nDuring this crisis, Gaku meets Kai Asakura, an enigmatic professional chef who recognizes Gaku's peculiar way of cooking that incorporates math to create perfectly synergistic dishes. Despite his initial reservations, Gaku begins to utilize his mathematical perspective to cook, rekindling his love for the subject in the process. Wanting to understand this impulse more, Gaku decides to pivot his career trajectory to one that melds numbers with flavors to find solutions that can satisfy both his mind and the palate of his customers.\n\n[Written by MAL Rewrite]"
+   ]
+  },
+  {
+   "id": "28",
+   "group": "Hỏi thông tin chi tiết 1 bộ phim",
+   "rel_n": 1,
+   "ranked": [
+    40748,
+    38777,
+    48561,
+    57658,
+    62392,
+    59654,
+    51009,
+    64823,
+    53406,
+    40870
+   ],
+   "lat_ms": 1212.9,
+   "contexts": [
+    "Jujutsu Kaisen — Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the King of Curses.\n\nYuuji experiences first-hand the threat these Curses pose to society as he discovers his own newfound powers. Introduced to the Tokyo Prefectural Jujutsu High School, he begins to walk down a path from which he cannot return—the path of a Jujutsu sorcerer.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen Official PVs — Just where do Curses, the fiendish spirits invisible to normal humans, come from? What is Sukuna Ryoumen, whose very existence grips the Jujutsu world in fear? And who exactly is Yuuji Itadori, the boy who recently became the center of attention in Jujutsu society?\n\nNo need to fear, for Satoru Gojou, the strongest Jujutsu sorcerer, has the answers! From the new sorcerers in training to the enemies they face, Gojou provides all you need to know about Jujutsu and the inner workings of the institution who protect us from Curses: the Tokyo Prefectural Jujutsu High School.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen 0 Movie — Violent misfortunes frequently occur around 16-year-old Yuuta Okkotsu, a timid victim of high school bullying. Yuuta is saddled with a monstrous curse, a power that dishes out brutal revenge against his bullies. Rika Orimoto, Yuuta's curse, is a shadow from his tragic childhood and a potentially lethal threat to anyone who dares wrong him.\n\nYuuta's unique situation catches the attention of Satoru Gojou, a powerful sorcerer who teaches at Tokyo Prefectural Jujutsu High School. Gojou sees immense potential in Yuuta, and he hopes to help the boy channel his deadly burden into a force for good. Yet Yuuta struggles to find his place among his talented classmates: the selectively mute Toge Inumaki, weapons expert Maki Zenin, and Panda.\n\nYuuta clumsily utilizes Rika on missions with the other first-year students, but the grisly aftermath of Rika's tremendous displays of power draws the interest of the calculating curse user Suguru Getou. As Getou strives to claim Rika's strength and use it to eliminate all non-jujutsu users from the world, Yuuta fights alongside his friends to stop the genocidal plot.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen — Kenjaku, the one known as Noritoshi Kamo and most recently as Suguru Getou, has initiated the next step in his destructive, thousand-year plan of ordinary humans' evolution and eventual eradication. The jujutsu world higher-ups reinstate 15-year-old Yuuji Itadori's execution, as Satoru Gojou is incapacitated as a result of Kenjaku's master plan in Shibuya. While Yuuji is unaware of this, he patrols the abandoned Tokyo streets with Chousou, exterminating any and all cursed spirits in his way.\n\nMeanwhile, the bigoted and arrogant Naoya Zenin's pride takes a hit when Megumi Fushiguro is selected as the Zenin Clan's next head. To draw out Megumi and eliminate him, he goes after Yuuji—but Yuuta Okkotsu is set on being Yuuji's executioner. Kenjaku's \"Culling Game\"—a rigorous battle royale spanning throughout Japan and forcing the jujutsu competitors to kill each other—is set in motion, and the young jujutsu sorcerers join the fray to settle old scores, free Gojou, and liberate the jujutsu world from the threat that is Kenjaku.\n\n[Written by MAL Rewrite]",
+    "Jujutsu Kaisen Movie: Shibuya Jihen Tokubetsu Henshuu-ban x Shimetsu Kaiyuu Senkou Jouei — Compilation of the Shibuya Incident from the second season and the first two episodes of Jujutsu Kaisen: Shimetsu Kaiyuu - Zenpen."
+   ]
+  },
+  {
+   "id": "29",
+   "group": "Hỏi thông tin chi tiết 1 bộ phim",
+   "rel_n": 1,
+   "ranked": [
+    37521,
+    49387,
+    55272,
+    54463,
+    5041,
+    15933,
+    53397,
+    30321,
+    417,
+    63938
+   ],
+   "lat_ms": 841.6,
+   "contexts": [
+    "Vinland Saga — Young Thorfinn grew up listening to the stories of old sailors that had traveled the ocean and reached the place of legend, Vinland. It's said to be warm and fertile, a place where there would be no need for fighting—not at all like the frozen village in Iceland where he was born, and certainly not like his current life as a mercenary. War is his home now. Though his father once told him, \"You have no enemies, nobody does. There is nobody who it's okay to hurt,\" as he grew, Thorfinn knew that nothing was further from the truth.\n\nThe war between England and the Danes grows worse with each passing year. Death has become commonplace, and the viking mercenaries are loving every moment of it. Allying with either side will cause a massive swing in the balance of power, and the vikings are happy to make names for themselves and take any spoils they earn along the way. Among the chaos, Thorfinn must take his revenge and kill Askeladd, the man who murdered his father. The only paradise for the vikings, it seems, is the era of war and death that rages on.\n\n[Written by MAL Rewrite]",
+    "Vinland Saga Season 2 — After his father's death and the destruction of his village at the hands of English raiders, Einar wishes for a peaceful life with his family on their newly rebuilt farms. However, fate has other plans: his village is invaded once again. Einar watches helplessly as the marauding Danes burn his lands and slaughter his family. The invaders capture Einar and take him back to Denmark as a slave. \n\nEinar clings to his mother's final words to survive. He is purchased by Ketil, a kind slave owner and landlord who promises that Einar can regain his freedom in return for working in the fields. Soon, Einar encounters his new partner in farm cultivation—Thorfinn, a dejected and melancholic slave. As Einar and Thorfinn work together toward their freedom, they are haunted by both sins of the past and the ploys of the present. Yet they carry on, grasping for a glimmer of hope, redemption, and peace in a world that is nothing but unjust and unforgiving.\n\n[Written by MAL Rewrite]",
+    "Vinland Saga Season 2: Same Old Story — Additional scene intended to air as part of Vinland Saga Season 2's 18th episode.",
+    "Vinland Saga Season 2: Drowning in the Shadow — Thorfinn, shown initially as he appears as a member of Askeladd's raiders, cuts down some men in the middle of a raid. When he enters a nearby house, he finds a family cowering within.\n\n(Source: ANN, edited)",
+    "Guin Saga — He awakens in the dark forest of a mythical land with some type of leopard mask that he cannot remove. The only thing he remembers is his name—Guin—and that he is a warrior of unimaginable power. And when the two twins of Parros, innocent victims of a civil war arrive, Guin knows what he must do.\n\nBut the journey to save the children means much more than just slaughtering a few hundred well-trained Mongoul soldiers. Victory means he must battle magical desert tribes, assemble forces that have fought each other for hundreds of years, and divine a mysterious plan that he is central to.\n\nPrepare for a sweeping anime epic of mystery and magic! Of violent clashes and dark double-crosses. Ready yourself for the battle with Guin Saga.\n\n(Source: Sentai Filmworks, edited)"
+   ]
+  },
+  {
+   "id": "30",
+   "group": "Hỏi thông tin chi tiết 1 bộ phim",
+   "rel_n": 0,
+   "ranked": [
+    62405,
+    22057,
+    12669,
+    10805,
+    26395,
+    10491,
+    40940,
+    26123,
+    5955,
+    2832
+   ],
+   "lat_ms": 1092.9,
+   "contexts": [
+    "Fujimoto Tatsuki 17-26 — 1. Niwa ni wa Niwa Niwatori ga Ita. (A Couple Clucking Chickens Were Still Kickin' in the Schoolyard)\n2. Sasaki-kun ga Juudan Tometa (Sasaki Stopped a Bullet)\n3. Koi wa Moumoku (Love Is Blind)\n4. Shikaku\n5. Ningyo Rhapsody (Mermaid Rhapsody)\n6. Me ga Sametara Onnanoko ni Natteita Yamai (Woke-Up-as-a-Girl Syndrome)\n7. Yogen no Nayuta (Nayuta of the Prophecy)\n8. Imouto no Ane (Sisters)",
+    "Inari, Konkon, Koi Iroha. Inari, Konkon, Semishigure. — Unaired OVA bundled with limited edition eighth volume of the manga.\n\nThe episode centers around the actions of Inari and Kon.",
+    "Amagami SS+ Plus: Extra Episode+ Plus — Short extras of the anime included in each of the six Blu-ray volumes of Amagami SS+.",
+    "Kami nomi zo Shiru Sekai: 4-nin to Idol — Eli, Chihiro, and Miyako try to form a band but end up looking to Katsuragi for help. In the process they meet Kanon and become friends/ rivals.\n\n(Source: ANN)",
+    "Teekyuu 4 — Fourth season of Teekyuu series."
+   ]
+  }
+ ],
+ "translate_model": "gpt-4o"
+}

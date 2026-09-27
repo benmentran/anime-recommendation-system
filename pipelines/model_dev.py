@@ -2,9 +2,15 @@ import os
 from abc import ABC, abstractmethod
 import pandas as pd
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-import mlflow
-import mlflow.pyfunc as pyfunc
+
+try:
+    from sklearn.metrics.pairwise import cosine_similarity
+except ImportError:  # ponytail: numpy fallback keeps the API image light (no sklearn)
+    def cosine_similarity(X, Y=None):
+        Y = X if Y is None else Y
+        Xn = X / np.maximum(np.linalg.norm(X, axis=1, keepdims=True), 1e-12)
+        Yn = Y / np.maximum(np.linalg.norm(Y, axis=1, keepdims=True), 1e-12)
+        return Xn @ Yn.T
 
 
 class Model(ABC):
@@ -21,13 +27,17 @@ def compute_user_item_matrix(df: pd.DataFrame) -> pd.DataFrame:
     os.makedirs("model", exist_ok=True)
     user_item_matrix.to_pickle('model/user_item_matrix.pkl')
     
-    mlflow.log_artifact('model/user_item_matrix.pkl', artifact_path='user_item_matrix')
-    
+    try:
+        import mlflow  # optional: log artifact only when mlflow is installed
+        mlflow.log_artifact('model/user_item_matrix.pkl', artifact_path='user_item_matrix')
+    except ImportError:
+        pass
+
     return user_item_matrix
 
 class UserBasedCF(Model):
-    def train(self):
-        self.user_item_matrix = pd.read_pickle('model/user_item_matrix.pkl').fillna(0)
+    def train(self, matrix_path: str = 'model/user_item_matrix.pkl'):
+        self.user_item_matrix = pd.read_pickle(matrix_path).fillna(0)
         self.user_sim_matrix = cosine_similarity(self.user_item_matrix)
         self.user_sim_df = pd.DataFrame(self.user_sim_matrix,
                                         index=self.user_item_matrix.index,
@@ -61,25 +71,9 @@ class UserBasedCF(Model):
         ranked = sorted(predictions.items(), key=lambda x: x[1], reverse=True)
         return ranked[:N]
 
-class UserCFPyfuncModel(pyfunc.PythonModel):
-    def __init__(self, model: UserBasedCF):
-        self.model = model
-
-    def predict(self, model_input: list[dict[str, int]], params=None):
-        results = []
-        
-        for row in model_input:
-            user_id = row.get('user_id', None)
-            item_id = row.get('item_id', None)
-            k = row.get('k', 5)
-
-            results.append(self.model.predict(user_id=user_id, item_id=item_id, k=k))
-
-        return results
-
 class ItemBasedCF(Model):
-    def train(self):
-        self.user_item_matrix = pd.read_pickle('model/user_item_matrix.pkl')
+    def train(self, matrix_path: str = 'model/user_item_matrix.pkl'):
+        self.user_item_matrix = pd.read_pickle(matrix_path)
         self.item_user_matrix = self.user_item_matrix.T.fillna(0)
         self.item_sim_matrix = cosine_similarity(self.item_user_matrix)
         self.item_sim_df = pd.DataFrame(self.item_sim_matrix,
@@ -114,43 +108,32 @@ class ItemBasedCF(Model):
         ranked = sorted(predictions.items(), key=lambda x: x[1], reverse=True)
         return ranked[:N]
 
-class ItemCFPyfuncModel(pyfunc.PythonModel):
-    def __init__(self, model: ItemBasedCF):
-        self.model = model
-
-    def predict(self, model_input: list[dict[str, int]], params=None):
-        results = []
-        
-        for row in model_input:
-            user_id = row.get('user_id', None)
-            item_id = row.get('item_id', None)
-            k = row.get('k', 5)
-
-            results.append(self.model.predict(user_id=user_id, item_id=item_id, k=k))
-
-        return results
-
 class ContentBasedFiltering(Model):
-    def train(self, df: pd.DataFrame, reviews_df: pd.DataFrame):
+    def train(self, df: pd.DataFrame, reviews_df: pd.DataFrame | None = None):
         """
         Train both feature-based and review-based similarity matrices.
+        reviews_df is optional (anime has no reviews table -> feature-only).
         """
         # Build feature-based item-item similarity
         features = np.vstack(df['feature_vector'].to_numpy())
         self.feature_similarity = cosine_similarity(features)
         self.df = df.reset_index(drop=True)
-        
+
         # Build review-based item-item similarity (if reviews exist)
-        reviews = np.vstack(reviews_df['review_vectorize'].to_numpy())
-        self.review_similarity = cosine_similarity(reviews)
+        if reviews_df is not None and len(reviews_df) > 0:
+            reviews = np.vstack(reviews_df['review_vectorize'].to_numpy())
+            self.review_similarity = cosine_similarity(reviews)
+        else:
+            self.review_similarity = None
         
         # Map movie_id to index
         self.movie_id_to_index = {
             movie_id: idx for idx, movie_id in enumerate(df['movie_id'])
         }
-        
+
         # Track movie_ids that have reviews
-        self.movies_with_reviews = set(reviews_df['movie_id'].tolist())
+        self.movies_with_reviews = set(reviews_df['movie_id'].tolist()) \
+            if reviews_df is not None and len(reviews_df) > 0 else set()
 
     def recommend(self, movie_index: int, top_k=10):
         """
@@ -174,23 +157,6 @@ class ContentBasedFiltering(Model):
         
         return recommended_movie_ids
     
-class ContentFPyfuncModel(pyfunc.PythonModel):
-    def __init__(self, model: ContentBasedFiltering):
-        self.model = model
-
-    def predict(self, model_input: list[dict[str, int]], params=None):
-        """
-        Given input as list of dicts with 'movie_id', return recommended movie_ids.
-        Example input: [{'movie_id': 123}, {'movie_id': 456}]
-        """
-        results = []
-        for item in model_input:
-            movie_id = item.get('movie_id')
-            recommended = self.model.recommend(movie_id, top_k=params.get('top_k', 5) if params else 5)
-            results.append({'movie_id': movie_id, 'recommendations': recommended})
-            
-        return results
-
 class MatrixFactorization(Model):
     def train(self, df, **kwargs):
         pass

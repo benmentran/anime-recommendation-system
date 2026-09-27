@@ -41,6 +41,54 @@ query ($page: Int, $season: MediaSeason, $seasonYear: Int) {
 """
 
 
+MEDIA_QUERY = """
+query ($ids: [Int]) {
+  Page(perPage: 50) {
+    media(idMal_in: $ids, type: ANIME) {
+      idMal
+      tags { name rank isMediaSpoiler }
+      averageScore
+      popularity
+      favourites
+      description
+      genres
+    }
+  }
+}
+"""
+
+
+async def fetch_media_batch(mal_ids: list[int], timeout: int = 30) -> list[dict]:
+    """Full media rows (tags/scores/description) for enrichment, 50 IDs/call.
+
+    Paced for the 90 req/min shared quota; retries transient failures.
+    Returns raw media dicts keyed by idMal (dedupe by caller).
+    """
+    out: list[dict] = []
+    async with httpx.AsyncClient(timeout=timeout) as client:
+        for i in range(0, len(mal_ids), 50):
+            chunk = mal_ids[i:i + 50]
+            last_error: Exception | None = None
+            for attempt in range(4):
+                try:
+                    r = await client.post(
+                        URL, json={"query": MEDIA_QUERY, "variables": {"ids": chunk}})
+                    if r.status_code == 429:
+                        await asyncio.sleep(int(r.headers.get("Retry-After", "60")))
+                        continue
+                    r.raise_for_status()
+                    last_error = None
+                    break
+                except Exception as e:  # noqa: BLE001 - retry then propagate
+                    last_error = e
+                    await asyncio.sleep(2 * (attempt + 1))
+            if last_error is not None:
+                raise last_error
+            out.extend(r.json()["data"]["Page"]["media"] or [])
+            await asyncio.sleep(0.8)
+    return out
+
+
 async def fetch_top_mal_ids(limit: int = 5000, season: str | None = None,
                             season_year: int | None = None,
                             timeout: int = 30) -> list[int]:

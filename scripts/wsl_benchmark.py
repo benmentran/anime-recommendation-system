@@ -17,8 +17,9 @@ import sys
 import time
 
 REPO = "/mnt/f/netflix-movie-recommendation-system"
-sys.path.insert(0, REPO)
-os.chdir(REPO)
+if os.path.isdir(REPO):
+    sys.path.insert(0, REPO)
+    os.chdir(REPO)
 
 import httpx  # noqa: E402
 from openai import AsyncOpenAI  # noqa: E402
@@ -109,22 +110,133 @@ def pct(xs: list[float], p: float) -> float:
 
 
 async def retrieve(oai, qd, query: str, k: int):
+    from pipelines.rag_retrieval import (build_qdrant_filter, infer_genre_filter,
+                                         rerank_hits)
+    global _TRANSLATE_LOGGED
     t0 = time.monotonic()
+    orig = query
+    if TRANSLATE:
+        from pipelines.translate_query import translate_query
+        en = await translate_query(query, oai)
+        if en != query and _TRANSLATE_LOGGED < 5:
+            print(f"TRANSLATED: {query} -> {en}", flush=True)
+            _TRANSLATE_LOGGED += 1
+        query = en
+    _TRANSLATED[orig] = query
     emb = await oai.embeddings.create(model=EMBED_MODEL, input=[query])
-    r = await qd.post(f"{QDRANT}/collections/{COLLECTION}/points/search",
-                      json={"vector": emb.data[0].embedding, "limit": k,
-                            "with_payload": True})
+    vec = emb.data[0].embedding
+    filt = build_qdrant_filter(infer_genre_filter(query)) if HYBRID else None
+    limit = CROSS_N if CROSS else (min(k * 2, 10) if filt else k)
+    if BIVECTOR:
+        from pipelines.rag_retrieval import detect_language
+        vecname = "vi" if detect_language(orig) == "vi" else "en"
+        body = {"vector": {"name": vecname, "vector": vec},
+                "limit": limit, "with_payload": True}
+    else:
+        body = {"vector": vec, "limit": limit, "with_payload": True}
+    if filt:
+        body["filter"] = filt
+    r = await qd.post(f"{QDRANT}/collections/{COLLECTION}/points/search", json=body)
+    if r.status_code == 400 and filt:
+        # no full-text index on genres -> fall back to pure vector
+        print("prefilter 400, fallback pure-vector", flush=True)
+        r = await qd.post(f"{QDRANT}/collections/{COLLECTION}/points/search",
+                          json={"vector": vec, "limit": k, "with_payload": True})
     r.raise_for_status()
     dt = (time.monotonic() - t0) * 1000
-    return r.json()["result"], dt
+    hits = r.json()["result"]
+    if HYBRID:
+        hits = rerank_hits(hits)[:k]
+    if CROSS:
+        from pipelines.rerank import doc_text, rerank_cross_encoder
+        hits = rerank_cross_encoder(query, hits, doc_text, top_k=k)
+    elif len(hits) > k:
+        hits = hits[:k]
+    return hits, dt
 
 
 REUSE_SAMPLES = "--reuse-samples" in sys.argv
+HYBRID = "--hybrid" in sys.argv  # genre prefilter + overfetch + rerank (else pure vector)
+BIVECTOR = "--bivector" in sys.argv  # named vectors: vi query -> vi vector, else en
+TRANSLATE = "--translate-query" in sys.argv or "--translate" in sys.argv  # VI->EN before embed (V1)
+RETRIEVAL_ONLY = "--retrieval-only" in sys.argv  # save retrieval block, skip generation+ragas
+SKIP_SCORING = "--skip-scoring" in sys.argv  # save samples, skip ragas scoring
+CROSS = "--cross-encoder" in sys.argv  # top-N vector -> cross-encoder rerank -> top-k (V3)
+LOOSE = "--loose" in sys.argv  # report loose (shared-genre) metrics alongside strict, no extra retrieval
+WITH_GEN = "--with-generation" in sys.argv  # winner arm: bypass retrieval-only early return
+
+
+def _cross_n() -> int:
+    for i, a in enumerate(sys.argv):
+        if a == "--cross-n" and i + 1 < len(sys.argv):
+            try:
+                return max(1, int(sys.argv[i + 1]))
+            except ValueError:
+                pass
+    return 20
+
+
+CROSS_N = _cross_n()
+_TRANSLATE_LOGGED = 0
+_TRANSLATED: dict[str, str] = {}  # original question -> embedded (possibly translated) query
+
+
+def _rss_mb() -> float:
+    try:
+        import resource
+
+        return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+    except Exception:  # noqa: BLE001 - Windows has no resource module
+        return -1.0
+
+
+def variant_name() -> str:
+    parts = []
+    if TRANSLATE:
+        parts.append("translate")
+    if CROSS:
+        parts.append("xenc")
+    if HYBRID:
+        parts.append("hybrid")
+    if BIVECTOR:
+        parts.append("bivector")
+    if parts == ["hybrid"]:
+        return "benchmark_hybrid.json"  # legacy name
+    if not parts:
+        return "benchmark_results.json"  # legacy name
+    return f"benchmark_{'_'.join(parts)}.json"
+
+
+def variant_mode() -> str:
+    parts = []
+    if TRANSLATE:
+        parts.append("translate")
+    if CROSS:
+        parts.append("xenc")
+    if HYBRID:
+        parts.append("hybrid")
+    if BIVECTOR:
+        parts.append("bivector")
+    return "+".join(parts) if parts else "pure-vector"
+
+
+def _max_rows() -> int | None:
+    for i, a in enumerate(sys.argv):
+        if a == "--max-rows" and i + 1 < len(sys.argv):
+            try:
+                return max(1, int(sys.argv[i + 1]))
+            except ValueError:
+                pass
+    return None
 
 
 async def main():
     with open("data/golden_dataset/ragas_track.csv", encoding="utf-8") as f:
         gold = list(csv.DictReader(f))
+    max_rows = _max_rows()
+    if max_rows:
+        gold = gold[:max_rows]
+        print(f"SMOKE: capped to {len(gold)} rows", flush=True)
     rows = load_catalog()
     exact, contains, all_rows = build_index(rows)
     oai = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
@@ -142,8 +254,10 @@ async def main():
             per_row.append({"id": g["id"], "group": g["category"], "rel_n": len(rel),
                             "ranked": ranked, "lat_ms": round(ms, 1),
                             "contexts": [c for c in ctxs if c]})
+            mem = _rss_mb()
+            mem_s = f" rss={mem:.0f}MB" if mem >= 0 else ""
             print(f"row {g['id']}: rel={len(rel)} mrr={mrr(ranked, rel):.2f} "
-                  f"p5={p_at_k(ranked, rel, 5):.2f} lat={ms:.0f}ms", flush=True)
+                  f"p5={p_at_k(ranked, rel, 5):.2f} lat={ms:.0f}ms{mem_s}", flush=True)
 
     Ps = {k: [] for k in (5, 10)}
     Ns = {k: [] for k in (5, 10)}
@@ -167,7 +281,62 @@ async def main():
             "retrieval_latency_ms_p95": round(pct(lat, 95), 1)}
     print("RETRIEVAL:", json.dumps(retr, ensure_ascii=False), flush=True)
 
-    # --- generation (gpt-4o) for RAGAS response field ---
+    # --- loose rescore (V2): shared-genre relevance, same ranked lists, no extra retrieval ---
+    loose = None
+    if LOOSE:
+        from scripts.score_loose import (genre_pool, golden_genres,
+                                         mrr as loose_mrr,
+                                         ndcg_at_k as loose_n,
+                                         p_at_k as loose_p)
+        by_id = {d["mal_id"]: d for d in rows}
+        id_genres = {mid: genre_pool(d) for mid, d in by_id.items()}
+        lp, ln, lm = [], [], []
+        for r in per_row:
+            gg = golden_genres(gold2[str(r["id"])], exact, contains, all_rows)
+            rel = {mid for mid in r["ranked"][:10]
+                   if gg and (id_genres.get(mid, set()) & gg)}
+            lp.append(loose_p(r["ranked"], rel, 5))
+            ln.append(loose_n(r["ranked"], rel, 5))
+            lm.append(loose_mrr(r["ranked"], rel))
+        loose = {"precision@5": round(sum(lp) / len(lp), 4),
+                 "ndcg@5": round(sum(ln) / len(ln), 4),
+                 "mrr@10": round(sum(lm) / len(lm), 4)}
+        print("LOOSE:", json.dumps(loose, ensure_ascii=False), flush=True)
+
+    # --- generation (gpt-4o) for RAGAS response field (skipped in hybrid-only runs) ---
+    if max_rows:
+        print("SMOKE: skipping save + generation", flush=True)
+        if CROSS:
+            from pipelines.rerank import release_model
+
+            release_model()
+        return
+    if (HYBRID or RETRIEVAL_ONLY or TRANSLATE or CROSS) and not WITH_GEN:
+        name = variant_name()
+        out = {"retrieval": retr,
+               "mode": variant_mode(), "rows": per_row}
+        if loose is not None:
+            out["loose"] = loose
+        if TRANSLATE:
+            from pipelines.translate_query import MODEL as TRANSLATE_MODEL
+
+            out["translate_model"] = TRANSLATE_MODEL
+        prev = {}
+        if os.path.exists(f"data/golden_dataset/{name}"):
+            try:
+                prev = json.load(open(f"data/golden_dataset/{name}", encoding="utf-8"))
+            except (ValueError, OSError):
+                prev = {}
+        prev.update(out)
+        with open(f"data/golden_dataset/{name}", "w", encoding="utf-8") as f:
+            json.dump(prev, f, ensure_ascii=False, indent=1)
+        print(f"SAVED data/golden_dataset/{name}", flush=True)
+        if CROSS:
+            from pipelines.rerank import release_model
+
+            release_model()
+            print("rerank model released", flush=True)
+        return
     with open("data/golden_dataset/ragas_track.csv", encoding="utf-8") as f:
         gold3 = list(csv.DictReader(f))
     samples = []
@@ -181,8 +350,9 @@ async def main():
                       "year": None, "score": None,
                       "synopsis": c.split(" — ", 1)[1] if " — " in c else c}
                      for c in r["contexts"]]
+            gen_q = _TRANSLATED.get(g["question"], g["question"])
             chat = await oai.chat.completions.create(
-                model=LLM_MODEL, messages=build_messages(g["question"], cands),
+                model=LLM_MODEL, messages=build_messages(gen_q, cands),
                 temperature=0.3, max_tokens=800)
             samples.append({
                 "id": g["id"],
@@ -195,6 +365,10 @@ async def main():
 
     with open("data/golden_dataset/ragas_samples.json", "w", encoding="utf-8") as f:
         json.dump(samples, f, ensure_ascii=False)
+    if SKIP_SCORING:
+        print("SKIPPED ragas scoring (--skip-scoring); run "
+              "scripts/run_ragas_score.py on Windows", flush=True)
+        return
 
     # --- RAGAS scoring (judge: gpt-4o-mini) ---
     from ragas import EvaluationDataset, SingleTurnSample, evaluate
@@ -222,11 +396,16 @@ async def main():
               if k != "id"}
     print("RAGAS:", json.dumps(scores, ensure_ascii=False), flush=True)
 
-    out = {"retrieval": retr, "ragas": scores, "judge_model": JUDGE_MODEL,
+    out = {"retrieval": retr, "mode": variant_mode(),
+           "ragas": scores, "judge_model": JUDGE_MODEL,
            "generator_model": LLM_MODEL, "embed_model": EMBED_MODEL, "rows": per_row}
-    with open("data/golden_dataset/benchmark_results.json", "w", encoding="utf-8") as f:
+    if loose is not None:
+        out["loose"] = loose
+    name = variant_name()
+    with open(f"data/golden_dataset/{name}", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
-    print("SAVED data/golden_dataset/benchmark_results.json", flush=True)
+    print(f"SAVED data/golden_dataset/{name}", flush=True)
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())

@@ -36,22 +36,50 @@ def _done() -> set[str]:
     return set()
 
 
+BILINGUAL = "--bilingual" in sys.argv  # named vectors {en, vi}; needs doc_vi filled
+
+
+def build_points(chunk: list[dict], vectors: list[list[float]],
+                 bilingual_vecs: list[list[float]] | None = None) -> list[dict]:
+    """Pure: chunk rows + embedding(s) -> Qdrant points (upsert by mal_id)."""
+    points = []
+    for i, (r, e) in enumerate(zip(chunk, vectors)):
+        genres = r["genres"]
+        if isinstance(genres, str):
+            genres = json.loads(genres)
+        vec = {"en": e, "vi": bilingual_vecs[i]} if bilingual_vecs else e
+        points.append({
+            "id": r["mal_id"],
+            "vector": vec,
+            "payload": {
+                "mal_id": r["mal_id"], "title": r["title"],
+                "genres": ", ".join(genres or []),
+                "year": r["year"], "score": r["score"],
+                "image_url": r["image_url"],
+                "synopsis": (r["synopsis"] or "")[:1500],
+            }})
+    return points
+
+
 async def ensure_collection(client: httpx.AsyncClient):
     r = await client.get(f"{QDRANT_URL}/collections/{COLLECTION}")
     if r.status_code == 200:
         return
-    r = await client.put(
-        f"{QDRANT_URL}/collections/{COLLECTION}",
-        json={"vectors": {"size": EMBED_DIM, "distance": "Cosine"},
-              "hnsw_config": {"m": 16, "ef_construct": 128}},
-    )
+    vectors = {"size": EMBED_DIM, "distance": "Cosine"}
+    body = {"vectors": {"en": vectors, "vi": dict(vectors)},
+            "hnsw_config": {"m": 16, "ef_construct": 128}} if BILINGUAL else \
+        {"vectors": vectors, "hnsw_config": {"m": 16, "ef_construct": 128}}
+    r = await client.put(f"{QDRANT_URL}/collections/{COLLECTION}", json=body)
     r.raise_for_status()
-    print(f"collection {COLLECTION} created", flush=True)
+    print(f"collection {COLLECTION} created (bilingual={BILINGUAL})", flush=True)
+
+
+FORCE = "--force" in sys.argv  # ignore done-file: re-embed everything
 
 
 async def main(limit: int | None = None):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    done = _done()
+    done = set() if FORCE else _done()
     oai = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])
     pool = await asyncpg.connect(DATABASE_URL)
     async with httpx.AsyncClient(timeout=60) as qd:
@@ -61,7 +89,8 @@ async def main(limit: int | None = None):
         async with pool.transaction():
             cur = await pool.cursor(
                 "SELECT mal_id, title, title_japanese, synopsis, episodes, status,"
-                " season, year, studios, source, genres, score, image_url"
+                " season, year, studios, source, genres, score, image_url,"
+                " tags_anilist" + (", doc_vi" if BILINGUAL else "") +
                 " FROM anime_catalog ORDER BY mal_id")
             with open(DONE_FILE, "a", encoding="utf-8") as cp:
                 while True:
@@ -76,23 +105,23 @@ async def main(limit: int | None = None):
                             if not chunk:
                                 capped = True
                                 break
+                        if BILINGUAL:
+                            missing = [r["mal_id"] for r in chunk if not r.get("doc_vi")]
+                            if missing:
+                                print(f"skip {len(missing)} without doc_vi", flush=True)
+                            chunk = [r for r in chunk if r.get("doc_vi")]
+                            if not chunk:
+                                continue
                         texts = [build_document(r) for r in chunk]
                         emb = await oai.embeddings.create(model=EMBED_MODEL, input=texts)
-                        points = []
-                        for r, e in zip(chunk, emb.data):
-                            genres = r["genres"]
-                            if isinstance(genres, str):
-                                genres = json.loads(genres)
-                            points.append({
-                                "id": r["mal_id"],
-                                "vector": e.embedding,
-                                "payload": {
-                                    "mal_id": r["mal_id"], "title": r["title"],
-                                    "genres": ", ".join(genres or []),
-                                    "year": r["year"], "score": r["score"],
-                                    "image_url": r["image_url"],
-                                    "synopsis": (r["synopsis"] or "")[:1500],
-                                }})
+                        vi_vecs = None
+                        if BILINGUAL:
+                            vi = await oai.embeddings.create(
+                                model=EMBED_MODEL,
+                                input=[r["doc_vi"] for r in chunk])
+                            vi_vecs = [e.embedding for e in vi.data]
+                        points = build_points(
+                            chunk, [e.embedding for e in emb.data], vi_vecs)
                         up = await qd.put(f"{QDRANT_URL}/collections/{COLLECTION}/points",
                                           params={"wait": "true"}, json={"points": points})
                         up.raise_for_status()

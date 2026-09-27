@@ -57,19 +57,22 @@ def _get_or_train(model_instance):
 
 
 def user_based_cf_pipeline():
-    from pipelines.model_dev import UserBasedCF, UserCFPyfuncModel  # lazy
+    from pipelines.model_dev import UserBasedCF  # lazy
+    from pipelines.model_mlflow import UserCFPyfuncModel  # lazy
 
     _get_or_train(UserCFPyfuncModel(model=UserBasedCF()))
 
 
 def item_based_cf_pipeline():
-    from pipelines.model_dev import ItemBasedCF, ItemCFPyfuncModel  # lazy
+    from pipelines.model_dev import ItemBasedCF  # lazy
+    from pipelines.model_mlflow import ItemCFPyfuncModel  # lazy
 
     _get_or_train(ItemCFPyfuncModel(model=ItemBasedCF()))
 
 
 def content_based_filtering_pipeline():
-    from pipelines.model_dev import ContentBasedFiltering, ContentFPyfuncModel  # lazy
+    from pipelines.model_dev import ContentBasedFiltering  # lazy
+    from pipelines.model_mlflow import ContentFPyfuncModel  # lazy
 
     _get_or_train(ContentFPyfuncModel(model=ContentBasedFiltering()))
 

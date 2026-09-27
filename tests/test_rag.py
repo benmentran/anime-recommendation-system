@@ -26,6 +26,19 @@ def test_build_document_sparse_row():
     assert "Anime 1" in doc  # fallback title, no crash on Nones
 
 
+def test_build_document_includes_anilist_tags():
+    doc = build_document({"mal_id": 1, "title": "X",
+                          "tags_anilist": [{"name": "Isekai", "weight": 95},
+                                           {"name": "Magic", "weight": 0}]})
+    assert "Tags: Isekai (95%), Magic (0%)" in doc
+
+
+def test_build_document_accepts_json_string_tags():
+    doc = build_document({"mal_id": 1, "title": "X",
+                          "tags_anilist": '[{"name": "Mecha", "weight": 80}]'})
+    assert "Mecha (80%)" in doc
+
+
 def test_build_prompt_grounds_and_caps():
     cands = [{"mal_id": 1, "title": "Cowboy Bebop", "genres": "Action, Sci-Fi",
               "year": 1998, "score": 8.75, "synopsis": "Bounty hunters in space."}]

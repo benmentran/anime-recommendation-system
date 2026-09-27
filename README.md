@@ -53,27 +53,50 @@ Generation: `gpt-4o`. RAGAS judge: `gpt-4o-mini` (cost sanity; generation stays 
 Reproduce: `bash scripts/wsl_bench_run.sh` (retrieval+generation) then
 `python scripts/run_ragas_score.py` (scoring). Raw JSON: `data/golden_dataset/benchmark_results.json`.
 
-| Metric | Measured |
+| Metric | Measured (Δ vs pure-vector baseline) |
 |---|---|
-| precision@5 | 0.06 |
-| precision@10 | 0.0367 |
-| ndcg@5 | 0.195 |
-| ndcg@10 | 0.2142 |
-| mrr@10 | 0.2083 |
-| faithfulness (RAGAS) | 0.6883 |
-| answer_relevancy (RAGAS) | 0.2425 |
-| context_precision (RAGAS) | 0.1133 |
-| context_recall (RAGAS) | 0.1724 |
-| answer_correctness (RAGAS) | 0.1481 |
-| retrieval latency p50 | 264 ms |
-| retrieval latency p95 | 998 ms |
+| precision@5 | 0.0733 (+0.013) |
+| precision@10 | 0.0367 (±0) |
+| ndcg@5 | 0.1994 (+0.004) |
+| ndcg@10 | 0.1994 (−0.015) |
+| mrr@10 | 0.1856 (−0.023) |
+| faithfulness (RAGAS) | 0.7671 (+0.079) |
+| answer_relevancy (RAGAS) | 0.2887 (+0.046) |
+| context_precision (RAGAS) | 0.0956 (−0.018) |
+| context_recall (RAGAS) | 0.1207 (−0.052) |
+| answer_correctness (RAGAS) | 0.1139 (−0.034) |
+| retrieval latency p50 | ~255 ms |
+| retrieval latency p95 | ~320 ms (pure) / 381 ms (hybrid: prefilter narrows search) |
+| Metric | Baseline (enriched) | E1 translate (gpt-4o) | E1+H | E3 cross-encoder |
+|---|---|---|---|---|
+| precision@5 | 0.0733 | 0.0667 | 0.0733 | 0.04 |
+| precision@10 | 0.0367 | 0.0433 | 0.0433 | 0.02 |
+| ndcg@5 | 0.1994 | 0.2634 | 0.2712 | 0.114 |
+| ndcg@10 | 0.1994 | 0.283 | 0.2858 | 0.114 |
+| mrr@10 | 0.1856 | 0.2972 | 0.3028 | 0.1111 |
+| faithfulness (RAGAS) | 0.7671 | — | 0.6791 | — |
+| answer_relevancy (RAGAS) | 0.2887 | — | 0.2853 | — |
+| context_precision (RAGAS) | 0.0956 | — | 0.0956 | — |
+| context_recall (RAGAS) | 0.1207 | — | 0.0862 | — |
+| answer_correctness (RAGAS) | 0.1139 | — | 0.1215 | — |
+| retrieval latency p50 / p95 | 257 / 306 ms | 971 / 1765 ms | 1047 / 1473 ms | 203 / 996 ms |
+| precision@5 loose, shared-genre (diagnostic only) | 0.80 pure / 0.82 hybrid / 0.8733 E1 | — | — | — |
 
-Reading guide (honest): faithfulness is decent (answers stay grounded in retrieved
-context), but retrieval itself is weak — Vietnamese queries vs English documents plus
-strict relevance sets (only top-by-score DB picks count) push P@5 to 0.06, which
-cascades into context_precision/recall and answer_correctness. This is exactly why
-the hybrid genre-prefilter + rerank workstream exists: re-run this table after it to
-prove the lift.
+Verdicts (adopt = P@5 Δ≥+0.05 absolute, MRR not down, p95 < 1.5 s):
+E1 translate (gpt-4o) → **REJECT**: ranking lifts (NDCG +0.07, MRR +0.09) but P@5
++0.007 and p95 1.77 s over budget. E1+H → **REJECT**: best ranking (MRR 0.303) yet
+faithfulness drops 0.767 → 0.679 and P@5 still +0.013. E3 cross-encoder (ms-marco
+MiniLM, local CPU) → **REJECT**: hurts every metric (out-of-domain for VI queries +
+anime docs) at +1 GB RAM. Loose scoring ≈ 0.8+ everywhere → diagnostic-only.
+Raw per-arm JSONs: `data/golden_dataset/benchmark_<arm>.json`.
+
+Baselines for reference: pure-vector pre-enrichment P@5 0.06, NDCG@5 0.195, MRR 0.2083.
+Current docs = enriched (AniList tags+rank/scores/descriptions on all 5132 rows).
+
+Reading guide (honest): translation improves *ranking* but not top-1 precision —
+the bottleneck is Vietnamese queries vs English documents compounded by strict
+exact-ID relevance. Remaining ideas: bilingual documents, looser relevance as a
+first-class metric, in-domain reranker.
 
 ## Runbook
 

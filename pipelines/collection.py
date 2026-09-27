@@ -38,7 +38,7 @@ async def _fresh_ids(pool: asyncpg.Pool, ids: list[int]) -> set[int]:
 async def _upsert_raw(pool: asyncpg.Pool, rows: list[tuple]):
     await pool.executemany(
         """INSERT INTO anime_raw (mal_id, source, payload, fetched_at, expires_at)
-           VALUES ($1, 'jikan', $2, $3, $4) ON CONFLICT (mal_id) DO NOTHING""",
+           VALUES ($1, 'tenrai', $2, $3, $4) ON CONFLICT (mal_id) DO NOTHING""",
         rows,
     )
 

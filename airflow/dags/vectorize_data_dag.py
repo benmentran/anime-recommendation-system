@@ -24,6 +24,14 @@ def vectorize_trending_metadata():
 
         asyncio.run(main())
 
+    @task.external_python(task_id="assert_catalog",
+                          python=PROJECT_PYTHON_PATH,
+                          retries=0)
+    def assert_catalog():
+        from scripts.assert_catalog import main  # quality gate: raises -> DAG fails
+
+        asyncio.run(main())
+
     wait_for_fetch = ExternalTaskSensor(
         task_id="wait_for_fetch_extract_features",
         external_dag_id="fetch_extract_features",
@@ -33,6 +41,7 @@ def vectorize_trending_metadata():
     )
 
     anime_task = process_anime()
-    wait_for_fetch >> anime_task
+    quality_gate = assert_catalog()
+    wait_for_fetch >> anime_task >> quality_gate
 
 vectorize_trending_metadata = vectorize_trending_metadata()
