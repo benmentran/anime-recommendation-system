@@ -19,6 +19,21 @@ import sys
 import time
 import urllib.request
 
+def _load_dotenv():
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
+    try:
+        with open(p, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+    except OSError:
+        pass
+
+
+_load_dotenv()
+
 BASE = os.getenv("RAG_BASE", "http://localhost:8000")
 QDRANT = os.getenv("QDRANT_URL", "http://localhost:6333").rstrip("/")
 COLLECTION = os.getenv("COLLECTION", "anime")
