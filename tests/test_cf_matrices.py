@@ -2,9 +2,6 @@
 import pickle
 import sys
 
-import numpy as np
-import pandas as pd
-
 sys.path.insert(0, ".")
 
 from pipelines.model_dev import ContentBasedFiltering, ItemBasedCF, UserBasedCF

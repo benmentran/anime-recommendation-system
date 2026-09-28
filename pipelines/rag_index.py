@@ -20,8 +20,10 @@ from openai import AsyncOpenAI
 from pipelines.rag_docs import build_document
 
 DATA_DIR = Path("data/raw")
-DONE_FILE = DATA_DIR / "rag_indexed_ids.txt"
 COLLECTION = os.getenv("COLLECTION", "anime")
+DONE_FILE = Path(os.getenv("DONE_IDS") or
+                 (DATA_DIR / ("rag_indexed_ids.txt" if COLLECTION == "anime"
+                              else f"rag_indexed_{COLLECTION}_ids.txt")))
 EMBED_MODEL = os.getenv("EMBED_MODEL", "text-embedding-3-small")
 EMBED_DIM = 1536
 QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333").rstrip("/")
@@ -90,7 +92,7 @@ async def main(limit: int | None = None):
             cur = await pool.cursor(
                 "SELECT mal_id, title, title_japanese, synopsis, episodes, status,"
                 " season, year, studios, source, genres, score, image_url,"
-                " tags_anilist" + (", doc_vi" if BILINGUAL else "") +
+                " tags_anilist, review_digest" + (", doc_vi" if BILINGUAL else "") +
                 " FROM anime_catalog ORDER BY mal_id")
             with open(DONE_FILE, "a", encoding="utf-8") as cp:
                 while True:

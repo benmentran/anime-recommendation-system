@@ -19,6 +19,7 @@ import sys
 import time
 import urllib.request
 
+
 def _load_dotenv():
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
     try:
@@ -83,9 +84,10 @@ def end_to_end(base: str, queries: list[str]) -> list[float]:
 
 
 def retrieval_only(queries: list[str]) -> list[float]:
-    from openai import AsyncOpenAI  # noqa: runtime import, live-only path
     import asyncio
+
     import httpx
+    from openai import AsyncOpenAI
 
     async def _one(q: str) -> float:
         oai = AsyncOpenAI(api_key=os.environ["OPENAI_API_KEY"])

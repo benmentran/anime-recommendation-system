@@ -48,6 +48,26 @@ def test_eval_language_detected(query, lang, genre, _):
     assert detect_language(query) == lang
 
 
+@pytest.mark.parametrize("query", [
+    "goi y anime vua hanh dong vua tinh cam",
+    "tim anime hai huoc de xem cuoi tuan",
+    "anime nao hay nhat nam nay",
+    "muon xem phim kinh di khong qua so",
+])
+def test_detect_unaccented_vietnamese(query):
+    # Chat thật hay gõ không dấu; trước đây rớt về "en" (bivector search nhầm vector).
+    assert detect_language(query) == "vi"
+
+
+@pytest.mark.parametrize("query", [
+    "isekai where the main character is overpowered from the start",
+    "romantic comedy anime set in high school",
+    "the best action anime with a strong story",
+])
+def test_detect_english_not_confused(query):
+    assert detect_language(query) == "en"
+
+
 @pytest.mark.parametrize("query,_lang,genre,_", EVAL_CASES)
 def test_eval_genre_filter(query, _lang, genre, _):
     assert infer_genre_filter(query) == genre

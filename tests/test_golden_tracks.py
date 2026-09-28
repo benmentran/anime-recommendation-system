@@ -6,7 +6,8 @@ import pandas as pd
 
 sys.path.insert(0, ".")
 
-from scripts.build_golden_tracks import RAGAS_CATS, main as build_tracks
+from scripts.build_golden_tracks import RAGAS_CATS
+from scripts.build_golden_tracks import main as build_tracks
 
 RAGAS_REQUIRED = ["id", "question", "reference", "reference_contexts"]
 ORIGINAL_COLS = ["id", "category", "intent", "question", "expected_entities",

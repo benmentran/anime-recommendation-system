@@ -2,9 +2,9 @@
 import os
 from datetime import date
 
+from sqlalchemy import Date, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Date, ForeignKey, Integer, String, Text
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://anime:animepass@localhost:5432/anime")
 ASYNC_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)

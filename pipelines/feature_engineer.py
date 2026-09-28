@@ -1,11 +1,11 @@
+
 import pandas as pd
-from typing import List, Optional
 
 
 class FeatureEngineer:
     @staticmethod
     def add_time_features(df: pd.DataFrame,
-                          datetime_cols: Optional[List[str]] = None,
+                          datetime_cols: list[str] | None = None,
                           drop_original: bool = True) -> pd.DataFrame:
         data = df.copy()
         
@@ -28,7 +28,7 @@ class FeatureEngineer:
 
     @staticmethod
     def add_interaction_gap(df: pd.DataFrame,
-                            groupby_cols: Optional[List[str]] = None,
+                            groupby_cols: list[str] | None = None,
                             ts_col: str = "timestamp") -> pd.DataFrame:
         df = df.copy()
         

@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse
 import google.auth.transport.requests
 import google.oauth2.id_token
+from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 from schemas.google_login import GoogleLoginData
 
 router = APIRouter()

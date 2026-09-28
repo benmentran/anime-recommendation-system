@@ -7,7 +7,10 @@ popularity fallback; 503 only when nothing was ever built.
 from fastapi import APIRouter, HTTPException
 
 from services.recommend_service.model_loader import ModelLoader
-from services.recommend_service.schemas.recommend_request import RecommendRequest, RecommendResponse
+from services.recommend_service.schemas.recommend_request import (
+    RecommendRequest,
+    RecommendResponse,
+)
 
 router = APIRouter(prefix="/api/v1/recommendations")
 model_loader = ModelLoader()

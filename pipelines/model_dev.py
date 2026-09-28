@@ -1,7 +1,8 @@
 import os
 from abc import ABC, abstractmethod
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 
 try:
     from sklearn.metrics.pairwise import cosine_similarity
@@ -109,11 +110,14 @@ class ItemBasedCF(Model):
         return ranked[:N]
 
 class ContentBasedFiltering(Model):
-    def train(self, df: pd.DataFrame, reviews_df: pd.DataFrame | None = None):
+    def train(self, df: pd.DataFrame | None = None, reviews_df: pd.DataFrame | None = None):
         """
         Train both feature-based and review-based similarity matrices.
         reviews_df is optional (anime has no reviews table -> feature-only).
         """
+        if df is None or len(df) == 0:
+            raise ValueError("ContentBasedFiltering.train needs item features df "
+                             "(use scripts/build_cf_matrices.py for the live path)")
         # Build feature-based item-item similarity
         features = np.vstack(df['feature_vector'].to_numpy())
         self.feature_similarity = cosine_similarity(features)
@@ -145,12 +149,12 @@ class ContentBasedFiltering(Model):
             return []  # Movie not found
 
         if movie_index in self.movies_with_reviews:
-            sim_scores = self.review_similarity[idx]
+            sim_scores = self.review_similarity[idx].copy()
         else:
-            sim_scores = self.feature_similarity[idx]
+            sim_scores = self.feature_similarity[idx].copy()
 
         # Get top_k similar movies (excluding the movie itself)
-        sim_scores[idx] = -1  # Exclude itself
+        sim_scores[idx] = -1  # Exclude itself (trên bản copy, không độc ma trận cache)
         similar_indices = np.argsort(sim_scores)[::-1][:top_k]
 
         recommended_movie_ids = self.df.iloc[similar_indices]['movie_id'].tolist()

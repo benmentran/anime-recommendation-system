@@ -1,8 +1,7 @@
-from feast import Entity, FeatureView, Field, FileSource, FeatureStore
-from feast import ValueType
-from feast.types import Int64, Float64, String
 import os
 
+from feast import Entity, FeatureStore, FeatureView, Field, FileSource, ValueType
+from feast.types import Float64, Int64, String
 
 user_source = FileSource(
     path=os.path.join(os.path.dirname(__file__).pảent[2], 'data/feature/users_movielens/user_features.parquet'), 

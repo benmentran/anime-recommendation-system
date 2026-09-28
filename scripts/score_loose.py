@@ -15,8 +15,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.build_golden_tracks import (build_index, genre_rows, load_catalog,
-                                         MOOD_GENRES, parse_titles, resolve)
+from scripts.build_golden_tracks import (
+    MOOD_GENRES,
+    build_index,
+    genre_rows,
+    load_catalog,
+    parse_titles,
+    resolve,
+)
 
 
 def genre_pool(d: dict) -> set[str]:

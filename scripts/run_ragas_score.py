@@ -13,14 +13,25 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from ragas import EvaluationDataset, SingleTurnSample, evaluate
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
-from ragas.metrics import (answer_correctness, answer_relevancy,
-                           context_precision, context_recall, faithfulness)
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from ragas.metrics import (
+    answer_correctness,
+    answer_relevancy,
+    context_precision,
+    context_recall,
+    faithfulness,
+)
 
 JUDGE_MODEL = os.getenv("JUDGE_MODEL", "gpt-4o-mini")
+# python scripts/run_ragas_score.py [--samples data/golden_dataset/ragas_samples_X.json --arm X]
+# Không args = legacy: chấm slot chung, ghi top-level (chỉ dùng cho baseline).
+SAMPLES = (sys.argv[sys.argv.index("--samples") + 1]
+           if "--samples" in sys.argv
+           else "data/golden_dataset/ragas_samples.json")
+ARM = sys.argv[sys.argv.index("--arm") + 1] if "--arm" in sys.argv else None
 
 
 def _load_dotenv():
@@ -35,8 +46,7 @@ def _load_dotenv():
 
 _load_dotenv()
 
-samples = json.loads((ROOT / "data/golden_dataset/ragas_samples.json").read_text(
-    encoding="utf-8"))
+samples = json.loads((ROOT / SAMPLES).read_text(encoding="utf-8"))
 print(f"samples={len(samples)}", flush=True)
 ds = EvaluationDataset([SingleTurnSample(**{k: s[k] for k in (
     "user_input", "retrieved_contexts", "response", "reference",
@@ -68,7 +78,13 @@ prev = {}
 res_path = ROOT / "data/golden_dataset/benchmark_results.json"
 if res_path.exists():
     prev = json.loads(res_path.read_text(encoding="utf-8"))
-prev.update({"ragas": scores, "ragas_per_row": table, "judge_model": JUDGE_MODEL,
-             "generator_model": "gpt-4o", "embed_model": "text-embedding-3-small"})
+block = {"ragas": scores, "ragas_per_row": table, "judge_model": JUDGE_MODEL,
+         "generator_model": "gpt-4o", "embed_model": "text-embedding-3-small"}
+if ARM:
+    arm_block = prev.get(ARM, {})
+    arm_block.update(block)
+    prev[ARM] = arm_block
+else:
+    prev.update(block)
 res_path.write_text(json.dumps(prev, ensure_ascii=False, indent=1), encoding="utf-8")
 print("SAVED", res_path, flush=True)

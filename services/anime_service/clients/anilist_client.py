@@ -89,6 +89,59 @@ async def fetch_media_batch(mal_ids: list[int], timeout: int = 30) -> list[dict]
     return out
 
 
+REVIEWS_QUERY = """
+query ($ids: [Int], $perMedia: Int = 5) {
+  Page(perPage: 10) {
+    media(idMal_in: $ids, type: ANIME) {
+      idMal
+      reviews(perPage: $perMedia, sort: RATING_DESC) {
+        nodes {
+          id summary body score rating ratingAmount
+          createdAt siteUrl
+          # AniList Review has no spoiler flag: no-spoiler guarantee lives in digest prompt.
+          user { name }
+        }
+      }
+    }
+  }
+}
+"""
+
+
+async def fetch_reviews_batch(mal_ids: list[int], per_media: int = 5,
+                              timeout: int = 30) -> list[dict]:
+    """Per-anime reviews via Media->reviews connection (no auth needed).
+
+    Batch 10 IDs/call (nested reviews raise complexity vs fetch_media_batch's
+    50). Pacing 0.8s for the 90 req/min shared quota. Returns media dicts
+    with idMal + reviews.nodes (possibly empty for long-tail).
+    """
+    out: list[dict] = []
+    async with httpx.AsyncClient(timeout=timeout) as client:
+        for i in range(0, len(mal_ids), 10):
+            chunk = mal_ids[i:i + 10]
+            last_error: Exception | None = None
+            for attempt in range(4):
+                try:
+                    r = await client.post(
+                        URL, json={"query": REVIEWS_QUERY,
+                                   "variables": {"ids": chunk, "perMedia": per_media}})
+                    if r.status_code == 429:
+                        await asyncio.sleep(int(r.headers.get("Retry-After", "60")))
+                        continue
+                    r.raise_for_status()
+                    last_error = None
+                    break
+                except Exception as e:  # noqa: BLE001 - retry then propagate
+                    last_error = e
+                    await asyncio.sleep(2 * (attempt + 1))
+            if last_error is not None:
+                raise last_error
+            out.extend(r.json()["data"]["Page"]["media"] or [])
+            await asyncio.sleep(0.8)
+    return out
+
+
 async def fetch_top_mal_ids(limit: int = 5000, season: str | None = None,
                             season_year: int | None = None,
                             timeout: int = 30) -> list[int]:

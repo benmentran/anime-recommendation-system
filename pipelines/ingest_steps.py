@@ -1,17 +1,17 @@
-import pandas as pd
 from pathlib import Path
-from typing import Union, List, Optional
-from pipelines.ingest_strategy import IngestContext
 
+import pandas as pd
+
+from pipelines.ingest_strategy import IngestContext
 
 service_path = Path(__file__).resolve().parents[1]
 
 def ingest_df(
-    source_path: Union[str, Path],
+    source_path: str | Path,
     sep: str = "\t",
-    header: Optional[int] = None,
-    names: Optional[List[str]] = None,
-    encoding: Optional[str] = None
+    header: int | None = None,
+    names: list[str] | None = None,
+    encoding: str | None = None
 ) -> pd.DataFrame:
     """
     ZenML step: ingest given file into DataFrame using explicit parameters.

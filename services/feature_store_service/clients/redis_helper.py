@@ -1,9 +1,9 @@
 import json
-import redis
-from pathlib import Path
-from typing import List, Dict, Any
 import logging
+from pathlib import Path
+from typing import Any
 
+import redis
 
 # Paths to raw data files
 MOVIE_FEATURES_FILE = Path("data/raw/movie_features.json")
@@ -27,7 +27,7 @@ class RedisHelper:
     def __init__(self, host: str = "localhost", port: int = 6379, db: int = 0):
         self.redis_client = redis.StrictRedis(host=host, port=port, db=db, decode_responses=True)
 
-    def _load_json(self, file_path: Path) -> List[Dict[str, Any]]:
+    def _load_json(self, file_path: Path) -> list[dict[str, Any]]:
         """Load JSON file containing a list of dictionaries."""
         if not file_path.exists():
             raise FileNotFoundError(f"File not found: {file_path}")
@@ -35,7 +35,7 @@ class RedisHelper:
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def _store_features(self, redis_key: str, items: List[Dict[str, Any]]):
+    def _store_features(self, redis_key: str, items: list[dict[str, Any]]):
         """
         Store features in Redis as a hash, keyed by ID.
         This allows quick retrieval without scanning all data.
@@ -48,7 +48,7 @@ class RedisHelper:
                     
             pipe.execute()
 
-    def _store_cast(self, redis_key: str, items: List[Dict[str, Any]]):
+    def _store_cast(self, redis_key: str, items: list[dict[str, Any]]):
         """
         Store cast metadata in Redis as a hash, keyed by cast ID.
         Each value is a JSON string representing the cast details.
@@ -76,7 +76,7 @@ class RedisHelper:
         self._store_features(TV_FEATURES_KEY, tv_features)
         self._store_cast(TV_CAST_KEY, tv_cast)
 
-    def get_feature(self, category: str, item_id: str) -> Dict[str, Any]:
+    def get_feature(self, category: str, item_id: str) -> dict[str, Any]:
         """
         Retrieve a single movie or TV feature by ID.
         category: "movie" or "tv"
@@ -86,7 +86,7 @@ class RedisHelper:
         
         return json.loads(data) if data else None
 
-    def get_cast_member(self, category: str, cast_id: str) -> Dict[str, Any]:
+    def get_cast_member(self, category: str, cast_id: str) -> dict[str, Any]:
         """
         Retrieve a single cast member's metadata by ID.
         category: "movie" or "tv"

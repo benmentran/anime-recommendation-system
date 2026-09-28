@@ -1,8 +1,8 @@
+import logging
 from abc import ABC, abstractmethod
 from pathlib import Path
+
 import pandas as pd
-from typing import Union
-import logging
 
 
 class IngestStrategy(ABC):
@@ -10,15 +10,15 @@ class IngestStrategy(ABC):
     Abstract class difining strategy for ingesting data
     """
     @abstractmethod
-    def read(self, source_path: Union[str, Path], **kwargs) -> pd.DataFrame:
+    def read(self, source_path: str | Path, **kwargs) -> pd.DataFrame:
         pass
     
 class CSVIngestStrategy(IngestStrategy):
-    def read(self, source_path: Union[str, Path], **kwargs) -> pd.DataFrame:
+    def read(self, source_path: str | Path, **kwargs) -> pd.DataFrame:
         return pd.read_csv(source_path, **kwargs)
     
 class HTMLTableIngestStrategy(IngestStrategy):
-    def read(self, source_path: Union[str, Path], **kwargs) -> pd.DataFrame:
+    def read(self, source_path: str | Path, **kwargs) -> pd.DataFrame:
         html_text = Path(source_path).read_text(encoding=kwargs.pop('encoding', 'utf-8'))
         dfs = pd.read_html(html_text, **kwargs)
         
@@ -29,7 +29,7 @@ class NDJSONChunkStrategy:
     def __init__(self, chunksize: int = 2000):
         self.chunksize = chunksize
 
-    def iter_batches(self, source_path: Union[str, Path], **kwargs):
+    def iter_batches(self, source_path: str | Path, **kwargs):
         import json as _json
         batch = []
         with open(source_path, encoding=kwargs.pop('encoding', 'utf-8')) as f:
@@ -44,7 +44,7 @@ class NDJSONChunkStrategy:
         if batch:
             yield pd.DataFrame(batch)
 
-    def read(self, source_path: Union[str, Path], **kwargs) -> pd.DataFrame:
+    def read(self, source_path: str | Path, **kwargs) -> pd.DataFrame:
         # ponytail: full-read kept only for small files/tests; large files must use iter_batches
         import json as _json
         with open(source_path, encoding=kwargs.pop('encoding', 'utf-8')) as f:
@@ -63,7 +63,7 @@ class IngestContext:
         ".ndjson": NDJSONChunkStrategy(),
     }
 
-    def __init__(self, source_path: Union[str, Path]):
+    def __init__(self, source_path: str | Path):
         self.source_path = Path(source_path)
         ext = self.source_path.suffix.lower()
         if ext not in self._strategies:

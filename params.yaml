@@ -7,13 +7,39 @@ pipelines:
     fetch_batch: 1000
     upsert_batch: 500
 
-  simulation:
-    num_users: 100
-    num_docs: 1000
-    num_episodes: 50
-    slate_size: 5
-    seed: 42
-    out_csv: "data/simulation/synthetic_interactions.csv"
-
   train:
     ratings_csv: "data/processed/ratings.csv"
+
+  cf:
+    min_user_interactions: 5
+    min_item_interactions: 5
+    test_frac: 0.2
+    implicit_threshold: 7
+    chunk_rows: 10000
+    jikan_base_url: "https://api.jikan.moe/v4"
+    jikan_rate_per_sec: 0.33
+    seed_users: ["RebelPanda", "Archaeon", "Literaturenerd", "ThatAnimeSnob"]
+
+  simulation:
+    seed: 7
+    n_users: 1000
+    steps: 20
+    slate_k: 5
+    beta: 10.0
+    no_click_logit: 0.0
+    alpha: 0.05
+    drift_noise: 0.0
+    temperature: 0.1
+    drift: 0.15
+    explore_slots: 2
+    hybrid_alpha: 0.7
+    hybrid_switch_at: 5
+    ndcg_target: 0.3
+    candidate_n: 200
+    rating_a: 5.5
+    rating_b: 4.5
+    rating_noise: 0.5
+    ground_truth_topm: 50
+    eval_steps: [0, 1, 2, 3, 5, 10, 20]
+    p_single: 0.25
+    p_mix: 0.55

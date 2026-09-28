@@ -1,9 +1,9 @@
-from fastapi import APIRouter, HTTPException
-from feast import FeatureStore
-from fastapi import Query
+import os
+
 import pandas as pd
 from chemas.movielens_feature import RatingFeatureRequest
-import os
+from fastapi import APIRouter, HTTPException, Query
+from feast import FeatureStore
 
 router = APIRouter(prefix="/rating_features", tags=["Rating Features"])
 

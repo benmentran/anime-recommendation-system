@@ -28,7 +28,9 @@ def _ratings_df(csv=None):
 
 
 def save_user_item_matrix(csv=None):
-    from pipelines.model_dev import compute_user_item_matrix  # lazy: pulls sklearn/mlflow
+    from pipelines.model_dev import (
+        compute_user_item_matrix,  # lazy: pulls sklearn/mlflow
+    )
 
     df = _ratings_df(csv)
     compute_user_item_matrix(df)
@@ -36,7 +38,7 @@ def save_user_item_matrix(csv=None):
 
 def _get_or_train(model_instance):
     import mlflow  # lazy
-    import mlflow.pyfunc as pyfunc
+    from mlflow import pyfunc
     from mlflow.tracking import MlflowClient
 
     client = MlflowClient()

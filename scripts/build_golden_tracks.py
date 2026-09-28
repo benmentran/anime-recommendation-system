@@ -27,7 +27,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from pipelines.rag_docs import build_document  # noqa: E402
+from pipelines.rag_docs import build_document
 
 SRC = ROOT / "data" / "golden dataset" / "golden_dataset_anime_chatbot.csv"
 NDJSON = ROOT / "data" / "raw" / "anime_jikan.ndjson"

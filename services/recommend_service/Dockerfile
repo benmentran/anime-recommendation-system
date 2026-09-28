@@ -14,6 +14,8 @@ RUN pip install -r requirements.txt
 COPY services/recommend_service ./services/recommend_service
 COPY services/__init__.py ./services/__init__.py
 COPY pipelines/rag_prompt.py ./pipelines/rag_prompt.py
+COPY pipelines/rag_retrieval.py ./pipelines/rag_retrieval.py
+COPY pipelines/model_dev.py ./pipelines/model_dev.py
 COPY pipelines/__init__.py ./pipelines/__init__.py
 
 EXPOSE 8001

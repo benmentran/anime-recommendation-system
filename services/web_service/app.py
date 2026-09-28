@@ -3,8 +3,15 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from services.recommend_service.routers.recommend_router import router as recommend_router
-from services.web_service.routes import anime_router, auth_router, list_router, rag_proxy_router
+from services.recommend_service.routers.recommend_router import (
+    router as recommend_router,
+)
+from services.web_service.routes import (
+    anime_router,
+    auth_router,
+    list_router,
+    rag_proxy_router,
+)
 
 app = FastAPI(title="Anime BFF")
 app.add_middleware(

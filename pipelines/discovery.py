@@ -90,7 +90,7 @@ async def discover_all(client=None, top_limit: int = TOP_LIMIT) -> list[int]:
                     seen.add(mid)
                     out.append(mid)
         return out
-    except Exception as e:  # noqa: BLE001 - AniList down? fall back to Jikan
+    except Exception as e:
         print(f"anilist discovery failed ({e}), falling back to jikan")
         if client is None:
             raise

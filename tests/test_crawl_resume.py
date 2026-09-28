@@ -1,7 +1,6 @@
 """Crawl resume: second run must not re-call API for checkpointed IDs."""
 import asyncio
 import sys
-from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
 sys.path.insert(0, ".")

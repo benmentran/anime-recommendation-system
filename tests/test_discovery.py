@@ -59,6 +59,7 @@ def test_discover_all_falls_back_to_jikan(monkeypatch):
 def test_anilist_stops_before_depth_cap(monkeypatch):
     """AniList allows max 5000 entries depth: page 100 fetched, page 101 never requested."""
     import httpx as _httpx
+
     from services.anime_service.clients import anilist_client as ani
 
     requested = []

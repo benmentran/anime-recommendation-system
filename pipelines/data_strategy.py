@@ -1,13 +1,18 @@
-import pandas as pd
-import numpy as np
-from abc import ABC, abstractmethod
-from typing import Union, List, Optional, Tuple
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, MultiLabelBinarizer
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sentence_transformers import SentenceTransformer
 import logging
+from abc import ABC, abstractmethod
+
+import numpy as np
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import (
+    LabelEncoder,
+    MinMaxScaler,
+    MultiLabelBinarizer,
+    OneHotEncoder,
+    StandardScaler,
+)
 
 
 class DataStrategy(ABC):
@@ -15,12 +20,12 @@ class DataStrategy(ABC):
     Abstract class difining strategy for cleaning data
     """
     @abstractmethod
-    def handle_data(self, data: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
+    def handle_data(self, data: pd.DataFrame) -> pd.DataFrame | pd.Series:
         pass
 
 
 class DataPreprocessStrategy(DataStrategy):
-    def handle_data(self, data: pd.DataFrame, datetime_cols: Optional[List[str]] = None) -> pd.DataFrame:
+    def handle_data(self, data: pd.DataFrame, datetime_cols: list[str] | None = None) -> pd.DataFrame:
         try:
             # Drop duplicates or invalid data if any
             num_duplicates = data.duplicated().sum()
@@ -47,7 +52,7 @@ class DataDivideStrategy(DataStrategy):
     """
     Strategy for dividing data into train and test
     """ 
-    def handle_data(self, data: pd.DataFrame, test_size: float = 0.2) -> Union[pd.DataFrame, pd.DataFrame]:
+    def handle_data(self, data: pd.DataFrame, test_size: float = 0.2) -> pd.DataFrame:
         try:
             train_df, test_df = train_test_split(data, test_size=test_size, random_state=42)
             
@@ -61,9 +66,9 @@ class DataEncodeStrategy(DataStrategy):
     Strategy for encoding specific categorical features
     """
     def handle_data(self, df_train: pd.DataFrame,
-                    df_test: Optional[pd.DataFrame] = None, 
+                    df_test: pd.DataFrame | None = None, 
                     method: str = "onehot", 
-                    columns: List[str] = []) -> pd.DataFrame:
+                    columns: list[str] | None = None) -> pd.DataFrame:
         if not columns:
             raise ValueError("You must specify at least one column to encode.")
         
@@ -107,10 +112,10 @@ class DataEncodeStrategy(DataStrategy):
     
 class DataNormalizeStrategy(DataStrategy):
     def handle_data(self, df_train: pd.DataFrame,
-                    df_test: Optional[pd.DataFrame] = None,
+                    df_test: pd.DataFrame | None = None,
                     method: str = "standard", 
-                    columns: Union[List[str], None] = None,
-                    log_transform_columns: Union[List[str], None] = None) -> pd.DataFrame:
+                    columns: list[str] | None = None,
+                    log_transform_columns: list[str] | None = None) -> pd.DataFrame:
         """
         :param method: 'standard' or 'minmax'
         :param columns: List of numeric column names to normalize. If None, auto-select numeric columns.
@@ -148,11 +153,11 @@ class TextVectorizeStrategy(DataStrategy):
     def handle_data(
         self,
         df_train: pd.DataFrame,
-        df_test: Optional[pd.DataFrame] = None,
+        df_test: pd.DataFrame | None = None,
         column: str = "",
         max_features: int = 1000,
-        output_col: Optional[str] = None,
-    ) -> Union[pd.DataFrame, Tuple[pd.DataFrame, pd.DataFrame]]:
+        output_col: str | None = None,
+    ) -> pd.DataFrame | tuple[pd.DataFrame, pd.DataFrame]:
         output_col = output_col or f"{column}_tfidf"
         if not column:
             raise ValueError("You must specify a text column to vectorize.")
@@ -181,10 +186,10 @@ class BERTVectorizeStrategy(DataStrategy):
     def handle_data(
         self,
         df_train: pd.DataFrame,
-        df_test: Optional[pd.DataFrame] = None,
+        df_test: pd.DataFrame | None = None,
         column: str = "",
-        output_col: Optional[str] = None,
-    ) -> Union[pd.DataFrame, Tuple[pd.DataFrame, pd.DataFrame]]:
+        output_col: str | None = None,
+    ) -> pd.DataFrame | tuple[pd.DataFrame, pd.DataFrame]:
         output_col = output_col or f"{column}_bert"
         if not column:
             raise ValueError("You must specify a text column to vectorize.")
@@ -214,9 +219,9 @@ class MultiLabelEncodeStrategy(DataStrategy):
     """
     def handle_data(self,
                     df_train: pd.DataFrame,
-                    columns: List[str],
-                    df_test: Optional[pd.DataFrame] = None
-                   ) -> Tuple[pd.DataFrame, Optional[pd.DataFrame]]:
+                    columns: list[str],
+                    df_test: pd.DataFrame | None = None
+                   ) -> tuple[pd.DataFrame, pd.DataFrame | None]:
         """
         :param columns: List of columns that are multi-label categorical (lists of categories).
         """
@@ -257,7 +262,7 @@ class DataCleaning:
         self.data = data
         self.strategy = strategy
         
-    def handle_data(self) -> Union[pd.DataFrame, pd.Series]:
+    def handle_data(self) -> pd.DataFrame | pd.Series:
         try:
             return self.strategy.handle_data(self.data)
         except Exception as e:

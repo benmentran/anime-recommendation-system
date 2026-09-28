@@ -4,9 +4,13 @@ from openai import OpenAI as SyncOpenAI
 from ragas.embeddings import embedding_factory
 from ragas.llms import llm_factory
 from ragas.metrics.base import Metric
-from ragas.metrics.collections import (AnswerCorrectness, AnswerRelevancy,
-                                       ContextPrecision, ContextRecall,
-                                       Faithfulness)
+from ragas.metrics.collections import (
+    AnswerCorrectness,
+    AnswerRelevancy,
+    ContextPrecision,
+    ContextRecall,
+    Faithfulness,
+)
 
 key = os.environ.get("OPENAI_API_KEY", "x")
 sync_client = SyncOpenAI(api_key=key)

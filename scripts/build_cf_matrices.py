@@ -84,6 +84,9 @@ async def main(out: str = "model"):
     finally:
         await pool.close()
 
+    if not catalog:
+        raise SystemExit("anime_catalog is empty; crawl first (scripts/run_full_crawl.py)")
+
     ratings = status_frame(interactions)
     if ratings.empty:
         print("no interactions yet; writing popularity-only bundle", flush=True)

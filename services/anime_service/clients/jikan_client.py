@@ -8,11 +8,16 @@ import asyncio
 import os
 import time
 from collections import deque
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 import httpx
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
 
 BASE_URL = os.getenv("ANIME_API_BASE_URL", "https://api.tenrai.org/v1")
 MIN_INTERVAL = 0.35
@@ -51,6 +56,23 @@ class JikanClient:
             raise httpx.HTTPStatusError("429", request=resp.request, response=resp)
         resp.raise_for_status()
         return resp.json().get("data", {}), self._expires_at(resp.headers.get("Expires"))
+
+    @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=1, max=30),
+           retry=retry_if_exception_type((httpx.RequestError, httpx.HTTPStatusError)))
+    async def get_reviews(self, mal_id: int, page: int = 1) -> tuple[list[dict], bool]:
+        """GET /anime/{id}/reviews?page=N (Tenrai Jikan-compatible). Returns (reviews, has_next)."""
+        await self._throttle()
+        resp = await self._client.get(f"/anime/{mal_id}/reviews", params={"page": page})
+        if resp.status_code == 429:
+            await asyncio.sleep(float(resp.headers.get("Retry-After", "2")))
+            raise httpx.HTTPStatusError("429", request=resp.request, response=resp)
+        if resp.status_code == 404:
+            return [], False
+        resp.raise_for_status()
+        payload = resp.json()
+        data = payload.get("data") or []
+        pag = payload.get("pagination") or {}
+        return data, bool(pag.get("has_next_page", False))
 
     @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=1, max=30),
            retry=retry_if_exception_type((httpx.RequestError, httpx.HTTPStatusError)))

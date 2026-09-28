@@ -1,0 +1,44 @@
+{
+ "run": "cf_matrix_seed",
+ "data_source": "real",
+ "seed": null,
+ "git_sha": "8803dc4",
+ "versions": {
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "pandas": "3.0.6"
+ },
+ "params": {
+  "min_user": 5,
+  "min_item": 2,
+  "test_frac": 0.2,
+  "implicit_threshold": 7,
+  "chunk_rows": 10000
+ },
+ "metrics": {
+  "explicit_train": {
+   "n_users": 2,
+   "n_items": 243,
+   "nnz": 388,
+   "density": 0.79835391
+  },
+  "implicit_train": {
+   "n_users": 2,
+   "n_items": 243,
+   "nnz": 388,
+   "density": 0.79835391
+  },
+  "n_train": 388,
+  "n_test": 98
+ },
+ "dataset_digest": "0fd5cb17629d87d9b9ef17db750eede66f87c5c08e932ff702d92129372784b2",
+ "files": {
+  "split.parquet": "0fd5cb17629d87d9b9ef17db750eede66f87c5c08e932ff702d92129372784b2",
+  "id_maps_user.json": "c549214a06b309f3a998a2947623daa286c6dd21e703741983af09e82687e299",
+  "id_maps_item.json": "81775157cd9c949fc6b3b728f293f9d1047f46f3708c15a45d18a8c17c086a17",
+  "train_explicit.npz": "7604280567bfd5f4f37cfe72e6fe9a4bd8b6eab8984759fbe91184b4837a4954",
+  "train_implicit.npz": "5597119b31390c12074976e6b022040cad1f5d8adbed520d7ddc66d393f087a0"
+ },
+ "start_time": "2026-09-28T07:07:17.749850+00:00",
+ "end_time": "2026-09-28T07:07:20.044683+00:00"
+}

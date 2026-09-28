@@ -1,9 +1,9 @@
-from fastapi import APIRouter, HTTPException, Header, status
+from app.db import UserQuery, db
+from app.security import create_token, decode_token, hash_pw, verify_pw
+from fastapi import APIRouter, Header, HTTPException, status
+from schemas.profile import Profile
 from schemas.sign_in import SignInSchema
 from schemas.sign_up import SignUpSchema
-from schemas.profile import Profile
-from app.security import hash_pw, verify_pw, create_token, decode_token
-from app.db import db, UserQuery
 
 router = APIRouter(prefix="/auth")
 

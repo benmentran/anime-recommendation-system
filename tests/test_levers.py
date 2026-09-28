@@ -8,9 +8,9 @@ from types import SimpleNamespace
 
 sys.path.insert(0, ".")
 
-from pipelines.rerank import doc_text, rerank_cross_encoder  # noqa: E402
-from pipelines.translate_query import clear_cache, translate_query  # noqa: E402
-from scripts.score_loose import is_loose_hit, loose_metrics  # noqa: E402
+from pipelines.rerank import doc_text, rerank_cross_encoder
+from pipelines.translate_query import clear_cache, translate_query
+from scripts.score_loose import is_loose_hit, loose_metrics
 
 
 def _oai(reply="translated query"):

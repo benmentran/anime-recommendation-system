@@ -1,8 +1,7 @@
-from feast import Entity, FeatureView, Field, FileSource, FeatureStore
-from feast import ValueType
-from feast.types import Float64, Int32, Int64
 import os
 
+from feast import Entity, FeatureStore, FeatureView, Field, FileSource, ValueType
+from feast.types import Float64, Int32, Int64
 
 X_train_source = FileSource(
     path=os.path.join(os.path.dirname(__file__).parent[2], 'data/feature/ratings_movielens/rating_train.parquet'),

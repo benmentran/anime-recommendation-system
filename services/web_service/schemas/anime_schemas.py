@@ -32,6 +32,11 @@ class AnimeDetail(BaseModel):
     image_url: str | None = None
 
 
+class GenreCount(BaseModel):
+    name: str
+    count: int
+
+
 class ListItemIn(BaseModel):
     anime_id: int
     status: str = "plan_to_watch"

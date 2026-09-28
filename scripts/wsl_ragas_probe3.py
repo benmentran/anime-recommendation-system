@@ -1,8 +1,12 @@
 import inspect
 
-from ragas.metrics.collections import (AnswerCorrectness, AnswerRelevancy,
-                                       ContextPrecision, ContextRecall,
-                                       Faithfulness)
+from ragas.metrics.collections import (
+    AnswerCorrectness,
+    AnswerRelevancy,
+    ContextPrecision,
+    ContextRecall,
+    Faithfulness,
+)
 
 for cls in (Faithfulness, AnswerRelevancy, ContextPrecision, ContextRecall,
             AnswerCorrectness):

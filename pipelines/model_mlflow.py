@@ -3,7 +3,7 @@
 The pure CF algorithms live in pipelines/model_dev.py (numpy/pandas only).
 Only pipelines/train_pipeline.py imports from here (lazy, offline training).
 """
-import mlflow.pyfunc as pyfunc
+from mlflow import pyfunc
 
 from pipelines.model_dev import ContentBasedFiltering, ItemBasedCF, UserBasedCF
 

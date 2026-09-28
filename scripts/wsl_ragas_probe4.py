@@ -1,7 +1,7 @@
 import re
 
 src = open("/root/.venv-rag/lib/python3.11/site-packages/ragas/evaluation.py").read()
-m = re.search(r"^from .*Metric.*$|^import .*Metric.*$", src, re.M)
+m = re.search(r"^from .*Metric.*$|^import .*Metric.*$", src, re.MULTILINE)
 print("Metric import line:", m.group(0) if m else None)
 
 from ragas.metrics.collections import Faithfulness

@@ -1,8 +1,9 @@
+import os
+
+import pandas as pd
 from fastapi import APIRouter, HTTPException
 from feast import FeatureStore
-import pandas as pd
 from schemas.movielens_feature import UserFeatureRequest
-import os
 
 router = APIRouter(prefix="/user_features", tags=["User Features"])
 

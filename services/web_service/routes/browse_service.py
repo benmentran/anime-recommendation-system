@@ -1,12 +1,12 @@
-from fastapi import APIRouter, Request, Cookie
+from pathlib import Path
+
+from app.security import decode_token
+from fastapi import APIRouter, Cookie, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from pathlib import Path
+from services.movie_api import MovieService
 from services.trending_api import TrendingService
 from services.tv_api import TVService
-from services.movie_api import MovieService
-from app.security import decode_token
-
 
 router = APIRouter()
 BASE_DIR = Path(__file__).resolve().parent.parent

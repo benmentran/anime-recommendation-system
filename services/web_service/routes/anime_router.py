@@ -4,7 +4,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from services.web_service.db import get_session
-from services.web_service.schemas.anime_schemas import AnimeDetail, AnimeMini
+from services.web_service.schemas.anime_schemas import AnimeDetail, AnimeMini, GenreCount
 
 router = APIRouter(prefix="/api/v1/anime", tags=["anime"])
 
@@ -25,15 +25,29 @@ async def trending(limit: int = Query(20, le=50), s: AsyncSession = Depends(get_
     return [_mini(r) for r in rows]
 
 
+@router.get("/genres", response_model=list[GenreCount])
+async def genres(s: AsyncSession = Depends(get_session)):
+    rows = (await s.execute(text(
+        "SELECT g.elem AS name, COUNT(*) AS count FROM anime_catalog, "
+        "jsonb_array_elements_text(genres) AS g(elem) "
+        "GROUP BY g.elem ORDER BY count DESC"))).all()
+    return [{"name": r.name, "count": r.count} for r in rows]
+
+
 @router.get("/search", response_model=list[AnimeMini])
 async def search(q: str = "", genre: str | None = None, year: int | None = None,
+                 season: str | None = None, status: str | None = None,
                  limit: int = Query(20, le=50), s: AsyncSession = Depends(get_session)):
     rows = (await s.execute(text(
         f"SELECT {MINI_COLS} FROM anime_catalog "
         "WHERE title ILIKE :q "
         "AND (:genre IS NULL OR genres ? :genre) "
-        "AND (:year IS NULL OR year = :year) LIMIT :n"),
-        {"q": f"%{q}%", "genre": genre, "year": year, "n": limit})).all()
+        "AND (:year IS NULL OR year = :year) "
+        "AND (:season IS NULL OR season = :season) "
+        "AND (:status IS NULL OR status = :status) "
+        "ORDER BY score DESC NULLS LAST LIMIT :n"),
+        {"q": f"%{q}%", "genre": genre, "year": year,
+         "season": season, "status": status, "n": limit})).all()
     return [_mini(r) for r in rows]
 
 

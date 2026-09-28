@@ -1,6 +1,7 @@
-from pydantic import BaseModel
-from typing import List
 from datetime import datetime
+
+from pydantic import BaseModel
+
 
 class MovieLensFeatureRequest(BaseModel):
     movie_id: int
@@ -29,7 +30,7 @@ class MovieLensFeatureRequest(BaseModel):
     release_date_hour: float
     release_date_dayofweek: float
     release_date_is_weekend: int
-    title_tfidf: List[float]
+    title_tfidf: list[float]
     release_date: datetime   # event_timestamp
 
 class RatingFeatureRequest(BaseModel):

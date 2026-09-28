@@ -56,4 +56,7 @@ def build_document(row: dict) -> str:
     synopsis = (row.get("synopsis") or "").strip()
     if synopsis:
         lines.append(f"Synopsis: {synopsis[:SYNOPSIS_MAX]}")
+    digest = (row.get("review_digest") or "").strip()
+    if digest:  # NULL-safe: 0-review anime skip LLM and stay NULL
+        lines.append(f"Audience reception: {digest}")
     return "\n".join(lines)

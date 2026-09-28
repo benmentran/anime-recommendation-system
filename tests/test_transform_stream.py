@@ -10,8 +10,7 @@ from pipelines.ingest_strategy import NDJSONChunkStrategy
 def test_ndjson_iter_batches_peak_memory(tmp_path):
     p = tmp_path / "big.ndjson"
     with open(p, "w") as f:
-        for i in range(20_000):
-            f.write(json.dumps({"mal_id": i, "title": f"A{i}"}) + "\n")
+        f.writelines(json.dumps({"mal_id": i, "title": f"A{i}"}) + "\n" for i in range(20_000))
     tracemalloc.start()
     n = 0
     for df in NDJSONChunkStrategy(chunksize=2000).iter_batches(p):

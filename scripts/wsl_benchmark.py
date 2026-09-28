@@ -21,13 +21,17 @@ if os.path.isdir(REPO):
     sys.path.insert(0, REPO)
     os.chdir(REPO)
 
-import httpx  # noqa: E402
-from openai import AsyncOpenAI  # noqa: E402
+import httpx
+from openai import AsyncOpenAI
 
-from pipelines.rag_docs import build_document  # noqa: E402
-from pipelines.rag_prompt import build_messages  # noqa: E402
-from scripts.build_golden_tracks import (  # noqa: E402
-    MOOD_GENRES, build_index, genre_rows, load_catalog, parse_titles, resolve,
+from pipelines.rag_prompt import build_messages
+from scripts.build_golden_tracks import (
+    MOOD_GENRES,
+    build_index,
+    genre_rows,
+    load_catalog,
+    parse_titles,
+    resolve,
 )
 
 QDRANT = os.getenv("QDRANT_URL", "http://localhost:6333").rstrip("/")
@@ -38,8 +42,26 @@ JUDGE_MODEL = os.getenv("JUDGE_MODEL", "gpt-4o-mini")
 K = 10
 
 
+def relevant_id_sets(row, exact, contains, rows) -> list[set[int]]:
+    """Multi-intent rows (intent=recommend_multi, ent genre=A;genre=B):
+    one relevant-ID set PER genre. Non-multi rows -> [relevant_ids(...)]."""
+    if row.get("intent") == "recommend_multi":
+        import re as _re
+        tokens = _re.findall(r"(?:genre|genre/theme)=([^;]+)", row.get("expected_entities") or "")
+        # Intent = "slate có PHIM THUỘC genre", nên set = TOÀN BỘ phim thuộc genre
+        # (không phải top-3 điểm như single-intent).
+        sets = [{d["mal_id"] for d in genre_rows(rows, t.strip(), topn=10_000)} for t in tokens]
+        return [s for s in sets if s]
+    return []
+
+
 def relevant_ids(row, exact, contains, rows) -> set[int]:
     """Mirror enrich(): IDs that count as relevant for this question."""
+    if row.get("intent") == "recommend_multi":
+        union: set[int] = set()
+        for s in relevant_id_sets(row, exact, contains, rows):
+            union |= s
+        return union
     ent, intent = row["expected_entities"], row["intent"]
     titles = parse_titles(ent)
     resolved = [r for t in titles for r in [resolve(t, exact, contains, rows)] if r]
@@ -110,8 +132,11 @@ def pct(xs: list[float], p: float) -> float:
 
 
 async def retrieve(oai, qd, query: str, k: int):
-    from pipelines.rag_retrieval import (build_qdrant_filter, infer_genre_filter,
-                                         rerank_hits)
+    from pipelines.rag_retrieval import (
+        build_qdrant_filter,
+        infer_genre_filter,
+        rerank_hits,
+    )
     global _TRANSLATE_LOGGED
     t0 = time.monotonic()
     orig = query
@@ -164,6 +189,7 @@ SKIP_SCORING = "--skip-scoring" in sys.argv  # save samples, skip ragas scoring
 CROSS = "--cross-encoder" in sys.argv  # top-N vector -> cross-encoder rerank -> top-k (V3)
 LOOSE = "--loose" in sys.argv  # report loose (shared-genre) metrics alongside strict, no extra retrieval
 WITH_GEN = "--with-generation" in sys.argv  # winner arm: bypass retrieval-only early return
+REVIEWS = "--reviews" in sys.argv  # reviews arm: expect COLLECTION=anime_v3 (docs + digest)
 
 
 def _cross_n() -> int:
@@ -200,6 +226,8 @@ def variant_name() -> str:
         parts.append("hybrid")
     if BIVECTOR:
         parts.append("bivector")
+    if REVIEWS:
+        parts.append("reviews")
     if parts == ["hybrid"]:
         return "benchmark_hybrid.json"  # legacy name
     if not parts:
@@ -217,6 +245,8 @@ def variant_mode() -> str:
         parts.append("hybrid")
     if BIVECTOR:
         parts.append("bivector")
+    if REVIEWS:
+        parts.append("reviews")
     return "+".join(parts) if parts else "pure-vector"
 
 
@@ -231,6 +261,8 @@ def _max_rows() -> int | None:
 
 
 async def main():
+    if REVIEWS and os.getenv("COLLECTION", "anime") == "anime":
+        print("WARN: --reviews expects COLLECTION=anime_v3", flush=True)
     with open("data/golden_dataset/ragas_track.csv", encoding="utf-8") as f:
         gold = list(csv.DictReader(f))
     max_rows = _max_rows()
@@ -264,14 +296,26 @@ async def main():
     Ms = []
     with open("data/golden_dataset/ragas_track.csv", encoding="utf-8") as f:
         gold2 = {g["id"]: g for g in csv.DictReader(f)}
+    IRs = []
     for r in per_row:
-        rel = relevant_ids(gold2[str(r["id"])], exact, contains, all_rows)
+        g = gold2[str(r["id"])]
+        if g.get("intent") == "recommend_multi":
+            # Multi rows KHÔNG vào P@5/NDCG/MRR (giữ comparability với baseline n=30);
+            # chúng chỉ đo bằng intent_recall.
+            top5 = set(r["ranked"][:5])
+            sets = relevant_id_sets(g, exact, contains, all_rows)
+            ir = (sum(1 for s in sets if top5 & s) / len(sets)) if sets else 0.0
+            r["intent_recall@5"] = round(ir, 4)
+            r["rel_n"] = sum(len(s) for s in sets)
+            IRs.append(ir)
+            continue
+        rel = relevant_ids(g, exact, contains, all_rows)
         r["rel_n"] = len(rel)
         for k in (5, 10):
             Ps[k].append(p_at_k(r["ranked"], rel, k))
             Ns[k].append(ndcg_at_k(r["ranked"], rel, k))
         Ms.append(mrr(r["ranked"], rel))
-    retr = {"n": len(per_row),
+    retr = {"n": len(Ps[5]),  # single-intent rows only; multi rows -> intent_recall@5_multi
             "precision@5": round(sum(Ps[5]) / len(Ps[5]), 4),
             "precision@10": round(sum(Ps[10]) / len(Ps[10]), 4),
             "ndcg@5": round(sum(Ns[5]) / len(Ns[5]), 4),
@@ -279,15 +323,18 @@ async def main():
             "mrr@10": round(sum(Ms) / len(Ms), 4),
             "retrieval_latency_ms_p50": round(pct(lat, 50), 1),
             "retrieval_latency_ms_p95": round(pct(lat, 95), 1)}
+    if IRs:
+        retr["intent_recall@5_multi"] = round(sum(IRs) / len(IRs), 4)
+        retr["n_multi"] = len(IRs)
     print("RETRIEVAL:", json.dumps(retr, ensure_ascii=False), flush=True)
 
     # --- loose rescore (V2): shared-genre relevance, same ranked lists, no extra retrieval ---
     loose = None
     if LOOSE:
-        from scripts.score_loose import (genre_pool, golden_genres,
-                                         mrr as loose_mrr,
-                                         ndcg_at_k as loose_n,
-                                         p_at_k as loose_p)
+        from scripts.score_loose import genre_pool, golden_genres
+        from scripts.score_loose import mrr as loose_mrr
+        from scripts.score_loose import ndcg_at_k as loose_n
+        from scripts.score_loose import p_at_k as loose_p
         by_id = {d["mal_id"]: d for d in rows}
         id_genres = {mid: genre_pool(d) for mid, d in by_id.items()}
         lp, ln, lm = [], [], []
@@ -311,7 +358,7 @@ async def main():
 
             release_model()
         return
-    if (HYBRID or RETRIEVAL_ONLY or TRANSLATE or CROSS) and not WITH_GEN:
+    if (HYBRID or RETRIEVAL_ONLY or TRANSLATE or CROSS or REVIEWS) and not WITH_GEN:
         name = variant_name()
         out = {"retrieval": retr,
                "mode": variant_mode(), "rows": per_row}
@@ -365,21 +412,32 @@ async def main():
 
     with open("data/golden_dataset/ragas_samples.json", "w", encoding="utf-8") as f:
         json.dump(samples, f, ensure_ascii=False)
+    # Per-arm copy: ragas_samples.json là slot chung, mỗi arm giữ bản riêng để rescore sau.
+    arm = variant_name().removeprefix("benchmark_").removesuffix(".json")
+    if arm != "results":
+        with open(f"data/golden_dataset/ragas_samples_{arm}.json", "w", encoding="utf-8") as f:
+            json.dump(samples, f, ensure_ascii=False)
+        print(f"SAVED data/golden_dataset/ragas_samples_{arm}.json", flush=True)
     if SKIP_SCORING:
         print("SKIPPED ragas scoring (--skip-scoring); run "
               "scripts/run_ragas_score.py on Windows", flush=True)
         return
 
     # --- RAGAS scoring (judge: gpt-4o-mini) ---
+    from langchain_openai import ChatOpenAI, OpenAIEmbeddings
     from ragas import EvaluationDataset, SingleTurnSample, evaluate
     from ragas.embeddings import LangchainEmbeddingsWrapper
     from ragas.llms import LangchainLLMWrapper
+
     # NOTE: old-style singletons (deprecated in 0.4 but still the only ones
     # accepted by evaluate()); collections.* classes fail its isinstance gate.
-    from ragas.metrics import (answer_correctness, answer_relevancy,
-                               context_precision, context_recall,
-                               faithfulness)
-    from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+    from ragas.metrics import (
+        answer_correctness,
+        answer_relevancy,
+        context_precision,
+        context_recall,
+        faithfulness,
+    )
 
     ds = EvaluationDataset([SingleTurnSample(**{k: s[k] for k in (
         "user_input", "retrieved_contexts", "response", "reference",

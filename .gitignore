@@ -29,6 +29,12 @@ netflix_recommender.egg-info/
 logs/
 model/
 mlruns/
+artifacts/*
+!artifacts/*/
+artifacts/*/*
+!artifacts/*/*/
+artifacts/*/*/*
+!artifacts/*/*/manifest.json
 services/web_service/static/images/cast/
 services/web_service/static/images/movie/
 services/web_service/static/images/tv/

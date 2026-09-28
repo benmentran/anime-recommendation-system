@@ -10,8 +10,10 @@ _VI_DIACRITICS = re.compile(
     re.IGNORECASE,
 )
 _VI_WORDS = frozenset(
-    "của những và với cho từ này kia gì nào không có là một người phim hay nhất "
-    "giới thiệu gợi ý xem tôi muốn tìm kiếm kinh dị hài hước lãng mạn chiến đấu".split()
+    ["của", "những", "và", "với", "cho", "từ", "này", "kia", "gì", "nào", "không", "có", "là", "một", "người", "phim", "hay", "nhất", "giới", "thiệu", "gợi", "ý", "xem", "tôi", "muốn", "tìm", "kiếm", "kinh", "dị", "hài", "hước", "lãng", "mạn", "chiến", "đấu"]
+    # Biến thể không dấu (chat thật hay gõ không dấu).
+    # Cố tình BỎ: the/an/hai/cam/dong/tinh/ky/ao/bi/y — trùng từ tiếng Anh thường gặp.
+    + ["cua", "nhung", "va", "voi", "cho", "tu", "nay", "kia", "gi", "nao", "khong", "co", "la", "mot", "nguoi", "phim", "nhat", "goi", "xem", "toi", "muon", "tim", "kiem", "kinh", "di", "huoc", "lang", "man", "chien", "dau", "vua", "thao"]
 )
 
 # genre -> lowercase keywords matched against the query (first match wins)
